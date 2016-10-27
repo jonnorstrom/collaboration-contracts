@@ -1,0 +1,18 @@
+<h1>New Contract</h1>
+
+<%= form_for :contract, url: contracts_path do |f| %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :decision %><br>
+    <%= f.text_field :decision %>
+  </p>
+
+    <%= f.hidden_field :link, :value => SecureRandom.urlsafe_base64(5, false) %>
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>
