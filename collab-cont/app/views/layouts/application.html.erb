@@ -8,16 +8,13 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <nav class="navbar navbar-inverse navbar-static-top">
-      <div class="container">
+  <body style="background-color: lightgrey;">
+    <nav class="navbar navbar-inverse navbar-static-top" sytle="margin: 0;">
         <ul class="nav navbar-nav">
-          <li><a href="/">Home</a></li>
-          <li><a href="/contracts/new">New Contract</a></li>
-          <li><a href="">Find Contract</a></li>
+          <li><%= link_to "Home", root_path %></li>
+          <li><%= link_to "New Contract", contracts_new_path %></li>
         </ul>
-      </div>
     </nav>
-    <%= yield %>
+      <%= yield %>
   </body>
 </html>

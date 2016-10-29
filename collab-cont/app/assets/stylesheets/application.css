@@ -15,6 +15,10 @@
   *= require bootstrap.min
 */
 
-html{
+html {
+  background-color: lightgrey;
+}
+
+.main_thing {
   background-color: lightgrey;
 }
