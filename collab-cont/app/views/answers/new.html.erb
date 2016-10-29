@@ -1,0 +1,18 @@
+<h1>Answer Contract</h1>
+
+<%= form_for :answer, url: answers_path do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :answer %><br>
+    <%= f.text_field :answer %>
+  </p>
+
+    <%= f.hidden_field :contract_id, :value => @contract_id %>
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>

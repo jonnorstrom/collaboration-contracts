@@ -11,6 +11,7 @@ class ContractsController < ApplicationController
 
   def show
     @contract = Contract.find_by(link: params[:id])
+    @answers = Answer.where(contract_id: @contract.id)
   end
 
   private
