@@ -1,3 +1,13 @@
 <h1>Link: <%=@contract.link%></h1>
 <h2>Title: <%=@contract.title%></h2>
 <p>Decision: <%=@contract.decision%></p>
+
+<%if @answers %>
+  <%@answers.each do |answer|%>
+    <p><%=answer.name%></p>
+    <p><%=answer.answer%></p>
+  <%end%>
+<%end%>
+
+<!-- <a href="/answers/new?link=<%=@contract.link%>">Answer This Contract</a> -->
+<%= link_to "Answer This Contract", new_answers_path(:contract_id => @contract.id) %>
