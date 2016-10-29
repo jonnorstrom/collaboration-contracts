@@ -1,18 +1,16 @@
-<h1>New Contract</h1>
+<h1 class="text-center">New Contract</h1>
 
-<%= form_for :contract, url: contracts_path do |f| %>
-  <p>
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :decision %><br>
-    <%= f.text_field :decision %>
-  </p>
-
-    <%= f.hidden_field :link, :value => SecureRandom.urlsafe_base64(5, false) %>
-  <p>
-    <%= f.submit %>
-  </p>
-
-<% end %>
+<div class="col-sm-6 col-sm-offset-3 col-lg-4 col-lg-offset-4">
+  <%= form_for :contract, url: contracts_path do |f| %>
+    <div class="form-group">
+      <%= f.label :title %><br>
+      <%= f.text_field :title, placeholder: "Contract Title", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :decision %><br>
+      <%= f.text_field :decision, placeholder: "Decision", class: "form-control" %>
+    </div>
+      <%= f.hidden_field :link, :value => SecureRandom.urlsafe_base64(5, false) %>
+      <%= f.submit class: "btn btn-primary" %>
+  <% end %>
+</div>
