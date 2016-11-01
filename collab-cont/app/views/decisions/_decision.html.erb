@@ -1,0 +1,10 @@
+<div class="container col-sm-4">
+  <h1 class="text-center"><%=decision.description%></h1>
+  <h3 class="text-center">Answers</h3>
+
+  <%if decision.answers%>
+    <%=render decision.answers%>
+  <%end%>
+
+  <%=link_to "Answer This Contract", new_answers_path(:decision_id => decision.id), class: "text-center"%>
+</div>

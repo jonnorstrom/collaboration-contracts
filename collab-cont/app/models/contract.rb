@@ -1,3 +1,3 @@
 class Contract < ApplicationRecord
-  has_many :answers
+  has_many :decisions
 end
