@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   get 'answers/index'
   post "answers" => "answers#create"
 
+  get 'decisions/new'
+  get 'decisions/index'
+  post "decisions" => "decisions#create"
+
 
   root 'home#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -1,3 +1,3 @@
 class Answer < ApplicationRecord
-  belongs_to :contract
+  belongs_to :decision
 end

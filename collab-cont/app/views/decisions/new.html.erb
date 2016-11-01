@@ -1,0 +1,14 @@
+<h1 class="text-center">New Decision</h1>
+
+<div class="col-sm-6 col-sm-offset-3 col-lg-4 col-lg-offset-4">
+  <%= form_for :decision, url: decisions_path do |f| %>
+
+    <div class="form-group">
+      <%= f.label :description %><br>
+      <%= f.text_field :description, placeholder: "Decision Text", class: "form-control" %>
+    </div>
+
+      <%= f.hidden_field :contract_id, :value => @contract_id %>
+      <%= f.submit class: "btn btn-primary" %>
+  <% end %>
+</div>

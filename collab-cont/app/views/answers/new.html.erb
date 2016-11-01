@@ -10,7 +10,7 @@
       <%= f.label :answer %><br>
       <%= f.select(:answer,["Explain", "Consult", "Agree", "Advise", "Inquire"], {prompt: "Select One"}, {class: "form-control"}) %>
     </div>
-      <%= f.hidden_field :contract_id, :value => @contract_id %>
+      <%= f.hidden_field :decision_id, :value => @decision_id %>
       <%= f.submit class: "btn btn-primary" %>
 
   <% end %>

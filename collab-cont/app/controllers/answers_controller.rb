@@ -1,18 +1,18 @@
 class AnswersController < ApplicationController
   def new
-    @contract_id = params[:contract_id]
+    @decision_id = params[:decision_id]
   end
 
   def create
     @answer = Answer.new(answer_params)
     if @answer.save
-      @contract_link = Contract.find(@answer.contract_id).link
+      @contract_link = Contract.find(Decision.find(@answer.decision_id).contract_id).link
       redirect_to "/contracts/#{@contract_link}"
     end
   end
 
   private
   def answer_params
-    params.require(:answer).permit(:name, :answer, :contract_id)
+    params.require(:answer).permit(:name, :answer, :decision_id)
   end
 end
