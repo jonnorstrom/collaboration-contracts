@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe AnswerController, type: :controller do
+RSpec.describe AnswersController, type: :controller do
 
 end

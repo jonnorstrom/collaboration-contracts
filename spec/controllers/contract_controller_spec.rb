@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe ContractController, type: :controller do
+RSpec.describe ContractsController, type: :controller do
 
 end
