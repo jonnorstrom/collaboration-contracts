@@ -2,7 +2,7 @@ language: ruby
 rvm:
   - 2.2.2
 
-script: be rspec
+script: bundle exec rspec
 
 services:
   - postgresql
