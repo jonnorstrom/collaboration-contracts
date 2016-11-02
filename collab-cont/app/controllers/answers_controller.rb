@@ -1,13 +1,13 @@
 class AnswersController < ApplicationController
   def new
     @decision_id = params[:decision_id]
+    @answer = Answer.new()
   end
 
   def create
     @answer = Answer.new(answer_params)
     if @answer.save
-      @contract_link = Contract.find(Decision.find(@answer.decision_id).contract_id).link
-      redirect_to "/contracts/#{@contract_link}"
+      redirect_to "/contracts/#{@answer.contract_link}"
     end
   end
 
