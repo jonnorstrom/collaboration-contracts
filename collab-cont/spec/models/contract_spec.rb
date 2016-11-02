@@ -1,10 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Contract, type: :model do
-
-  subject {
+  subject{
     described_class.new(title: "Contract Title", link: "12345")
   }
+
+  it{should have_many(:decisions)}
 
   it "is valid with valid attributes" do
     expect(subject).to be_valid

@@ -6,6 +6,9 @@ RSpec.describe Decision, type: :model do
     contract.decisions.new(description: "Decision description")
   }
 
+  it {should have_many(:answers)}
+  it {should belong_to(:contract)}
+
   it "is valid with valid attributes" do
     expect(subject).to be_valid
   end
