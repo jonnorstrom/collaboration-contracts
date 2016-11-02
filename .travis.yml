@@ -1,0 +1,16 @@
+language: ruby
+rvm:
+  - 2.2.2
+
+script: bundle exec rspec
+
+services:
+  - postgresql
+
+before_script:
+  - bundle exec rake db:create
+  - bundle exec rake db:migrate
+  - bundle exec rake db:test:prepare
+
+notifications:
+  email: false
