@@ -8,7 +8,6 @@
       <%= f.text_field :title, placeholder: "Contract Title", class: "form-control" %>
     </div>
 
-      <%= f.hidden_field :link, :value => SecureRandom.urlsafe_base64(5, false) %>
-      <%= f.submit class: "btn btn-primary" %>
+    <%= f.submit class: "btn btn-primary" %>
   <% end %>
 </div>
