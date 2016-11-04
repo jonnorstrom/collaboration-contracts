@@ -11656,3 +11656,250 @@ Completed 200 OK in 22ms (Views: 20.1ms | ActiveRecord: 0.0ms)
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started GET "/" for ::1 at 2016-11-04 15:33:18 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (2.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 260ms (Views: 250.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/contracts/new" for ::1 at 2016-11-04 15:36:11 -0500
+Processing by ContractsController#new as HTML
+  Rendering contracts/new.html.erb within layouts/application
+  Rendered contracts/new.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 49ms (Views: 27.2ms | ActiveRecord: 10.6ms)
+
+
+Started POST "/contracts" for ::1 at 2016-11-04 15:36:39 -0500
+Processing by ContractsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EKAAvkvoG5WvnMPIJql1yyQOANZCTcpBZ4JGuZKoB80/5V+5JcHoV5QflWVmcg7CH7F85MAZLx9eEeuX4OGjCA==", "contract"=>{"title"=>"Contact Title"}, "commit"=>"Save Contract"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.4ms)[0m  [1m[32mINSERT INTO "contracts" ("title", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Contact Title"], ["link", "M5vwYJU"], ["created_at", 2016-11-04 20:36:39 UTC], ["updated_at", 2016-11-04 20:36:39 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/contracts/M5vwYJU
+Completed 302 Found in 10ms (ActiveRecord: 3.0ms)
+
+
+Started GET "/contracts/M5vwYJU" for ::1 at 2016-11-04 15:36:39 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"M5vwYJU"}
+  [1m[36mContract Load (0.4ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "M5vwYJU"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.7ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 1]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered contracts/show.html.erb within layouts/application (19.4ms)
+Completed 200 OK in 40ms (Views: 31.8ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/decisions/new?contract_id=1" for ::1 at 2016-11-04 15:37:13 -0500
+Processing by DecisionsController#new as HTML
+  Parameters: {"contract_id"=>"1"}
+  Rendering decisions/new.html.erb within layouts/application
+  Rendered decisions/new.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 20ms (Views: 18.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/decisions" for ::1 at 2016-11-04 15:37:37 -0500
+Processing by DecisionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"V0hlEv/5FAG7VVuNx7DwSj+97F8TKi7XyA2OLrbHZzTcZcBBWM/WgHMDF6UqMKyZNiZMPCMQPo7xU/YGGOpKlg==", "decision"=>{"description"=>"CI", "contract_id"=>"1"}, "commit"=>"Save Decision"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mContract Load (0.2ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "decisions" ("description", "contract_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "CI"], ["contract_id", 1], ["created_at", 2016-11-04 20:37:37 UTC], ["updated_at", 2016-11-04 20:37:37 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mContract Load (0.2ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/contracts/M5vwYJU
+Completed 302 Found in 14ms (ActiveRecord: 3.9ms)
+
+
+Started GET "/contracts/M5vwYJU" for ::1 at 2016-11-04 15:37:37 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"M5vwYJU"}
+  [1m[36mContract Load (0.4ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "M5vwYJU"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 1]]
+  [1m[36mAnswer Load (0.6ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 1]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered collection of decisions/_decision.html.erb [1 times] (6.9ms)
+  Rendered contracts/show.html.erb within layouts/application (10.1ms)
+Completed 200 OK in 29ms (Views: 24.1ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/answers/new?decision_id=1" for ::1 at 2016-11-04 15:37:45 -0500
+Processing by AnswersController#new as HTML
+  Parameters: {"decision_id"=>"1"}
+  Rendering answers/new.html.erb within layouts/application
+  Rendered answers/new.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 26ms (Views: 17.7ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/answers" for ::1 at 2016-11-04 15:37:52 -0500
+Processing by AnswersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jh7D66Wjgp7l2w+6XodNNCnnkzjmtbRZMm09HdnGl2b6qMuh+12gimgp1cTkvhkcZhZ3v6Ij60CRoJ5liJBxkQ==", "answer"=>{"name"=>"Sean Norton", "answer"=>"Agree", "decision_id"=>"1"}, "commit"=>"Save Answer"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "answers" ("name", "answer", "created_at", "updated_at", "decision_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Sean Norton"], ["answer", "Agree"], ["created_at", 2016-11-04 20:37:52 UTC], ["updated_at", 2016-11-04 20:37:52 UTC], ["decision_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mContract Load (0.2ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/contracts/M5vwYJU
+Completed 302 Found in 27ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/contracts/M5vwYJU" for ::1 at 2016-11-04 15:37:52 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"M5vwYJU"}
+  [1m[36mContract Load (0.2ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "M5vwYJU"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 1]]
+  Rendered collection of answers/_answer.html.erb [1 times] (0.3ms)
+  Rendered collection of decisions/_decision.html.erb [1 times] (3.7ms)
+  Rendered contracts/show.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 27ms (Views: 24.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/answers/new?decision_id=1" for ::1 at 2016-11-04 15:38:03 -0500
+Processing by AnswersController#new as HTML
+  Parameters: {"decision_id"=>"1"}
+  Rendering answers/new.html.erb within layouts/application
+  Rendered answers/new.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 24ms (Views: 22.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/answers" for ::1 at 2016-11-04 15:38:09 -0500
+Processing by AnswersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GfvqGCiLPhYEDDXzyacesEjaBAgxYcLFVhmoOumubh9tTeJSdnUcAon+741znkqYByvgj3X3ndz11AtCuPiI6A==", "answer"=>{"name"=>"Jon", "answer"=>"Explain", "decision_id"=>"1"}, "commit"=>"Save Answer"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "answers" ("name", "answer", "created_at", "updated_at", "decision_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Jon"], ["answer", "Explain"], ["created_at", 2016-11-04 20:38:09 UTC], ["updated_at", 2016-11-04 20:38:09 UTC], ["decision_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mContract Load (0.2ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/contracts/M5vwYJU
+Completed 302 Found in 6ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/contracts/M5vwYJU" for ::1 at 2016-11-04 15:38:09 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"M5vwYJU"}
+  [1m[36mContract Load (0.2ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "M5vwYJU"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.8ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 1]]
+  Rendered collection of answers/_answer.html.erb [2 times] (0.3ms)
+  Rendered collection of decisions/_decision.html.erb [1 times] (4.3ms)
+  Rendered contracts/show.html.erb within layouts/application (8.9ms)
+Completed 200 OK in 28ms (Views: 24.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for ::1 at 2016-11-04 15:44:08 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 23ms (Views: 21.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/contracts/TbmMxF8" for ::1 at 2016-11-04 15:44:25 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TbmMxF8"}
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TbmMxF8"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  Rendered contracts/show.html.erb within layouts/application (4.3ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `link' for nil:NilClass):
+    1: <h1>Link: <%=@contract.link%></h1>
+    2: <h2>Title: <%=@contract.title%></h2>
+    3: 
+    4: <%if @contract.decisions %>
+  
+app/views/contracts/show.html.erb:1:in `_app_views_contracts_show_html_erb___4603370624372108330_70283848792980'
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (7.4ms)
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (72.1ms)
+Started GET "/contracts/new" for ::1 at 2016-11-04 15:44:30 -0500
+Processing by ContractsController#new as HTML
+  Rendering contracts/new.html.erb within layouts/application
+  Rendered contracts/new.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 21ms (Views: 19.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/contracts" for ::1 at 2016-11-04 15:44:34 -0500
+Processing by ContractsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9+4o8QwBRb9lrpp90Ne9w3aLLgfedm/zanvgLX3V08XYq3f2Yii2fV4tzNCQDMbKTTRSNVwiiq1T6E0DD5x3AA==", "contract"=>{"title"=>"Design"}, "commit"=>"Save Contract"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "contracts" ("title", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "Design"], ["link", "Qu7qxkE"], ["created_at", 2016-11-04 20:44:34 UTC], ["updated_at", 2016-11-04 20:44:34 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/contracts/Qu7qxkE
+Completed 302 Found in 3ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/contracts/Qu7qxkE" for ::1 at 2016-11-04 15:44:34 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"Qu7qxkE"}
+  [1m[36mContract Load (0.2ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "Qu7qxkE"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 2]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered contracts/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 19ms (Views: 17.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/decisions/new?contract_id=2" for ::1 at 2016-11-04 15:44:45 -0500
+Processing by DecisionsController#new as HTML
+  Parameters: {"contract_id"=>"2"}
+  Rendering decisions/new.html.erb within layouts/application
+  Rendered decisions/new.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 21ms (Views: 19.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/decisions/new?contract_id=1" for ::1 at 2016-11-04 15:45:02 -0500
+Processing by DecisionsController#new as HTML
+  Parameters: {"contract_id"=>"1"}
+  Rendering decisions/new.html.erb within layouts/application
+  Rendered decisions/new.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 20ms (Views: 18.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/decisions" for ::1 at 2016-11-04 15:45:10 -0500
+Processing by DecisionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"u04jNcbHbWzzZjZBZuhBqNY5SFzvSsZqoFPjxHRbyZTzMz7g7LBlmsABeOIRS1P+NRv3RJKOpgqeP/pMjbBAhg==", "decision"=>{"description"=>"Breaking in", "contract_id"=>"1"}, "commit"=>"Save Decision"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "decisions" ("description", "contract_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Breaking in"], ["contract_id", 1], ["created_at", 2016-11-04 20:45:10 UTC], ["updated_at", 2016-11-04 20:45:10 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mContract Load (0.2ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/contracts/M5vwYJU
+Completed 302 Found in 6ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/contracts/M5vwYJU" for ::1 at 2016-11-04 15:45:10 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"M5vwYJU"}
+  [1m[36mContract Load (0.2ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "M5vwYJU"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 1]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 1]]
+  Rendered collection of answers/_answer.html.erb [2 times] (0.3ms)
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 2]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered collection of decisions/_decision.html.erb [2 times] (5.6ms)
+  Rendered contracts/show.html.erb within layouts/application (8.7ms)
+Completed 200 OK in 26ms (Views: 23.5ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for ::1 at 2016-11-04 16:02:38 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 21ms (Views: 19.7ms | ActiveRecord: 0.0ms)
+
+
