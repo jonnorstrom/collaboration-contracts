@@ -2,10 +2,14 @@
 
 <div class="col-sm-6 col-sm-offset-3 col-lg-4 col-lg-offset-4">
   <%= form_for :answer, url: answers_path do |f| %>
-    <div class="form-group">
-      <%= f.label :name %><br>
-      <%= f.text_field :name, class: "form-control"%>
-    </div>
+    <% if !session[:name] %>
+      <div class="form-group">
+        <%= f.label :name %><br>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <% else %>
+        <%= f.hidden_field :name, :value => session[:name] %>
+    <% end %>
     <div class="form-group">
       <%= f.label :answer %><br>
       <%= f.select(:answer,["Explain", "Consult", "Agree", "Advise", "Inquire"], {prompt: "Select One"}, {class: "form-control"}) %>

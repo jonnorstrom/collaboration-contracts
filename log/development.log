@@ -12037,3 +12037,1972 @@ Processing by DecisionsController#new as HTML
 Completed 200 OK in 24ms (Views: 22.6ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/" for ::1 at 2016-11-05 12:21:46 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (6.1ms)
+Started GET "/" for ::1 at 2016-11-05 12:21:47 -0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 61ms (Views: 59.2ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 322ms (Views: 311.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/contracts/new" for ::1 at 2016-11-05 12:21:49 -0500
+Processing by ContractsController#new as HTML
+  Rendering contracts/new.html.erb within layouts/application
+  Rendered contracts/new.html.erb within layouts/application (11.6ms)
+Completed 200 OK in 46ms (Views: 25.4ms | ActiveRecord: 9.6ms)
+
+
+Started POST "/contracts" for ::1 at 2016-11-05 12:21:53 -0500
+Processing by ContractsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dokdam1ly+OBSpVyNXDlRlEdRdlTpdPMZ7IN+t2Zz8ZZzEJtA0w4IbrJw991q55PaqI569HxNpJeIaDUr9BrAw==", "contract"=>{"title"=>"This is my contract"}, "commit"=>"Save Contract"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.2ms)[0m  [1m[32mINSERT INTO "contracts" ("title", "link", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "This is my contract"], ["link", "TlnQ2HY"], ["created_at", 2016-11-05 17:21:53 UTC], ["updated_at", 2016-11-05 17:21:53 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/contracts/TlnQ2HY
+Completed 302 Found in 7ms (ActiveRecord: 2.7ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 12:21:53 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.5ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered contracts/show.html.erb within layouts/application (18.0ms)
+Completed 200 OK in 37ms (Views: 29.7ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/decisions/new?contract_id=5" for ::1 at 2016-11-05 12:22:01 -0500
+Processing by DecisionsController#new as HTML
+  Parameters: {"contract_id"=>"5"}
+  Rendering decisions/new.html.erb within layouts/application
+  Rendered decisions/new.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 22ms (Views: 20.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/decisions" for ::1 at 2016-11-05 12:22:06 -0500
+Processing by DecisionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"P3F8dh420LnjfQ/B7iI4nBQ1s0migrkRSvI3klyHWUa0XNkluQASOCsrQ+kDomRPHa4TKpK4qUhzrE+68qp05A==", "decision"=>{"description"=>"Decision 1", "contract_id"=>"5"}, "commit"=>"Save Decision"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "decisions" ("description", "contract_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Decision 1"], ["contract_id", 5], ["created_at", 2016-11-05 17:22:06 UTC], ["updated_at", 2016-11-05 17:22:06 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+Redirected to http://localhost:3000/contracts/TlnQ2HY
+Completed 302 Found in 14ms (ActiveRecord: 3.7ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 12:22:06 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mAnswer Load (4.7ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 4]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered collection of decisions/_decision.html.erb [1 times] (12.3ms)
+  Rendered contracts/show.html.erb within layouts/application (34.0ms)
+Completed 200 OK in 55ms (Views: 46.0ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/answers/new?decision_id=4" for ::1 at 2016-11-05 12:22:47 -0500
+Processing by AnswersController#new as HTML
+  Parameters: {"decision_id"=>"4"}
+  Rendering answers/new.html.erb within layouts/application
+  Rendered answers/new.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 32ms (Views: 22.3ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 12:24:31 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 4]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered collection of decisions/_decision.html.erb [1 times] (2.6ms)
+  Rendered contracts/show.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 26ms (Views: 22.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 12:24:52 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 4]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered collection of decisions/_decision.html.erb [1 times] (4.3ms)
+  Rendered contracts/show.html.erb within layouts/application (7.8ms)
+Completed 200 OK in 30ms (Views: 26.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/answers/new?decision_id=4" for ::1 at 2016-11-05 12:25:09 -0500
+Processing by AnswersController#new as HTML
+  Parameters: {"decision_id"=>"4"}
+  Rendering answers/new.html.erb within layouts/application
+  Rendered answers/new.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 29ms (Views: 27.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/answers/new?decision_id=4" for ::1 at 2016-11-05 12:25:31 -0500
+Processing by AnswersController#new as HTML
+  Parameters: {"decision_id"=>"4"}
+  Rendering answers/new.html.erb within layouts/application
+  Rendered answers/new.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 27ms (Views: 25.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 12:25:32 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (1.2ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.7ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mAnswer Load (0.7ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 4]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered collection of decisions/_decision.html.erb [1 times] (2.7ms)
+  Rendered contracts/show.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 29ms (Views: 23.2ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 12:25:33 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (1.2ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.6ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mAnswer Load (0.5ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 4]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered collection of decisions/_decision.html.erb [1 times] (2.0ms)
+  Rendered contracts/show.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 28ms (Views: 24.3ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 12:26:17 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.4ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 4]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered collection of decisions/_decision.html.erb [1 times] (1.7ms)
+  Rendered contracts/show.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 23ms (Views: 20.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 12:27:16 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 4]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered collection of decisions/_decision.html.erb [1 times] (1.8ms)
+  Rendered contracts/show.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 23ms (Views: 20.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 12:27:27 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.4ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.4ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 4]]
+  Rendered collection of templates [0 times] (0.1ms)
+  Rendered collection of decisions/_decision.html.erb [1 times] (2.3ms)
+  Rendered contracts/show.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 24ms (Views: 21.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 12:27:42 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.4ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.4ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 4]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered collection of decisions/_decision.html.erb [1 times] (1.8ms)
+  Rendered contracts/show.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 23ms (Views: 19.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 12:27:46 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.4ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.5ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 4]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered collection of decisions/_decision.html.erb [1 times] (2.1ms)
+  Rendered contracts/show.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 31ms (Views: 27.7ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 12:29:28 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 4]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered collection of decisions/_decision.html.erb [1 times] (1.8ms)
+  Rendered contracts/show.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 23ms (Views: 20.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 12:29:49 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.4ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.4ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 4]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered collection of decisions/_decision.html.erb [1 times] (1.8ms)
+  Rendered contracts/show.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 22ms (Views: 18.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 12:30:08 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.4ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 4]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered collection of decisions/_decision.html.erb [1 times] (1.8ms)
+  Rendered contracts/show.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 21ms (Views: 18.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 12:30:24 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.4ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.4ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 4]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered collection of decisions/_decision.html.erb [1 times] (1.8ms)
+  Rendered contracts/show.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 24ms (Views: 21.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 12:30:49 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 4]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered collection of decisions/_decision.html.erb [1 times] (1.5ms)
+  Rendered contracts/show.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 28ms (Views: 25.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 12:30:50 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 4]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered collection of decisions/_decision.html.erb [1 times] (1.8ms)
+  Rendered contracts/show.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 22ms (Views: 19.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 12:32:21 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.4ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 4]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered collection of decisions/_decision.html.erb [1 times] (1.6ms)
+  Rendered contracts/show.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 22ms (Views: 18.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 12:33:13 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.4ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 4]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered collection of decisions/_decision.html.erb [1 times] (1.8ms)
+  Rendered contracts/show.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 21ms (Views: 18.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 12:33:16 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.2ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 4]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered collection of decisions/_decision.html.erb [1 times] (2.3ms)
+  Rendered contracts/show.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 23ms (Views: 19.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/decisions/new?contract_id=5" for ::1 at 2016-11-05 12:33:20 -0500
+Processing by DecisionsController#new as HTML
+  Parameters: {"contract_id"=>"5"}
+  Rendering decisions/new.html.erb within layouts/application
+  Rendered decisions/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 28ms (Views: 26.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/decisions" for ::1 at 2016-11-05 12:33:23 -0500
+Processing by DecisionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"KK2O1IAqiQGFLYMldOi240XresBNpILeYP9dUMb8LmOjgCuHJxxLgE17zw2ZaOowTHDao32ekodZoSV4aNEDwQ==", "decision"=>{"description"=>"what", "contract_id"=>"5"}, "commit"=>"Save Decision"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mContract Load (0.4ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "decisions" ("description", "contract_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "what"], ["contract_id", 5], ["created_at", 2016-11-05 17:33:23 UTC], ["updated_at", 2016-11-05 17:33:23 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mContract Load (0.2ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+Redirected to http://localhost:3000/contracts/TlnQ2HY
+Completed 302 Found in 5ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 12:33:23 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (1.1ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.6ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 4]]
+  Rendered collection of templates [0 times] (0.0ms)
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 5]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered collection of decisions/_decision.html.erb [2 times] (2.9ms)
+  Rendered contracts/show.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 25ms (Views: 20.9ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 12:34:37 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 4]]
+  Rendered collection of templates [0 times] (0.0ms)
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 5]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered collection of decisions/_decision.html.erb [2 times] (2.7ms)
+  Rendered contracts/show.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 22ms (Views: 18.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 12:41:27 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.4ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.4ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 4]]
+  Rendered collection of templates [0 times] (0.0ms)
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 5]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered collection of decisions/_decision.html.erb [2 times] (3.4ms)
+  Rendered contracts/show.html.erb within layouts/application (6.2ms)
+Completed 200 OK in 26ms (Views: 22.5ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 12:43:04 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.5ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.4ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 4]]
+  Rendered collection of templates [0 times] (0.0ms)
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 5]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered collection of decisions/_decision.html.erb [2 times] (2.9ms)
+  Rendered contracts/show.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 25ms (Views: 21.5ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 12:59:17 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.2ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  Rendered contracts/show.html.erb within layouts/application (53.3ms)
+Completed 500 Internal Server Error in 58ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `contracts' for #<#<Class:0x007fb1d8adf278>:0x007fb1d6814b08>):
+    2: <h2 class="text-center"><%=@contract.title%></h2>
+    3: 
+    4: <%if @contract.decisions %>
+    5:   <%= render :partial => contracts/show, :@decisions => @contract.decisions%>
+    6: <%end%>
+    7: 
+    8: <div class="row">
+  
+app/views/contracts/show.html.erb:5:in `_app_views_contracts_show_html_erb___1421694742124488324_70200892371940'
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (7.9ms)
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.3ms)
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (73.6ms)
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 12:59:51 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  Rendered contracts/show.html.erb within layouts/application (3.5ms)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (Missing partial contracts/_show with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/Users/SeanNorton/collaboration-contracts/app/views"
+):
+    2: <h2 class="text-center"><%=@contract.title%></h2>
+    3: 
+    4: <%if @contract.decisions %>
+    5:   <%= render :partial => 'contracts/show', :@decisions => @contract.decisions%>
+    6: <%end%>
+    7: 
+    8: <div class="row">
+  
+app/views/contracts/show.html.erb:5:in `_app_views_contracts_show_html_erb___1421694742124488324_70200910702640'
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.9ms)
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (61.0ms)
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 13:01:27 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  Rendered contracts/show.html.erb within layouts/application (10.8ms)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 6.4ms)
+
+
+  
+ActionView::Template::Error (Missing partial contracts/_show with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/Users/SeanNorton/collaboration-contracts/app/views"
+):
+    2: <h2 class="text-center"><%=@contract.title%></h2>
+    3: 
+    4: <%if @contract.decisions %>
+    5:   <%= render :partial => 'contracts/show', :@decisions => @contract.decisions%>
+    6: <%end%>
+    7: 
+    8: <div class="row">
+  
+app/views/contracts/show.html.erb:5:in `_app_views_contracts_show_html_erb___1421694742124488324_70200879848400'
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.5ms)
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (59.8ms)
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 13:01:40 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  Rendered contracts/show.html.erb within layouts/application (3.6ms)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (Missing partial contracts/_show with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/Users/SeanNorton/collaboration-contracts/app/views"
+):
+    2: <h2 class="text-center"><%=@contract.title%></h2>
+    3: 
+    4: <%if @contract.decisions %>
+    5:   <%= render :partial => 'contracts/show', :@decisions => @contract.decisions%>
+    6: <%end%>
+    7: 
+    8: <div class="row">
+  
+app/views/contracts/show.html.erb:5:in `_app_views_contracts_show_html_erb___1421694742124488324_70200840757140'
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.0ms)
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (57.6ms)
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 13:01:43 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.4ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  Rendered contracts/show.html.erb within layouts/application (2.7ms)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (Missing partial contracts/_show with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/Users/SeanNorton/collaboration-contracts/app/views"
+):
+    2: <h2 class="text-center"><%=@contract.title%></h2>
+    3: 
+    4: <%if @contract.decisions %>
+    5:   <%= render :partial => 'contracts/show', :@decisions => @contract.decisions%>
+    6: <%end%>
+    7: 
+    8: <div class="row">
+  
+app/views/contracts/show.html.erb:5:in `_app_views_contracts_show_html_erb___1421694742124488324_70200910426880'
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.3ms)
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (66.7ms)
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 13:01:47 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.4ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  Rendered contracts/show.html.erb within layouts/application (2.9ms)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (Missing partial contracts/_show with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/Users/SeanNorton/collaboration-contracts/app/views"
+):
+    2: <h2 class="text-center"><%=@contract.title%></h2>
+    3: 
+    4: <%if @contract.decisions %>
+    5:   <%= render :partial => 'contracts/show', :@decisions => @contract.decisions%>
+    6: <%end%>
+    7: 
+    8: <div class="row">
+  
+app/views/contracts/show.html.erb:5:in `_app_views_contracts_show_html_erb___1421694742124488324_70200921866840'
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.3ms)
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (62.8ms)
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 13:01:49 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  Rendered contracts/show.html.erb within layouts/application (2.7ms)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (Missing partial contracts/_show with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/Users/SeanNorton/collaboration-contracts/app/views"
+):
+    2: <h2 class="text-center"><%=@contract.title%></h2>
+    3: 
+    4: <%if @contract.decisions %>
+    5:   <%= render :partial => 'contracts/show', :@decisions => @contract.decisions%>
+    6: <%end%>
+    7: 
+    8: <div class="row">
+  
+app/views/contracts/show.html.erb:5:in `_app_views_contracts_show_html_erb___1421694742124488324_70200852323780'
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.9ms)
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (59.6ms)
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 13:01:50 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.2ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  Rendered contracts/show.html.erb within layouts/application (2.7ms)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (Missing partial contracts/_show with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/Users/SeanNorton/collaboration-contracts/app/views"
+):
+    2: <h2 class="text-center"><%=@contract.title%></h2>
+    3: 
+    4: <%if @contract.decisions %>
+    5:   <%= render :partial => 'contracts/show', :@decisions => @contract.decisions%>
+    6: <%end%>
+    7: 
+    8: <div class="row">
+  
+app/views/contracts/show.html.erb:5:in `_app_views_contracts_show_html_erb___1421694742124488324_70200910377200'
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.1ms)
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (60.4ms)
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 13:02:23 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  Rendered contracts/show.html.erb within layouts/application (2.9ms)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (Missing partial contracts/_show with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/Users/SeanNorton/collaboration-contracts/app/views"
+):
+    2: <h2 class="text-center"><%=@contract.title%></h2>
+    3: 
+    4: <%if @contract.decisions %>
+    5:   <%= render 'contracts/show', :@decisions => @contract.decisions%>
+    6: <%end%>
+    7: 
+    8: <div class="row">
+  
+app/views/contracts/show.html.erb:5:in `_app_views_contracts_show_html_erb___1421694742124488324_70200918157160'
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (8.3ms)
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (65.4ms)
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 13:02:27 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.4ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  Rendered contracts/show.html.erb within layouts/application (3.4ms)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (Missing partial contracts/_show with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/Users/SeanNorton/collaboration-contracts/app/views"
+):
+    2: <h2 class="text-center"><%=@contract.title%></h2>
+    3: 
+    4: <%if @contract.decisions %>
+    5:   <%= render 'contracts/show', :@decisions => @contract.decisions%>
+    6: <%end%>
+    7: 
+    8: <div class="row">
+  
+app/views/contracts/show.html.erb:5:in `_app_views_contracts_show_html_erb___1421694742124488324_70200850933860'
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.2ms)
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (61.7ms)
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 13:02:46 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  Rendered decisions/_show.html.erb (0.2ms)
+  Rendered contracts/show.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 19ms (Views: 17.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 13:04:26 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.4ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  Rendered decisions/_show.html.erb (10.7ms)
+  Rendered contracts/show.html.erb within layouts/application (13.0ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 4.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `title' for #<Decision:0x007fb1d0eb83e8>):
+     8: </div>
+     9: <%if @decisions%>
+    10:   <%@decisions.each do |decision|%>
+    11:     <%=decision.title%>
+    12:   <%end%>
+    13: <%end%>
+  
+app/views/decisions/_show.html.erb:11:in `block in _app_views_decisions__show_html_erb__4547167423882079569_70200845897300'
+app/views/decisions/_show.html.erb:10:in `_app_views_decisions__show_html_erb__4547167423882079569_70200845897300'
+app/views/contracts/show.html.erb:5:in `_app_views_contracts_show_html_erb___1421694742124488324_70200841789120'
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.6ms)
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (63.7ms)
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 13:04:41 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.4ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  Rendered decisions/_show.html.erb (1.3ms)
+  Rendered contracts/show.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 22ms (Views: 19.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 13:05:40 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  Rendered decisions/_show.html.erb (1.3ms)
+  Rendered contracts/show.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 21ms (Views: 18.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-05 13:06:13 -0500
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  Rendered decisions/_show.html.erb (1.0ms)
+  Rendered contracts/show.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 20ms (Views: 17.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-06 18:14:51 -0600
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (2.9ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.4ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  Rendered decisions/_show.html.erb (2.8ms)
+  Rendered contracts/show.html.erb within layouts/application (19.7ms)
+Completed 200 OK in 96ms (Views: 70.0ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/decisions/new?contract_id=5" for ::1 at 2016-11-06 18:18:06 -0600
+Processing by DecisionsController#new as HTML
+  Parameters: {"contract_id"=>"5"}
+  Rendering decisions/new.html.erb within layouts/application
+  Rendered decisions/new.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 38ms (Views: 34.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/decisions" for ::1 at 2016-11-06 18:18:12 -0600
+Processing by DecisionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3emYV3IxnhAwz+cU5cQwHHAwQsKQZANvRuNjPICywohWxD0E1QdckfiZqzwIRGzPeavioaBeEzZ/vRsULp/vKg==", "decision"=>{"description"=>"I like the idea", "contract_id"=>"5"}, "commit"=>"Save Decision"}
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mContract Load (3.9ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35mSQL (4.1ms)[0m  [1m[32mINSERT INTO "decisions" ("description", "contract_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "I like the idea"], ["contract_id", 5], ["created_at", 2016-11-07 00:18:12 UTC], ["updated_at", 2016-11-07 00:18:12 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+Redirected to http://localhost:3000/contracts/TlnQ2HY
+Completed 302 Found in 21ms (ActiveRecord: 9.2ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-06 18:18:12 -0600
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.2ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  Rendered decisions/_show.html.erb (1.2ms)
+  Rendered contracts/show.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 28ms (Views: 25.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-06 18:19:42 -0600
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.9ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.4ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  Rendered decisions/_show.html.erb (43.0ms)
+  Rendered contracts/show.html.erb within layouts/application (45.7ms)
+Completed 200 OK in 74ms (Views: 60.1ms | ActiveRecord: 11.6ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-06 18:23:49 -0600
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  Rendered decisions/_show.html.erb (11.5ms)
+  Rendered contracts/show.html.erb within layouts/application (19.4ms)
+Completed 200 OK in 46ms (Views: 30.2ms | ActiveRecord: 6.2ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-06 18:26:44 -0600
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  Rendered decisions/_show.html.erb (9.3ms)
+  Rendered contracts/show.html.erb within layouts/application (14.7ms)
+Completed 200 OK in 37ms (Views: 29.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-06 18:30:10 -0600
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  Rendered decisions/_show.html.erb (0.7ms)
+  Rendered contracts/show.html.erb within layouts/application (5.9ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.3ms)
+
+
+  
+SyntaxError (/Users/SeanNorton/collaboration-contracts/app/views/decisions/_show.html.erb:24: syntax error, unexpected keyword_ensure, expecting keyword_end
+/Users/SeanNorton/collaboration-contracts/app/views/decisions/_show.html.erb:26: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/views/decisions/_show.html.erb:24: syntax error, unexpected keyword_ensure, expecting keyword_end
+app/views/decisions/_show.html.erb:26: syntax error, unexpected end-of-input, expecting keyword_end
+app/views/contracts/show.html.erb:5:in `_app_views_contracts_show_html_erb___1421694742124488324_70200905403900'
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (9.6ms)
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (69.3ms)
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-06 18:30:20 -0600
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 4]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 5]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 6]]
+  Rendered decisions/_show.html.erb (18.3ms)
+  Rendered contracts/show.html.erb within layouts/application (20.5ms)
+Completed 200 OK in 38ms (Views: 28.6ms | ActiveRecord: 7.5ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-06 18:30:26 -0600
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 4]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 5]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 6]]
+  Rendered decisions/_show.html.erb (5.3ms)
+  Rendered contracts/show.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 33ms (Views: 29.5ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-06 18:30:29 -0600
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (1.0ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.5ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 4]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 5]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 6]]
+  Rendered decisions/_show.html.erb (5.9ms)
+  Rendered contracts/show.html.erb within layouts/application (8.1ms)
+Completed 200 OK in 26ms (Views: 22.1ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-06 18:31:08 -0600
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 4]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 5]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 6]]
+  Rendered decisions/_show.html.erb (14.0ms)
+  Rendered contracts/show.html.erb within layouts/application (20.5ms)
+Completed 200 OK in 49ms (Views: 31.2ms | ActiveRecord: 10.2ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-06 18:31:21 -0600
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.2ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 4]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 5]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 6]]
+  Rendered decisions/_show.html.erb (4.7ms)
+  Rendered contracts/show.html.erb within layouts/application (7.2ms)
+Completed 200 OK in 26ms (Views: 22.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-06 18:32:25 -0600
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.6ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.5ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 4]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 5]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 6]]
+  Rendered decisions/_show.html.erb (13.6ms)
+  Rendered contracts/show.html.erb within layouts/application (15.7ms)
+Completed 200 OK in 34ms (Views: 29.2ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/answers/new?decision_id=4" for ::1 at 2016-11-06 18:32:27 -0600
+Processing by AnswersController#new as HTML
+  Parameters: {"decision_id"=>"4"}
+  Rendering answers/new.html.erb within layouts/application
+  Rendered answers/new.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 31ms (Views: 19.5ms | ActiveRecord: 5.3ms)
+
+
+Started POST "/answers" for ::1 at 2016-11-06 18:32:31 -0600
+Processing by AnswersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4BAgTij0Pzip1MBZ2y/XlV5EKcK1erzhJUe/IA7vDZWUpigEdgodLCQmGidhFoO9EbXNRfHs4/iGihxYX7nrYg==", "answer"=>{"name"=>"Sean Norton", "answer"=>"Consult", "decision_id"=>"4"}, "commit"=>"Save Answer"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDecision Load (0.4ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "answers" ("name", "answer", "created_at", "updated_at", "decision_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Sean Norton"], ["answer", "Consult"], ["created_at", 2016-11-07 00:32:31 UTC], ["updated_at", 2016-11-07 00:32:31 UTC], ["decision_id", 4]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+Redirected to http://localhost:3000/contracts/TlnQ2HY
+Completed 302 Found in 9ms (ActiveRecord: 2.1ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-06 18:32:31 -0600
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.2ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 4]]
+  Rendered decisions/_show.html.erb (5.5ms)
+  Rendered contracts/show.html.erb within layouts/application (7.9ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for "Consult":String):
+    14: 
+    15:       <%if decision.answers%>
+    16:         <%decision.answers.each do |answer|%>
+    17:         <div class="col-xs-2"><%=answer.is_type("Consult")%></div>
+    18:         <%end%>
+    19:       <%end%>
+    20: 
+  
+app/models/answer.rb:10:in `is_type'
+app/views/decisions/_show.html.erb:17:in `block (2 levels) in _app_views_decisions__show_html_erb__4547167423882079569_70200922833200'
+app/views/decisions/_show.html.erb:16:in `block in _app_views_decisions__show_html_erb__4547167423882079569_70200922833200'
+app/views/decisions/_show.html.erb:11:in `_app_views_decisions__show_html_erb__4547167423882079569_70200922833200'
+app/views/contracts/show.html.erb:5:in `_app_views_contracts_show_html_erb___1421694742124488324_70200923027140'
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.1ms)
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.7ms)
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (65.6ms)
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-06 18:32:57 -0600
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 4]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 5]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 6]]
+  Rendered decisions/_show.html.erb (15.8ms)
+  Rendered contracts/show.html.erb within layouts/application (21.2ms)
+Completed 200 OK in 45ms (Views: 34.0ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-06 18:33:43 -0600
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.4ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 4]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 5]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 6]]
+  Rendered decisions/_show.html.erb (4.6ms)
+  Rendered contracts/show.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 25ms (Views: 21.0ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-06 18:33:52 -0600
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.4ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.4ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 4]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 5]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 6]]
+  Rendered decisions/_show.html.erb (5.6ms)
+  Rendered contracts/show.html.erb within layouts/application (7.9ms)
+Completed 200 OK in 36ms (Views: 32.3ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/answers/new?decision_id=4" for ::1 at 2016-11-06 18:34:01 -0600
+Processing by AnswersController#new as HTML
+  Parameters: {"decision_id"=>"4"}
+  Rendering answers/new.html.erb within layouts/application
+  Rendered answers/new.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 22ms (Views: 20.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/answers" for ::1 at 2016-11-06 18:34:09 -0600
+Processing by AnswersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rwD2x4uMbEr+ctfKvbCzr1QQfmH2aBjXFdbZwVJlGj3btv6N1XJOXnOADbQHieeHG+Ga5rL+R862G3q5AzP8yg==", "answer"=>{"name"=>"Jon", "answer"=>"Explain", "decision_id"=>"4"}, "commit"=>"Save Answer"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDecision Load (0.4ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "answers" ("name", "answer", "created_at", "updated_at", "decision_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Jon"], ["answer", "Explain"], ["created_at", 2016-11-07 00:34:09 UTC], ["updated_at", 2016-11-07 00:34:09 UTC], ["decision_id", 4]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mDecision Load (0.4ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+Redirected to http://localhost:3000/contracts/TlnQ2HY
+Completed 302 Found in 10ms (ActiveRecord: 2.8ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-06 18:34:09 -0600
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.2ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.4ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 4]]
+  [1m[36mAnswer Load (0.1ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 5]]
+  [1m[36mAnswer Load (0.1ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 6]]
+  Rendered decisions/_show.html.erb (6.4ms)
+  Rendered contracts/show.html.erb within layouts/application (8.6ms)
+Completed 200 OK in 26ms (Views: 23.5ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-06 18:37:17 -0600
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 4]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 5]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 6]]
+  Rendered decisions/_show.html.erb (51.0ms)
+  Rendered contracts/show.html.erb within layouts/application (52.9ms)
+Completed 500 Internal Server Error in 57ms (ActiveRecord: 1.1ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `answer' for #<#<Class:0x007fb1da33e828>:0x007fb1d84dc2e0>):
+    27: <%end%>
+    28: 
+    29: 
+    30: <!-- <div class="col-xs-2"><%=answer.is_type("Agree")%></div> -->
+    31: <!-- <div class="col-xs-2"><%=answer.is_type("Advise")%></div> -->
+    32: <!-- <div class="col-xs-2"><%=answer.is_type("Inquire")%></div> -->
+  
+app/views/decisions/_show.html.erb:30:in `_app_views_decisions__show_html_erb__4547167423882079569_70200907293360'
+app/views/contracts/show.html.erb:5:in `_app_views_contracts_show_html_erb___1421694742124488324_70200907458540'
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (7.4ms)
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (63.5ms)
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-06 18:37:32 -0600
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.2ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 4]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 5]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 6]]
+  Rendered decisions/_show.html.erb (4.8ms)
+  Rendered contracts/show.html.erb within layouts/application (7.7ms)
+Completed 200 OK in 28ms (Views: 25.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/answers/new?decision_id=4" for ::1 at 2016-11-06 18:37:47 -0600
+Processing by AnswersController#new as HTML
+  Parameters: {"decision_id"=>"4"}
+  Rendering answers/new.html.erb within layouts/application
+  Rendered answers/new.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 22ms (Views: 20.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/answers" for ::1 at 2016-11-06 18:37:53 -0600
+Processing by AnswersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1OsuGWLymYrRIblGKPXU8j+5V4sS6lZTnMmvZ80cZbWgXSZTPAy7nlzTYziSzIDacEizDFZ8CUo/BAwfnEqDQg==", "answer"=>{"name"=>"Joe", "answer"=>"Explain", "decision_id"=>"4"}, "commit"=>"Save Answer"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "answers" ("name", "answer", "created_at", "updated_at", "decision_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Joe"], ["answer", "Explain"], ["created_at", 2016-11-07 00:37:53 UTC], ["updated_at", 2016-11-07 00:37:53 UTC], ["decision_id", 4]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mContract Load (0.2ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+Redirected to http://localhost:3000/contracts/TlnQ2HY
+Completed 302 Found in 7ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-06 18:37:53 -0600
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 4]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 5]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1[0m  [["decision_id", 6]]
+  Rendered decisions/_show.html.erb (5.0ms)
+  Rendered contracts/show.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 24ms (Views: 20.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-06 18:43:48 -0600
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.2ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Explain"]]
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Explain"]]
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Explain"]]
+  Rendered decisions/_show.html.erb (24.0ms)
+  Rendered contracts/show.html.erb within layouts/application (30.9ms)
+Completed 200 OK in 59ms (Views: 38.8ms | ActiveRecord: 12.3ms)
+
+
+Started GET "/answers/new?decision_id=6" for ::1 at 2016-11-06 18:44:01 -0600
+Processing by AnswersController#new as HTML
+  Parameters: {"decision_id"=>"6"}
+  Rendering answers/new.html.erb within layouts/application
+  Rendered answers/new.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 22ms (Views: 20.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/answers" for ::1 at 2016-11-06 18:44:10 -0600
+Processing by AnswersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dX8kc/E6f4874OdNolk6vQ99bvCyhi2VIHM84XMfBG8BySw5r8Rdm7YSPTMYYG6VQIyKd/YQcoyDvp+ZIknimA==", "answer"=>{"name"=>"Sam", "answer"=>"Explain", "decision_id"=>"6"}, "commit"=>"Save Answer"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "answers" ("name", "answer", "created_at", "updated_at", "decision_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Sam"], ["answer", "Explain"], ["created_at", 2016-11-07 00:44:10 UTC], ["updated_at", 2016-11-07 00:44:10 UTC], ["decision_id", 6]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+Redirected to http://localhost:3000/contracts/TlnQ2HY
+Completed 302 Found in 7ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-06 18:44:10 -0600
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.2ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Explain"]]
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Explain"]]
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Explain"]]
+  Rendered decisions/_show.html.erb (10.1ms)
+  Rendered contracts/show.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 33ms (Views: 29.1ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-06 18:44:50 -0600
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Explain"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Consult"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Agree"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Advise"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Inquire"]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Explain"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Consult"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Agree"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Advise"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Inquire"]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Explain"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Consult"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Agree"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Advise"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Inquire"]]
+  Rendered decisions/_show.html.erb (24.0ms)
+  Rendered contracts/show.html.erb within layouts/application (26.0ms)
+Completed 200 OK in 44ms (Views: 36.1ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/answers/new?decision_id=5" for ::1 at 2016-11-06 18:45:50 -0600
+Processing by AnswersController#new as HTML
+  Parameters: {"decision_id"=>"5"}
+  Rendering answers/new.html.erb within layouts/application
+  Rendered answers/new.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 30ms (Views: 27.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/answers" for ::1 at 2016-11-06 18:45:57 -0600
+Processing by AnswersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7dTDdyFGPade8evfdJBrPCwKests1GxuPnne0obTLtyZYss9f7gfs9MDMaHOqT8UY/ueTChCM3edtH2q14XIKw==", "answer"=>{"name"=>"Emmylou", "answer"=>"Agree", "decision_id"=>"5"}, "commit"=>"Save Answer"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "answers" ("name", "answer", "created_at", "updated_at", "decision_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Emmylou"], ["answer", "Agree"], ["created_at", 2016-11-07 00:45:57 UTC], ["updated_at", 2016-11-07 00:45:57 UTC], ["decision_id", 5]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+Redirected to http://localhost:3000/contracts/TlnQ2HY
+Completed 302 Found in 5ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-06 18:45:57 -0600
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.2ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.6ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Explain"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Consult"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.5ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Agree"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Advise"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Inquire"]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Explain"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Consult"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Agree"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Advise"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Inquire"]]
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Explain"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.6ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Consult"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Agree"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Advise"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Inquire"]]
+  Rendered decisions/_show.html.erb (26.3ms)
+  Rendered contracts/show.html.erb within layouts/application (28.3ms)
+Completed 200 OK in 45ms (Views: 37.1ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-06 18:50:37 -0600
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.2ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Explain"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Consult"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Agree"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Advise"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Inquire"]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Explain"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Consult"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Agree"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Advise"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Inquire"]]
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Explain"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Consult"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Agree"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Advise"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Inquire"]]
+  Rendered decisions/_show.html.erb (24.6ms)
+  Rendered contracts/show.html.erb within layouts/application (26.9ms)
+Completed 200 OK in 44ms (Views: 36.6ms | ActiveRecord: 5.8ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-06 18:51:26 -0600
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.4ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Explain"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Consult"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Agree"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Advise"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Inquire"]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Explain"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Consult"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Agree"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.5ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Advise"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Inquire"]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Explain"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Consult"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Agree"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Advise"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Inquire"]]
+  Rendered decisions/_show.html.erb (23.9ms)
+  Rendered contracts/show.html.erb within layouts/application (26.3ms)
+Completed 200 OK in 46ms (Views: 38.0ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-06 18:54:47 -0600
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mDecision Load (0.4ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Explain"]]
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Consult"]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Agree"]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Advise"]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Inquire"]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Explain"]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Consult"]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Agree"]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Advise"]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Inquire"]]
+  [1m[36mDecision Load (0.1ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Explain"]]
+  [1m[36mDecision Load (0.1ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Consult"]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Agree"]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Advise"]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Inquire"]]
+  Rendered decisions/_show.html.erb (37.1ms)
+  Rendered contracts/show.html.erb within layouts/application (42.0ms)
+Completed 200 OK in 64ms (Views: 50.5ms | ActiveRecord: 6.8ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-06 18:59:31 -0600
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Explain"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Consult"]]
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Agree"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Advise"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Inquire"]]
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Explain"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Consult"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Agree"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Advise"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Inquire"]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Explain"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Consult"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Agree"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Advise"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Inquire"]]
+  Rendered decisions/_show.html.erb (25.7ms)
+  Rendered contracts/show.html.erb within layouts/application (27.8ms)
+Completed 200 OK in 45ms (Views: 36.9ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/answers/new?decision_id=4" for ::1 at 2016-11-06 18:59:33 -0600
+Processing by AnswersController#new as HTML
+  Parameters: {"decision_id"=>"4"}
+  Rendering answers/new.html.erb within layouts/application
+  Rendered answers/new.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 25ms (Views: 22.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/answers" for ::1 at 2016-11-06 18:59:38 -0600
+Processing by AnswersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"NVRG3UuFbIeRE+0r4KVbR2+399htSF/HpcO1WRbD7iZB4k6XFXtOkxzhN1VanA9vIEYTXyneAN4GDhYhR5UI0Q==", "answer"=>{"name"=>"Jerry", "answer"=>"Inquire", "decision_id"=>"4"}, "commit"=>"Save Answer"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "answers" ("name", "answer", "created_at", "updated_at", "decision_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Jerry"], ["answer", "Inquire"], ["created_at", 2016-11-07 00:59:38 UTC], ["updated_at", 2016-11-07 00:59:38 UTC], ["decision_id", 4]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+Redirected to http://localhost:3000/contracts/TlnQ2HY
+Completed 302 Found in 9ms (ActiveRecord: 2.1ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-06 18:59:38 -0600
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.2ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Explain"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Consult"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Agree"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Advise"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Inquire"]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Explain"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Consult"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Agree"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Advise"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Inquire"]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Explain"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.5ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Consult"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Agree"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Advise"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Inquire"]]
+  Rendered decisions/_show.html.erb (38.1ms)
+  Rendered contracts/show.html.erb within layouts/application (40.7ms)
+Completed 200 OK in 58ms (Views: 50.8ms | ActiveRecord: 5.8ms)
+
+
+Started GET "/decisions/new?contract_id=5" for ::1 at 2016-11-06 18:59:40 -0600
+Processing by DecisionsController#new as HTML
+  Parameters: {"contract_id"=>"5"}
+  Rendering decisions/new.html.erb within layouts/application
+  Rendered decisions/new.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 21ms (Views: 20.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/answers/new?decision_id=6" for ::1 at 2016-11-06 18:59:45 -0600
+Processing by AnswersController#new as HTML
+  Parameters: {"decision_id"=>"6"}
+  Rendering answers/new.html.erb within layouts/application
+  Rendered answers/new.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 23ms (Views: 21.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/answers" for ::1 at 2016-11-06 18:59:50 -0600
+Processing by AnswersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bV+/AYSlYkbYPwt2EQB/r/Q+DUA0VUxDkGrOuPEul1sZ6bdL2ltAUlXN0QirOSuHu8/px3DDE1ozp23AoHhxrA==", "answer"=>{"name"=>"James", "answer"=>"Consult", "decision_id"=>"6"}, "commit"=>"Save Answer"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "answers" ("name", "answer", "created_at", "updated_at", "decision_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "James"], ["answer", "Consult"], ["created_at", 2016-11-07 00:59:50 UTC], ["updated_at", 2016-11-07 00:59:50 UTC], ["decision_id", 6]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+Redirected to http://localhost:3000/contracts/TlnQ2HY
+Completed 302 Found in 7ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-06 18:59:50 -0600
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.2ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.4ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Explain"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Consult"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Agree"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Advise"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Inquire"]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Explain"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Consult"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Agree"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Advise"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Inquire"]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Explain"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Consult"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Agree"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Advise"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Inquire"]]
+  Rendered decisions/_show.html.erb (26.0ms)
+  Rendered contracts/show.html.erb within layouts/application (28.2ms)
+Completed 200 OK in 46ms (Views: 39.4ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/answers/new?decision_id=6" for ::1 at 2016-11-06 18:59:56 -0600
+Processing by AnswersController#new as HTML
+  Parameters: {"decision_id"=>"6"}
+  Rendering answers/new.html.erb within layouts/application
+  Rendered answers/new.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 22ms (Views: 20.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/answers" for ::1 at 2016-11-06 19:00:01 -0600
+Processing by AnswersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1oTzIe4VA/9q1VrxR5W/j1Jwq4FMpJH8JyrROT78pK2iMvtrsOsh6+cngI/9rOunHYFPBggyzuWE53JBb6pCWg==", "answer"=>{"name"=>"Jessica", "answer"=>"Consult", "decision_id"=>"6"}, "commit"=>"Save Answer"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "answers" ("name", "answer", "created_at", "updated_at", "decision_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Jessica"], ["answer", "Consult"], ["created_at", 2016-11-07 01:00:01 UTC], ["updated_at", 2016-11-07 01:00:01 UTC], ["decision_id", 6]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mDecision Load (0.1ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mContract Load (0.2ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+Redirected to http://localhost:3000/contracts/TlnQ2HY
+Completed 302 Found in 5ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-06 19:00:01 -0600
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.2ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.4ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Explain"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Consult"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Agree"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Advise"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Inquire"]]
+  [1m[36mDecision Load (0.1ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Explain"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Consult"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Agree"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Advise"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Inquire"]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Explain"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Consult"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Agree"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Advise"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Inquire"]]
+  Rendered decisions/_show.html.erb (25.7ms)
+  Rendered contracts/show.html.erb within layouts/application (28.1ms)
+Completed 200 OK in 47ms (Views: 39.4ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-06 19:11:55 -0600
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Explain"]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Consult"]]
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Agree"]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Advise"]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Inquire"]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Explain"]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Consult"]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Agree"]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.1ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Advise"]]
+  [1m[36mDecision Load (0.1ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.1ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Inquire"]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Explain"]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Consult"]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.1ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Agree"]]
+  [1m[36mDecision Load (0.1ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.1ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Advise"]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.1ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Inquire"]]
+  Rendered decisions/_show.html.erb (34.4ms)
+  Rendered contracts/show.html.erb within layouts/application (39.9ms)
+Completed 200 OK in 63ms (Views: 49.3ms | ActiveRecord: 5.8ms)
+
+
+Started GET "/answers/new?decision_id=4" for ::1 at 2016-11-06 19:11:58 -0600
+  
+SyntaxError (/Users/SeanNorton/collaboration-contracts/app/controllers/answers_controller.rb:10: syntax error, unexpected ']'
+      session[name:] = @answer.name
+                    ^):
+  
+app/controllers/answers_controller.rb:10: syntax error, unexpected ']'
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.5ms)
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendering /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/SeanNorton/.rbenv/versions/2.2.2/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (56.2ms)
+Started GET "/answers/new?decision_id=4" for ::1 at 2016-11-06 19:12:59 -0600
+Processing by AnswersController#new as HTML
+  Parameters: {"decision_id"=>"4"}
+  Rendering answers/new.html.erb within layouts/application
+  Rendered answers/new.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 29ms (Views: 19.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/answers" for ::1 at 2016-11-06 19:13:06 -0600
+Processing by AnswersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"B3u5TJf2iWrgXyGoZrx3cbUHwy7dZ686bH4Olef8pnRPBqSZvYGBnNM4bwsRH2UnViV8NqCjz1pSEhcdHhcvZg==", "answer"=>{"name"=>"Sean Norton", "answer"=>"Advise", "decision_id"=>"4"}, "commit"=>"Save Answer"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "answers" ("name", "answer", "created_at", "updated_at", "decision_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Sean Norton"], ["answer", "Advise"], ["created_at", 2016-11-07 01:13:07 UTC], ["updated_at", 2016-11-07 01:13:07 UTC], ["decision_id", 4]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+Redirected to http://localhost:3000/contracts/TlnQ2HY
+Completed 302 Found in 31ms (ActiveRecord: 10.2ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-06 19:13:07 -0600
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.4ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mDecision Load (0.4ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Explain"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Consult"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Agree"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Advise"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Inquire"]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Explain"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Consult"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Agree"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Advise"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Inquire"]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Explain"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Consult"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Agree"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Advise"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Inquire"]]
+  Rendered decisions/_show.html.erb (47.9ms)
+  Rendered contracts/show.html.erb within layouts/application (54.2ms)
+Completed 200 OK in 81ms (Views: 72.1ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/decisions/new?contract_id=5" for ::1 at 2016-11-06 19:13:08 -0600
+Processing by DecisionsController#new as HTML
+  Parameters: {"contract_id"=>"5"}
+  Rendering decisions/new.html.erb within layouts/application
+  Rendered decisions/new.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 38ms (Views: 37.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/answers/new?decision_id=6" for ::1 at 2016-11-06 19:13:17 -0600
+Processing by AnswersController#new as HTML
+  Parameters: {"decision_id"=>"6"}
+  Rendering answers/new.html.erb within layouts/application
+  Rendered answers/new.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 34ms (Views: 31.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/answers" for ::1 at 2016-11-06 19:13:21 -0600
+Processing by AnswersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8puvzXJEM2OA64A9QWsOZ3CLCOetQ7ivTDkXR1kDn7aGLaeHLLoRdw0ZWkP7UlpPP3rsYOnV57bv9LQ/CFV5QQ==", "answer"=>{"answer"=>"Agree", "decision_id"=>"6"}, "commit"=>"Save Answer"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+No template found for AnswersController#create, rendering head :no_content
+Completed 204 No Content in 45ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/answers/new?decision_id=6" for ::1 at 2016-11-06 19:14:02 -0600
+Processing by AnswersController#new as HTML
+  Parameters: {"decision_id"=>"6"}
+  Rendering answers/new.html.erb within layouts/application
+  Rendered answers/new.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 23ms (Views: 21.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/answers" for ::1 at 2016-11-06 19:14:05 -0600
+Processing by AnswersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"g83T3HcnMxzweax9JL+6FJlTXP6/p/38Q9pBrQSJI0rLsM4JXVA76sMe4t5THKhCenHj5sJjnZx9tlgl/WKqWA==", "answer"=>{"name"=>"Sean Norton", "answer"=>"Explain", "decision_id"=>"6"}, "commit"=>"Save Answer"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (2.4ms)[0m  [1m[32mINSERT INTO "answers" ("name", "answer", "created_at", "updated_at", "decision_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Sean Norton"], ["answer", "Explain"], ["created_at", 2016-11-07 01:14:05 UTC], ["updated_at", 2016-11-07 01:14:05 UTC], ["decision_id", 6]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+Redirected to http://localhost:3000/contracts/TlnQ2HY
+Completed 302 Found in 8ms (ActiveRecord: 3.5ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-06 19:14:05 -0600
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.2ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Explain"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Consult"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Agree"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Advise"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Inquire"]]
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Explain"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Consult"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Agree"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Advise"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Inquire"]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Explain"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Consult"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Agree"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Advise"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Inquire"]]
+  Rendered decisions/_show.html.erb (25.4ms)
+  Rendered contracts/show.html.erb within layouts/application (27.6ms)
+Completed 200 OK in 48ms (Views: 40.3ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/answers/new?decision_id=5" for ::1 at 2016-11-06 19:14:08 -0600
+Processing by AnswersController#new as HTML
+  Parameters: {"decision_id"=>"5"}
+  Rendering answers/new.html.erb within layouts/application
+  Rendered answers/new.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 24ms (Views: 22.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/answers" for ::1 at 2016-11-06 19:14:10 -0600
+Processing by AnswersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Wq20kUvYjZloEDFC3hoI2dDT6xhkuhyfUJK8MSVGLNguG7zbFSavjeXi6zxkI1zxnyIPnyAsQ4bzXx9JdBDKLw==", "answer"=>{"name"=>"Sean Norton", "answer"=>"Inquire", "decision_id"=>"5"}, "commit"=>"Save Answer"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mDecision Load (0.3ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "answers" ("name", "answer", "created_at", "updated_at", "decision_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Sean Norton"], ["answer", "Inquire"], ["created_at", 2016-11-07 01:14:10 UTC], ["updated_at", 2016-11-07 01:14:10 UTC], ["decision_id", 5]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+Redirected to http://localhost:3000/contracts/TlnQ2HY
+Completed 302 Found in 9ms (ActiveRecord: 3.3ms)
+
+
+Started GET "/contracts/TlnQ2HY" for ::1 at 2016-11-06 19:14:10 -0600
+Processing by ContractsController#show as HTML
+  Parameters: {"id"=>"TlnQ2HY"}
+  [1m[36mContract Load (0.3ms)[0m  [1m[34mSELECT  "contracts".* FROM "contracts" WHERE "contracts"."link" = $1 LIMIT $2[0m  [["link", "TlnQ2HY"], ["LIMIT", 1]]
+  Rendering contracts/show.html.erb within layouts/application
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT "decisions".* FROM "decisions" WHERE "decisions"."contract_id" = $1[0m  [["contract_id", 5]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Explain"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Consult"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Agree"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Advise"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 4], ["answer", "Inquire"]]
+  [1m[36mDecision Load (0.5ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.4ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Explain"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Consult"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Agree"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Advise"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 5], ["answer", "Inquire"]]
+  [1m[36mDecision Load (0.2ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Explain"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.3ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Consult"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Agree"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Advise"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "decisions".* FROM "decisions" WHERE "decisions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAnswer Load (0.2ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."decision_id" = $1 AND "answers"."answer" = $2[0m  [["decision_id", 6], ["answer", "Inquire"]]
+  Rendered decisions/_show.html.erb (25.1ms)
+  Rendered contracts/show.html.erb within layouts/application (27.2ms)
+Completed 200 OK in 46ms (Views: 38.2ms | ActiveRecord: 5.7ms)
+
+
