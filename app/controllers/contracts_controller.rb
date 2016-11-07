@@ -8,7 +8,7 @@ class ContractsController < ApplicationController
   def create
     @contract = Contract.new(contract_params)
     @contract.link = make_link
-    
+
     if @contract.save
       redirect_to "/contracts/#{@contract.link}"
     end

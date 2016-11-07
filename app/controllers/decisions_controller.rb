@@ -13,7 +13,7 @@ class DecisionsController < ApplicationController
   end
 
   def show
-    @decision = Decision.find_by(link: params[:id])
+    # @decision = Decision.find_by(link: params[:id])
     # @answers = Answer.where(decision_id: @decision.id)
   end
 

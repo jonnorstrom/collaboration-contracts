@@ -4,15 +4,16 @@ Rails.application.routes.draw do
   get 'contracts/new'
   get 'contracts/index'
   get 'contracts/:id' => "contracts#show"
-  post "contracts" => "contracts#create"
+  post 'contracts' => "contracts#create"
 
   get 'answers/new', to: 'answers#new', as: 'new_answers'
   get 'answers/index'
-  post "answers" => "answers#create"
+  post 'answers' => "answers#create"
 
   get 'decisions/new'
   get 'decisions/index'
-  post "decisions" => "decisions#create"
+  get 'decisions/show' => "decisions#show"
+  post 'decisions' => "decisions#create"
 
 
   root 'home#index'

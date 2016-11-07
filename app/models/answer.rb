@@ -5,6 +5,11 @@ class Answer < ApplicationRecord
 
   belongs_to :decision
 
+  def self.find_all_names(type, decision_id)
+    names = Decision.find(decision_id).answers.where(answer: type).map { |a| a.name }
+    return names.join(", ")
+  end
+
   def contract_link
     Contract.find(Decision.find(self.decision_id).contract_id).link
   end
