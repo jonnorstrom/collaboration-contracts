@@ -1,6 +1,6 @@
 class AnswersController < ApplicationController
   def new
-    @decision_id = params[:decision_id]
+    @decision = Decision.find(params[:decision_id])
     @answer = Answer.new()
   end
 
