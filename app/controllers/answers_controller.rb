@@ -5,7 +5,13 @@ class AnswersController < ApplicationController
   end
 
   def create
-    @answer = Answer.new(answer_params)
+    @answer = Answer.where(name: answer_params[:name], decision_id: answer_params[:decision_id]).first rescue nil
+    if @answer.blank?
+      @answer = Answer.new(answer_params)
+    else
+      @answer.update(answer_params)
+    end
+
     if @answer.save
       session[:name] = @answer.name
       redirect_to "/contracts/#{@answer.contract_link}"
