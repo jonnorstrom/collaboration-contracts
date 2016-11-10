@@ -4,7 +4,19 @@
   </button>
 </h3>
 
+<%if @is_owner%>
+  <h3 class="text-center" id="link_text">Contract Owner Link: <%=@contract.owner_link%>
+    <button class="btn clip" data-clipboard-text="localhost:3000/contracts/<%=@contract.owner_link%>">
+      <%= image_tag("clippy.svg", size: "20x20")%>
+    </button>
+  </h3>
+<%end%>
+
 <h2 class="text-center"><%=@contract.title%></h2>
+
+<%if @is_owner%>
+  <h1>You are the owner</h1>
+<%end%>
 
 <%if @contract.decisions %>
     <%= render 'decisions/show', :@decisions => @contract.decisions %>
