@@ -13,7 +13,6 @@ class ContractsController < ApplicationController
       @contract.user_id = session[:user_id]
     else
       @user = User.create
-      p @user, "++++++++++"
       @contract.user_id = @user.id
       session[:user_id] = @user.id
     end
