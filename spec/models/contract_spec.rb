@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Contract, type: :model do
+  owner = User.create
   subject{
-    described_class.new(title: "Contract Title", link: "12345")
+    owner.contracts.new(title: "Contract Title", link: "12345", owner_link: "abcde")
   }
 
   it{should have_many(:decisions)}
@@ -16,8 +17,18 @@ RSpec.describe Contract, type: :model do
     expect(subject).to_not be_valid
   end
 
+  it "is not valid without owner_link" do
+    subject.owner_link = nil
+    expect(subject).to_not be_valid
+  end
+
   it "is not valid without link" do
     subject.link = nil
+    expect(subject).to_not be_valid
+  end
+
+  it "is not valid without user_id" do
+    subject.user_id = nil
     expect(subject).to_not be_valid
   end
 

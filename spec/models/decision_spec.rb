@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Decision, type: :model do
-  contract = Contract.create(title: "Contract Title", link: "12345")
+  user = User.create()
+  contract = user.contracts.create(title: "Contract Title", link: "12345", owner_link: 'abcde')
   subject {
     contract.decisions.new(description: "Decision description")
   }

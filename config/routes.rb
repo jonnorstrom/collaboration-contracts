@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get 'contracts/new'
   get 'contracts/index'
-  get 'contracts/:id' => "contracts#show"
+  get 'contracts/:id/:link(.:format)', to: "contracts#show", as: 'contracts_show'
   post 'contracts' => "contracts#create"
 
   get 'answers/new', to: 'answers#new', as: 'new_answers'
