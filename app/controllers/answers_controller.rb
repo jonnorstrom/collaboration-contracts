@@ -14,7 +14,8 @@ class AnswersController < ApplicationController
 
     if @answer.save
       session[:name] = @answer.name
-      redirect_to "/contracts/#{@answer.contract_link}"
+      @contract_id = @answer.decision.contract_id
+      redirect_to "/contracts/#{@contract_id}/#{@answer.contract_link}"
     end
   end
 

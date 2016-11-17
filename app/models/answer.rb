@@ -11,6 +11,10 @@ class Answer < ApplicationRecord
   end
 
   def contract_link
-    Contract.find(Decision.find(self.decision_id).contract_id).link
+    Contract.find(self.decision.contract_id).link
+  end
+
+  def decision
+    Decision.find(self.decision_id)
   end
 end
