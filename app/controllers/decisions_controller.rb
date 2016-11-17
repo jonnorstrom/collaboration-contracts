@@ -8,7 +8,7 @@ class DecisionsController < ApplicationController
     @decision = Decision.new(decision_params)
     if @decision.save
       @contract = Contract.find(@decision.contract_id)
-      redirect_to "/contracts/#{@contract.link}"
+      redirect_to "/contracts/#{@contract.id}/#{@contract.link}"
     end
   end
 
