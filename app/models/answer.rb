@@ -20,10 +20,6 @@ class Answer < ApplicationRecord
     Contract.find(self.decision.contract_id)
   end
 
-  def decision
-    Decision.find(self.decision_id)
-  end
-
   def viewable?(user)
     self.name == user[:name] || self.contract.owner?(user[:id])
   end
