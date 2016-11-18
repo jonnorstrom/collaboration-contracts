@@ -12,11 +12,6 @@ class DecisionsController < ApplicationController
     end
   end
 
-  def show
-    # @decision = Decision.find_by(link: params[:id])
-    # @answers = Answer.where(decision_id: @decision.id)
-  end
-
 
 private
   def decision_params

@@ -5,16 +5,23 @@ class Answer < ApplicationRecord
 
   belongs_to :decision
 
-  def self.find_all_names(type, decision_id)
-    names = Decision.find(decision_id).answers.where(answer: type).map { |a| a.name }
-    return names.join(", ")
+  def self.find_all_names(type, answers, user)
+    names = answers.where(answer: type).map do |answer|
+      return answer.name if answer.viewable?(user)
+    end
+    names.join(", ")
   end
 
-  def contract_link
-    Contract.find(self.decision.contract_id).link
+  def self.types
+    types = ['Explain', 'Consult', 'Agree', 'Advise', 'Inquire']
   end
 
-  def decision
-    Decision.find(self.decision_id)
+  def contract
+    Contract.find(self.decision.contract_id)
   end
+
+  def viewable?(user)
+    self.name == user[:name] || self.contract.owner?(user[:id])
+  end
+
 end
