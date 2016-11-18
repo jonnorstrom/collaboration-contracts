@@ -1,22 +1,31 @@
-<h3 class="text-center" id="link_text">Contract Link: <%=@contract.link%>
-  <button class="btn clip" data-clipboard-text="localhost:3000/contracts/<%=@contract.link%>">
-    <%= image_tag("clippy.svg", size: "20x20")%>
-  </button>
-</h3>
 
-<%if @is_owner%>
-  <h3 class="text-center" id="link_text">Contract Owner Link: <%=@contract.owner_link%>
-    <button class="btn clip" data-clipboard-text="localhost:3000/contracts/<%=@contract.owner_link%>">
-      <%= image_tag("clippy.svg", size: "20x20")%>
-    </button>
-  </h3>
-<%end%>
+<div class="row col-xs-10 col-xs-offset-1 col-xs-offset-right-1 contract-header">
+  <div class="col-sm-4">
+    <nobr>
+      <p class="" id="link_text"><b>Link:</b> /contracts/<%=@contract.id%>/<%=@contract.link%>
+        <button class="btn btn-xs clip" data-clipboard-text="localhost:3000/contracts/<%=@contract.id%>/<%=@contract.link%>">
+          <%= image_tag("clippy.svg", size: "15x15")%>
+        </button>
+      </p>
+    </nobr>
+    <%if @is_owner%>
+      <nobr>
+        <p class="" id="link_text"><b>Owner Link:</b> /contracts/<%=@contract.id%>/<%=@contract.owner_link%>
+          <button class="btn btn-xs clip" data-clipboard-text="localhost:3000/contracts/<%=@contract.id%>/<%=@contract.owner_link%>">
+            <%= image_tag("clippy.svg", size: "15x15")%>
+          </button>
+        </p>
+      </nobr>
+    <%end%>
+  </div>
+  <h2 class=" col-sm-4 text-center"><%=@contract.title%></h2>
+  <%if @is_owner%>
+    <h1>.</h1>
+  <%end%>
+</div>
 
-<h2 class="text-center"><%=@contract.title%></h2>
 
-<%if @is_owner%>
-  <h1>You are the owner</h1>
-<%end%>
+
 
 <%if @contract.decisions %>
     <%= render 'decisions/show', :@decisions => @contract.decisions %>
