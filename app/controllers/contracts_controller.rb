@@ -23,13 +23,10 @@ class ContractsController < ApplicationController
   end
 
   def show
-    @contract = Contract.find_by(id: params[:id], link: params[:link]) || Contract.find_by(id: params[:id], owner_link: params[:link])
-
-    if @contract.owner_link == params[:link]
-      @is_owner = true
-    else
-      @is_owner = @contract.owner?(session[:user_id])
-    end
+    @contract = Contract.find_which_by(params)
+    @user = {id: session[:user_id], name: session[:name]}
+    @owner = @contract.find_or_set_owner(params[:link], session[:user_id])
+    session[:user_id] = @contract.user_id if @owner 
   end
 
   private
