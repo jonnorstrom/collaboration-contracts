@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'contracts/:id/:link(.:format)', to: "contracts#show", as: 'contracts_show'
   post 'contracts' => "contracts#create"
 
+  post 'answers/edit/all' => "answers#edit_all", as: :answers_edit_all
   get 'answers/new', to: 'answers#new', as: 'new_answers'
   get 'answers/index'
   post 'answers' => "answers#create"

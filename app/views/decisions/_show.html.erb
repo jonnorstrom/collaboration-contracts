@@ -1,6 +1,23 @@
 <%if @decisions%>
-  <%=render partial: 'decisions/table'%>
 
+  <!-- <%=render partial: 'decisions/table'%>
+
+  <%= form_tag(answers_edit_all_path, method: "post") do %>
+    <%@decisions.each do |decision|%>
+      <%= fields_for "decisions[]", decision do |f| %>
+
+        <div class="row col-xs-10 col-xs-offset-1 col-xs-offset-right-1">
+          <div class="col-xs-2"><%= decision.description %></div>
+          <%Answer.types.each do |type|%>
+            <div class="col-xs-2"><%= radio_button :answer, type, checked: false %></div>
+          <%end%>
+        </div>
+
+      <%end%>
+    <%end%>
+  <%end%> -->
+
+  <%=render partial: 'decisions/table'%>
   <%@decisions.each do |decision|%>
     <div class="data-row col-xs-10 col-xs-offset-1 col-xs-offset-right-1">
       <div class="col-xs-2"><%=link_to decision.description, new_answers_path(:decision_id => decision.id), class: "text-center"%></div>
