@@ -1,4 +1,5 @@
 <h1 class="text-center">Answer Decision</h1>
+
 <%= form_for :answer, url: answers_path do |f| %>
 
   <div class="row">
@@ -13,14 +14,14 @@
   </div>
 
   <%= render partial: 'decisions/table' %>
+
   <div class="row col-xs-10 col-xs-offset-1 col-xs-offset-right-1">
     <div class="col-xs-2"><%= @decision.description %></div>
-    <div class="col-xs-2"><%= f.radio_button :answer,'Explain' %></div>
-    <div class="col-xs-2"><%= f.radio_button :answer,'Consult' %></div>
-    <div class="col-xs-2"><%= f.radio_button :answer,'Agree' %></div>
-    <div class="col-xs-2"><%= f.radio_button :answer,'Advise' %></div>
-    <div class="col-xs-2"><%= f.radio_button :answer,'Inquire' %></div>
+    <%Answer.types.each do |type|%>
+      <div class="col-xs-2"><%= f.radio_button :answer,type %></div>
+    <%end%>
     <%= f.hidden_field :decision_id, :value => @decision.id %>
     <%= f.submit class: "btn btn-primary" %>
   </div>
+
 <% end %>
