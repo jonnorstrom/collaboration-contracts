@@ -1,15 +1,21 @@
 
 <div class="row col-xs-10 col-xs-offset-1 col-xs-offset-right-1 contract-header">
 
-  <div class="col-sm-4">
-    <%=render 'contracts/button'%>
-    <%if @owner%> <%=render 'contracts/owner_button'%> <%end%>
+  <div class="row">
+    <div class="col-sm-4">
+      <%=render 'contracts/button'%>
+      <%if @owner%> <%=render 'contracts/owner_button'%> <%end%>
+    </div>
+    <h2 class="col-sm-4 text-center"><%=@contract.title%></h2>
+    <!-- <%if @owner%> <h1><%=@contract.user_id%></h1> <%end%> -->
   </div>
 
-  <h2 class=" col-sm-4 text-center"><%=@contract.title%></h2>
-  <%if @owner%> <h1>Owner</h1> <%end%>
+  <div class="row">
+    <p class="text-center"><%=@contract.theme%></p>
+  </div>
 
 </div>
+
 
 <%if @contract.decisions %>
     <%= render 'decisions/show', :@decisions => @contract.decisions, :@user => @user %>
