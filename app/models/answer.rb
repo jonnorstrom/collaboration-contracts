@@ -6,9 +6,7 @@ class Answer < ApplicationRecord
   belongs_to :decision
 
   def self.find_all_names(type, answers, user)
-    names = answers.where(answer: type).map do |answer|
-      return answer.name if answer.viewable?(user)
-    end
+    names = answers.where(answer: type).select {|a| a.viewable?(user)}.map {|a| a.name}
     names.join(", ")
   end
 
@@ -21,7 +19,7 @@ class Answer < ApplicationRecord
   end
 
   def viewable?(user)
-    self.name == user[:name] || self.contract.owner?(user[:id])
+    self.contract.reviewable || self.name == user[:name] || self.contract.owner?(user[:id])
   end
 
 end

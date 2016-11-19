@@ -22,6 +22,13 @@ class ContractsController < ApplicationController
     end
   end
 
+  def update
+    @contract = Contract.find_by(id: params[:id], owner_link: params[:link])
+    @contract.toggle(:reviewable)
+    @contract.save
+    redirect_to "/contracts/#{@contract.id}/#{@contract.link}"
+  end
+
   def show
     @contract = Contract.find_which_by(params)
     @user = {id: session[:user_id], name: session[:name]}
