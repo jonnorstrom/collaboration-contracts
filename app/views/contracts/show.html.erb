@@ -7,7 +7,10 @@
       <%if @owner%> <%=render 'contracts/owner_button'%> <%end%>
     </div>
     <h2 class="col-sm-4 text-center"><%=@contract.title%></h2>
-    <!-- <%if @owner%> <h1><%=@contract.user_id%></h1> <%end%> -->
+    <%if @owner%>
+      <%@contract.reviewable ? @status = "ON" : @status = "OFF"%>
+      <h5>Team Review is <%=link_to @status, contracts_update_path(:id=>@contract.id, :link=>@contract.owner_link), :method=>:post%></h5>
+    <%end%>
   </div>
 
   <div class="row">
