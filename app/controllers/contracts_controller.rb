@@ -26,12 +26,12 @@ class ContractsController < ApplicationController
     @contract = Contract.find_which_by(params)
     @user = {id: session[:user_id], name: session[:name]}
     @owner = @contract.find_or_set_owner(params[:link], session[:user_id])
-    session[:user_id] = @contract.user_id if @owner 
+    session[:user_id] = @contract.user_id if @owner
   end
 
   private
   def contract_params
-    params.require(:contract).permit(:title)
+    params.require(:contract).permit(:title, :theme)
   end
 
 end
