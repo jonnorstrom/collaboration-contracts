@@ -25,4 +25,16 @@ RSpec.describe Answer, type: :model do
     expect(subject).to_not be_valid
   end
 
+  describe ".types" do
+    it "should return an array of all answer options" do
+      expect(Answer.types).to  eq(['Explain', 'Consult', 'Agree', 'Advise', 'Inquire'])
+    end
+  end
+
+  describe ".contract" do
+    it "should return the contract attached to answers decision" do
+      expect(subject.contract).to eq(Contract.find(subject.decision.contract_id))
+    end
+  end
+
 end
