@@ -1,11 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Contract, type: :model do
-  owner = User.create
   subject{
-    owner.contracts.new(title: "Contract Title", link: "12345", owner_link: "abcde")
+    FactoryGirl.create(:filled_contract, decisions_count: 4)
   }
-
   it{should have_many(:decisions)}
 
   it "is valid with valid attributes" do

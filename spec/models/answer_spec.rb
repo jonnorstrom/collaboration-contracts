@@ -1,11 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Answer, type: :model do
-  user = User.create
-  contract = user.contracts.create(title: "Contract Title", link: "12345", owner_link: "abcde")
-  decision = contract.decisions.create(description: "Decision description")
   subject {
-    decision.answers.new(name: "Name", answer: "Answer")
+    FactoryGirl.create(:answer)
   }
 
   it {should belong_to(:decision)}
