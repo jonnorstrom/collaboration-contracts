@@ -1,10 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Decision, type: :model do
-  user = User.create()
-  contract = user.contracts.create(title: "Contract Title", link: "12345", owner_link: 'abcde')
   subject {
-    contract.decisions.new(description: "Decision description")
+    FactoryGirl.create(:decision_with_answers)
   }
 
   it {should have_many(:answers)}
