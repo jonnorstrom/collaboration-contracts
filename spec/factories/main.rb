@@ -3,8 +3,6 @@ FactoryGirl.define do
   factory :user do
   end
 
-
-
   factory :contract do
     title "Contract Title"
     link "12345"

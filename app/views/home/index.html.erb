@@ -1,3 +1,10 @@
 <h1 class="text-center">Collaboration Contracts</h1>
 
-<%= link_to "New Contract", contracts_new_path, :class => "btn btn-primary btn-lg col-sm-4 col-sm-offset-4"%>
+<!-- <%= link_to "New Contract", contracts_new_path, :class => "btn btn-primary btn-lg col-sm-4 col-sm-offset-4"%> -->
+
+<!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-primary btn-lg col-sm-4 col-sm-offset-4" data-toggle="modal" data-target="#myModal">New Contract</button>
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <%= render 'contracts/new_modal' %>
+</div>

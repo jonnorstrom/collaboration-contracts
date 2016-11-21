@@ -20,8 +20,7 @@
 //= require clipboard
 
 $(document).ready(function(){
-
   var clip = new Clipboard('.clip');
-  console.log(clip);
+  
 
 });
