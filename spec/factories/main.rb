@@ -3,10 +3,13 @@ FactoryGirl.define do
   factory :user do
   end
 
+
+
   factory :contract do
     title "Contract Title"
     link "12345"
     owner_link "abcde"
+    theme "Theme"
     user
 
     factory :contract_with_decisions do
