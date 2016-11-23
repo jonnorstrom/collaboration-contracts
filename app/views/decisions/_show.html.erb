@@ -20,10 +20,14 @@
   <%=render partial: 'decisions/table'%>
   <%@decisions.each do |decision|%>
     <div class="data-row col-xs-10 col-xs-offset-1 col-xs-offset-right-1">
-      <div class="col-xs-2"><%=link_to decision.description, new_answers_path(:decision_id => decision.id), class: "text-center"%></div>
-      <%if decision.answers%>
-        <%Answer.types.each do |type|%><div class="col-xs-2"><%=Answer.find_all_names(type, decision.answers, @user)%></div><%end%>
-      <%end%>
+      <div class="row">
+        <a type="link" class="col-xs-2 link" data-toggle="modal" data-target="#newAnswerModal<%=decision.id%>"><%=decision.description%></a>
+        <div id="newAnswerModal<%=decision.id%>" class="modal fade" role="dialog"><%= render 'answers/new_modal', :decision_id => decision.id, :decision_desc => decision.description %></div>
+        <!-- <div class="col-xs-2"><%=link_to decision.description, new_answers_path(:decision_id => decision.id), class: "text-center"%></div> -->
+        <%if decision.answers%>
+          <%Answer.types.each do |type|%><div class="col-xs-2"><%=Answer.find_all_names(type, decision.answers, @user)%></div><%end%>
+        <%end%>
+      </div>
     </div>
   <%end%>
 <%end%>
