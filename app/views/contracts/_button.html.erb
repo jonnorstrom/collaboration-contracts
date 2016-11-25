@@ -3,7 +3,7 @@
     <span class="hidden-sm hidden-xs"><b>Team Link:</b>/contracts/<%=@contract.id%>/<%=@contract.link%></span>
     <span class="hidden-md hidden-lg hidden-xl"><b>Team Link</b></span>
 
-    <button class="btn btn-xs clip" data-clipboard-text="localhost:3000/contracts/<%=@contract.id%>/<%=@contract.link%>">
+    <button class="btn btn-xs clip" data-clipboard-text="<%="#{request.protocol}#{request.host_with_port}"%>/contracts/<%=@contract.id%>/<%=@contract.link%>">
       <%= image_tag("clippy.svg", size: "15x15")%>
     </button>
   </p>
