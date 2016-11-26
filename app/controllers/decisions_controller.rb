@@ -1,6 +1,7 @@
 class DecisionsController < ApplicationController
 
   def new
+    @decision = Decision.new
     @contract_id = params[:contract_id]
   end
 
