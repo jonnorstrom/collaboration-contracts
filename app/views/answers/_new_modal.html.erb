@@ -23,11 +23,11 @@
         <%= render partial: 'decisions/table' %>
         <div class="row col-xs-10 col-xs-offset-1 col-xs-offset-right-1">
           <div class="row">
-            <div class="col-xs-2"><%= decision_desc %></div>
+            <div class="col-xs-2"><%= @decision.description %></div>
             <%Answer.types.each do |type|%>
-              <div class="col-xs-2"><%= f.radio_button :answer,type %></div>
+              <div class="col-xs-2"><%= f.radio_button :answer,type, :checked => @decision.user_answer_type?(type, session[:name]) %></div>
             <%end%>
-            <%= f.hidden_field :decision_id, :value => decision_id %>
+            <%= f.hidden_field :decision_id, :value => @decision.id %>
           </div>
         </div>
         <div class="text-right">

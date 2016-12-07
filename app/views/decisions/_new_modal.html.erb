@@ -4,17 +4,24 @@
   <div class="modal-content">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal">&times;</button>
-      <h4 class="modal-title">New Decision</h4>
+      <%if @decision%>
+        <h4 class="modal-title">Edit Decision</h4>
+      <%else%>
+        <h4 class="modal-title">New Decision</h4>
+      <%end%>
     </div>
 
     <div class="form">
-      <%= form_for :decision, url: decisions_path do |f| %>
+      <%= form_for :decision, :url => (@decision.nil? ? decisions_path : decisions_update_path) do |f| %>
       <div class="modal-body">
         <div class="form-group">
           <%= f.label :description %><br>
           <%= f.text_field :description, placeholder: "Decision Text", class: "form-control" %>
         </div>
         <%= f.hidden_field :contract_id, :value => @contract_id %>
+        <%if @decision%>
+          <%= f.hidden_field :id, :value => @decision.id %>
+        <%end%>
         <div class="text-right">
           <%= f.submit class: "btn btn-primary" %>
         </div>

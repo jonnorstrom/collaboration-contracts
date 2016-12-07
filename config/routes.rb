@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   get 'decisions/new'
   get 'decisions/index'
   get 'decisions/show' => "decisions#show"
+  post 'decisions/update' => "decisions#update"
   post 'decisions' => "decisions#create"
+  delete 'decision/delete' => "decisions#destroy"
 
 
   root 'home#index'
