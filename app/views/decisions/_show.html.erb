@@ -1,12 +1,20 @@
-<%if @decisions%>
-  <%=render partial: 'decisions/table'%>
-  <%@decisions.each do |decision|%>
+<%if @decisions %>
+  <%= render partial: 'decisions/table' %>
+  <% @decisions.each do |decision| %>
     <div class="data-row col-xs-10 col-xs-offset-1 col-xs-offset-right-1">
-        <%=render 'decisions/decision_menu', :decision => decision, :@owner => @owner%>
-        <%if decision.answers%>
-          <%Answer.types.each do |type|%><div class="col-xs-2"><%=Answer.find_all_names(type, decision.answers, @user)%></div><%end%>
-        <%end%>
+
+      <% if decision.contract.complete %>
+        <%= render 'decisions/decision_menu', :decision => decision, :@owner => @owner %>
+      <% else %>
+        <div class="col-xs-2" style="padding:0;">
+          <nobr><%= decision.description %></nobr>
+        </div>
+      <% end %>
+
+        <% if decision.answers %>
+          <% Answer.types.each do |type| %><div class="col-xs-2"><%= Answer.find_all_names(type, decision.answers, @user) %></div><% end %>
+        <% end %>
       </div>
     </div>
-  <%end%>
-<%end%>
+  <% end %>
+<% end %>
