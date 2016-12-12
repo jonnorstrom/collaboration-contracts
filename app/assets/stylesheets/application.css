@@ -19,6 +19,10 @@ html {
   background-color: lightgrey;
 }
 
+body {
+  background-color: lightgrey !important;
+}
+
 .main_thing {
   background-color: lightgrey;
 }
