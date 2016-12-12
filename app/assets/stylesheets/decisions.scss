@@ -1,7 +1,19 @@
-.data-row {
-  border-top: 1px solid black;
+#decision_table_header {
+  border-bottom: 2px solid black;
+}
+
+#decision_data {
+  border-bottom: 1px solid black;
   padding-top: 1vh;
   padding-bottom: 1vh;
+}
+
+#desc_dropdown_btn {
+  padding: 0;
+}
+
+#desc_dropdown {
+  margin-top: 1.25em;
 }
 
 .menu_break {
