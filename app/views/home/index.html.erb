@@ -5,3 +5,11 @@
 <div id="myModal" class="modal fade" role="dialog">
   <%= render 'contracts/new_modal' %>
 </div>
+
+<% if @error_messages %>
+  <script>
+    $(window).load(function(){
+        $('#myModal').modal('show');
+    });
+  </script>
+<% end %>

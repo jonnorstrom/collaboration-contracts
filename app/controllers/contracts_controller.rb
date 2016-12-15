@@ -19,6 +19,9 @@ class ContractsController < ApplicationController
 
     if @contract.save
       redirect_to "/contracts/#{@contract.id}/#{@contract.link}"
+    else
+      @error_messages = @contract.errors.full_messages
+      render "home/index"
     end
   end
 
