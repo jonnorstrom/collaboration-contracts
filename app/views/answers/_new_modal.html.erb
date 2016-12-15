@@ -17,7 +17,7 @@
                 <%= f.label :name %>
                 <%= f.text_field :name, class: "form-control" %>
               <%else%>
-                <%= f.hidden_field :name, :value => session[:name] %>
+                <%= f.hidden_field :name, :value => session[:name], required: true %>
               <% end %>
             </div>
           </div>
@@ -27,7 +27,7 @@
           <div class="row" id="answer_buttons">
             <div class="col-xs-1"></div>
             <% Answer.types.each do |type| %>
-              <div class="col-xs-2 text-center"><%= f.radio_button :answer,type, :checked => @decision.user_answer_type?(type, session[:name]) %></div>
+              <div class="col-xs-2 text-center"><%= f.radio_button :answer,type, :checked => @decision.user_answer_type?(type, session[:name]), required: true %></div>
             <% end %>
             <div class="col-xs-1"></div>
             <%= f.hidden_field :decision_id, :value => @decision.id %>

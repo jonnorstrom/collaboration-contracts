@@ -7,17 +7,19 @@ class DecisionsController < ApplicationController
 
   def create
     @decision = Decision.new(decision_params)
+    @contract = Contract.find(@decision.contract_id)
     if @decision.save
-      @contract = Contract.find(@decision.contract_id)
       redirect_to "/contracts/#{@contract.id}/#{@contract.link}"
+    else
+      @decision_error_messages = @decision.errors.full_messages
+      render "contracts/show"
     end
   end
 
   def update
     @decision = Decision.find(decision_params[:id])
-    @decision.update(:description => decision_params[:description])
-    if @decision.save
-      @contract = Contract.find(@decision.contract_id)
+    @contract = Contract.find(@decision.contract_id)
+    if @decision.update(:description => decision_params[:description])
       redirect_to "/contracts/#{@contract.id}/#{@contract.link}"
     end
   end

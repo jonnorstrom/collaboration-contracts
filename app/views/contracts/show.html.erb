@@ -32,3 +32,11 @@
     <%= render 'decisions/new_modal', :@contract_id => @contract.id, :@decision => nil %>
   </div>
 </div>
+
+<% if @decision_error_messages %>
+  <script>
+    $(window).load(function(){
+        $('#newDecisionModal').modal('show');
+    });
+  </script>
+<% end %>
