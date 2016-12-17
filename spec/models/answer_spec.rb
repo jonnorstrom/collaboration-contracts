@@ -1,28 +1,32 @@
 require 'rails_helper'
 
 RSpec.describe Answer, type: :model do
-  subject {
-    FactoryGirl.create(:answer)
-  }
 
-  it {should belong_to(:decision)}
+  describe "validations" do
 
-  it "is valid with valid attributes" do
-    expect(subject).to be_valid
-  end
+    before do
+     @answer = build(:answer)
+    end
 
-  it "is not valid without name" do
-    subject.name = nil
-    expect(subject).to_not be_valid
-  end
-  it "is not valid without answer" do
-    subject.answer = nil
-    expect(subject).to_not be_valid
-  end
+    it {should belong_to(:decision)}
 
-  it "is not valid without decision_id" do
-    subject.decision_id = nil
-    expect(subject).to_not be_valid
+    it "is valid with valid attributes" do
+      expect(@answer).to be_valid
+    end
+
+    it "is not valid without name" do
+      @answer.name = nil
+      expect(@answer).to_not be_valid
+    end
+    it "is not valid without answer" do
+      @answer.answer = nil
+      expect(@answer).to_not be_valid
+    end
+
+    it "is not valid without decision_id" do
+      @answer.decision_id = nil
+      expect(@answer).to_not be_valid
+    end
   end
 
   describe ".types" do
@@ -32,8 +36,11 @@ RSpec.describe Answer, type: :model do
   end
 
   describe ".contract" do
+    before do
+      @answer = FactoryGirl.build(:answer)
+    end
     it "should return the contract attached to answers decision" do
-      expect(subject.contract).to eq(Contract.find(subject.decision.contract_id))
+      expect(@answer.contract).to eq(Contract.find(@answer.decision.contract_id))
     end
   end
 
