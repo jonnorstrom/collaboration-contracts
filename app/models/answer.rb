@@ -19,7 +19,16 @@ class Answer < ApplicationRecord
   end
 
   def viewable?(user)
-    self.contract.reviewable || self.name == user[:name] || self.contract.owner?(user[:id])
+    self.contract.reviewable || user_answer?(user) || self.contract_owner?(user)
+  end
+
+
+  def user_answer?(user)
+    self.name == user[:name]
+  end
+
+  def contract_owner?(user)
+    self.contract.owner?(user[:id])
   end
 
 end

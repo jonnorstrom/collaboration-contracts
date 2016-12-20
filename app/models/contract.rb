@@ -12,7 +12,7 @@ class Contract < ApplicationRecord
   end
 
   def self.find_which_by(params)
-    Contract.find_by(id: params[:id], link: params[:link]) || Contract.find_by(id: params[:id], owner_link: params[:link])
+    Contract.find_by_link(params) || Contract.find_by_owner_link(params)
   end
 
   def find_or_set_owner(hash_link, user_id)
@@ -23,5 +23,12 @@ class Contract < ApplicationRecord
     end
   end
 
+  def self.find_by_link(params)
+    Contract.find_by(id: params[:id], link: params[:link])
+  end
+
+  def self.find_by_owner_link(params)
+    Contract.find_by(id: params[:id], owner_link: params[:link])
+  end
 
 end
