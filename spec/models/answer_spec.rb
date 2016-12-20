@@ -37,10 +37,31 @@ RSpec.describe Answer, type: :model do
 
   describe ".contract" do
     before do
-      @answer = FactoryGirl.build(:answer)
+      @answer = build(:answer)
     end
     it "should return the contract attached to answers decision" do
       expect(@answer.contract).to eq(Contract.find(@answer.decision.contract_id))
+    end
+  end
+
+  describe ".viewable?(user)" do
+    before do
+      @answer = create(:answer)
+      @bad_user = {name: "Bad", id: 999}
+      @user = {name: "Joe Shmo", id: @answer.contract.user_id}
+    end
+    it "should return true if contract reviewable" do
+      @answer.contract.update(reviewable: true)
+      expect(@answer.viewable?(@bad_user)).to be_truthy
+    end
+    it "should return true if it is user's answer" do
+      expect(@answer.user_answer?(@user)).to be_truthy
+    end
+    it "should return true if user is contract owner" do
+      expect(@answer.contract_owner?(@user)).to be_truthy
+    end
+    it "should return false if user is not contract owner, answer owner & contract is not reviewable" do
+      expect(@answer.viewable?(@bad_user)).to be_falsy
     end
   end
 
