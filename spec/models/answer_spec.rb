@@ -29,6 +29,17 @@ RSpec.describe Answer, type: :model do
     end
   end
 
+  describe "find_all_names(type, answers, user)" do
+    before do
+      @answer = create(:answer)
+      @type = @answer.answer
+      @user = {name: "Joe Shmo", id: @answer.contract.user_id}
+    end
+      it "should return an array" do
+        expect(Answer.find_all_names(@type, Answer.all, @user)).to eq(@user[:name])
+      end
+  end
+
   describe ".types" do
     it "should return an array of all answer options" do
       expect(Answer.types).to  eq(['Explain', 'Consult', 'Agree', 'Advise', 'Inquire'])
