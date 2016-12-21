@@ -55,14 +55,44 @@ RSpec.describe Answer, type: :model do
       expect(@answer.viewable?(@bad_user)).to be_truthy
     end
     it "should return true if it is user's answer" do
-      expect(@answer.user_answer?(@user)).to be_truthy
+      @user[:id] = 0
+      expect(@answer.viewable?(@user)).to be_truthy
     end
     it "should return true if user is contract owner" do
-      expect(@answer.contract_owner?(@user)).to be_truthy
+      @user[:name] = "whoever"
+      expect(@answer.viewable?(@user)).to be_truthy
     end
     it "should return false if user is not contract owner, answer owner & contract is not reviewable" do
       expect(@answer.viewable?(@bad_user)).to be_falsy
     end
+  end
+
+  describe "user_answer?(user)" do
+      before do
+        @answer = create(:answer)
+        @user = {name: "Joe Shmo", id: @answer.contract.user_id}
+      end
+      it "should return true if answer.name == username" do
+        expect(@answer.user_answer?(@user)).to be true
+      end
+      it "should return false if answer.name != username" do
+        @user[:name] = "whoever"
+        expect(@answer.user_answer?(@user)).to be false
+      end
+  end
+
+  describe "contract_owner?(user)" do
+      before do
+        @answer = create(:answer)
+        @user = {name: "Joe Shmo", id: @answer.contract.user_id}
+      end
+      it "should return true if user.id == contract.user_id" do
+        expect(@answer.contract_owner?(@user)).to be true
+      end
+      it "should return false if user.id != contract.user_id" do
+        @user[:id] = 0
+        expect(@answer.contract_owner?(@user)).to be false
+      end
   end
 
 end
