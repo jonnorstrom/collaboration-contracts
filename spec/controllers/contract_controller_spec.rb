@@ -21,7 +21,7 @@ RSpec.describe ContractsController, type: :controller do
         session[:user_id] = 1
         process :create, method: :post, params: {contract: {title: "Contract Title", theme: "Contract Theme"} }
       end
-      it "assigns @contract" do
+      it "should assign contract variable" do
         expect(assigns(:contract)).to be_a(Contract)
       end
       it "should set contract user when logged in" do
