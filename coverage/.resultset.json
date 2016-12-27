@@ -197,18 +197,18 @@
         9,
         null,
         9,
-        4,
-        null,
-        5,
-        5,
-        5,
-        null,
-        null,
-        9,
         3,
         null,
         6,
         6,
+        6,
+        null,
+        null,
+        9,
+        0,
+        null,
+        9,
+        9,
         null,
         null,
         null,
@@ -547,11 +547,6 @@
         null,
         null
       ],
-      "/Users/SeanNorton/collaboration-contracts/app/models/application_record.rb": [
-        1,
-        1,
-        null
-      ],
       "/Users/SeanNorton/collaboration-contracts/spec/models/contract_spec.rb": [
         1,
         null,
@@ -739,13 +734,8 @@
         null,
         null,
         null
-      ],
-      "/Users/SeanNorton/collaboration-contracts/app/models/user.rb": [
-        1,
-        1,
-        null
       ]
     },
-    "timestamp": 1482451571
+    "timestamp": 1482878647
   }
 }

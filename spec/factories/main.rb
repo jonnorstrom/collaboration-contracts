@@ -1,6 +1,10 @@
 FactoryGirl.define do
 
   factory :user do
+    email { Faker::Internet.unique.email }
+    first_name "Joe"
+    last_name "Shmo"
+    password "password"
   end
 
   factory :contract do
