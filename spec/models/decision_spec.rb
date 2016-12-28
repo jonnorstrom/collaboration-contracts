@@ -25,18 +25,18 @@ RSpec.describe Decision, type: :model do
 
   describe "user_answer_type?" do
     before do
-      @decision = create(:decision)
-      @answer = Answer.create(decision_id: @decision.id, answer: "Explain", name: "Joe Shmo")
+      @answer = create(:answer)
+      @decision = @answer.decision
     end
-    
+
     it "returns true if decision has answer with answer.type and user.name" do
-      expect(@decision.user_answer_type?(@answer.answer, @answer.name)).to be_truthy
+      expect(@decision.user_answer_type?(@answer.answer, @answer.user)).to be_truthy
     end
     it "returns false if user.name is wrong" do
-      expect(@decision.user_answer_type?(@answer.answer, "BadBadNotGood")).to be_falsy
+      expect(@decision.user_answer_type?(@answer.answer, create(:user))).to be_falsy
     end
     it "returns false if answer.type is wrong" do
-      expect(@decision.user_answer_type?("BadBadNotgood", @answer.name)).to be_falsy
+      expect(@decision.user_answer_type?("BadBadNotgood", @answer.user)).to be_falsy
     end
   end
 

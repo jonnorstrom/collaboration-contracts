@@ -9,19 +9,16 @@ class ContractsController < ApplicationController
     @contract = Contract.new(contract_params)
     @contract = make_links(@contract)
 
-    if session[:user_id]
-      @contract.user_id = session[:user_id]
+    if user_signed_in?
+      if @contract.save
+        UserContract.create_owner_join(current_user, @contract)
+        redirect_to "/contracts/#{@contract.id}/#{@contract.link}"
+      else
+        @error_messages = @contract.errors.full_messages
+        render "home/index"
+      end
     else
-      @user = User.create
-      @contract.user_id = @user.id
-      session[:user_id] = @user.id
-    end
-
-    if @contract.save
-      redirect_to "/contracts/#{@contract.id}/#{@contract.link}"
-    else
-      @error_messages = @contract.errors.full_messages
-      render "home/index"
+      render "users/sessions/new"
     end
   end
 
@@ -37,10 +34,13 @@ class ContractsController < ApplicationController
   end
 
   def show
-    @contract = Contract.find_which_by(params)
-    @user = {id: session[:user_id], name: session[:name]}
-    @owner = @contract.find_or_set_owner(params[:link], session[:user_id])
-    session[:user_id] = @contract.user_id if @owner
+    if !current_user
+      render "users/registrations/new"
+    else
+      @contract = Contract.find_which_by(params)
+      @contract.set_user_contract(params[:link], current_user)
+      @owner = @contract.owner?(current_user)
+    end
   end
 
   private

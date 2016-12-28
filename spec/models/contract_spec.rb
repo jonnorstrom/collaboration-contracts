@@ -4,11 +4,12 @@ RSpec.describe Contract, type: :model do
 
   describe "validations" do
     before do
-      @contract = build(:contract)
+      @user_contract = create(:user_contract)
+      @contract = @user_contract.contract
     end
 
-    it{should belong_to(:user)}
-    it{should have_many(:decisions)}
+    it{should have_many(:user_contracts)}
+    it{should have_many(:users).through(:user_contracts)}
 
     it "is valid with valid attributes" do
       expect(@contract).to be_valid
@@ -25,23 +26,23 @@ RSpec.describe Contract, type: :model do
       @contract.link = nil
       expect(@contract).to_not be_valid
     end
-    it "is not valid without user_id" do
-      @contract.user_id = nil
-      expect(@contract).to_not be_valid
+    it "should have user" do
+      expect(@contract.users).to be_truthy
     end
   end
 
   describe ".owner?" do
     before do
-      @contract = build(:contract)
-      @user_id = @contract.user_id
+      @user_contract = create(:user_contract)
+      @contract = @user_contract.contract
+      @user = @user_contract.user
     end
 
-    it "returns false if user_id does not match" do
-      expect(@contract.owner?(@user_id - 1)).to eq(false)
+    it "returns false if user is not an owner" do
+      expect(@contract.owner?(create(:user))).to eq(false)
     end
-    it "returns true if user_id matches" do
-      expect(@contract.owner?(@user_id)).to eq(true)
+    it "returns true if user is an owner" do
+      expect(@contract.owner?(@user)).to eq(true)
     end
   end
 
@@ -68,22 +69,16 @@ RSpec.describe Contract, type: :model do
     end
   end
 
-  describe ".find_or_set_owner" do
+  describe ".set_user_contract" do
     before do
-      @contract = build(:contract)
-      @owner_link = @contract.owner_link
-      @link = @contract.link
-      @user_id = @contract.user_id
+      @user_contract = create(:user_contract)
+      @contract = @user_contract.contract
+      @user = create(:user)
     end
 
-    it "returns true if link is owner_link" do
-      expect(@contract.find_or_set_owner(@owner_link, @user_id + 1)).to eq(true)
-    end
-    it "returns true if user_id is owners id" do
-      expect(@contract.find_or_set_owner(@link, @user_id)).to eq(true)
-    end
-    it "returns false if user_id and link don't match" do
-      expect(@contract.find_or_set_owner(@link, @user_id + 1)).to eq(false)
+    it "sets user to owner if link is owner_link" do
+      @contract.set_user_contract(@contract.owner_link, @user)
+      expect(@contract.owner?(@user)).to eq(true)
     end
   end
 

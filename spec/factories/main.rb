@@ -1,6 +1,10 @@
 FactoryGirl.define do
 
   factory :user do
+    email { Faker::Internet.unique.email }
+    first_name "Joe"
+    last_name "Shmo"
+    password "password"
   end
 
   factory :contract do
@@ -8,7 +12,6 @@ FactoryGirl.define do
     link "12345"
     owner_link "abcde"
     theme "Theme"
-    user
 
     factory :contract_with_decisions do
       transient do
@@ -45,9 +48,15 @@ FactoryGirl.define do
   end
 
   factory :answer do
-    name "Joe Shmo"
     answer "Explain"
     decision
+    user
+  end
+
+  factory :user_contract do
+    user
+    contract
+    owner true
   end
 
 end

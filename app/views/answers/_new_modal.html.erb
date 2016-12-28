@@ -13,12 +13,7 @@
           <!-- get user name -->
           <div class="row">
             <div class="col-sm-4 col-sm-offset-4">
-              <% if !session[:name] %>
-                <%= f.label :name %>
-                <%= f.text_field :name, class: "form-control" %>
-              <%else%>
-                <%= f.hidden_field :name, :value => session[:name], required: true %>
-              <% end %>
+                <%= f.hidden_field :user_id, :value => current_user.id, required: true %>
             </div>
           </div>
           <!-- table header -->
@@ -27,7 +22,7 @@
           <div class="row" id="answer_buttons">
             <div class="col-xs-1"></div>
             <% Answer.types.each do |type| %>
-              <div class="col-xs-2 text-center"><%= f.radio_button :answer,type, :checked => @decision.user_answer_type?(type, session[:name]), required: true %></div>
+              <div class="col-xs-2 text-center"><%= f.radio_button :answer,type, :checked => @decision.user_answer_type?(type, current_user), required: true %></div>
             <% end %>
             <div class="col-xs-1"></div>
             <%= f.hidden_field :decision_id, :value => @decision.id %>

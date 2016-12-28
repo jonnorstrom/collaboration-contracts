@@ -1,12 +1,13 @@
 class Answer < ApplicationRecord
-  validates :name, presence: true
+  validates :user_id, presence: true
   validates :answer, presence: true
   validates :decision_id, presence: true
 
   belongs_to :decision
+  belongs_to :user
 
   def self.find_all_names(type, answers, user)
-    names = answers.where(answer: type).select {|a| a.viewable?(user)}.map {|a| a.name}
+    names = answers.where(answer: type).select {|a| a.viewable?(user)}.map {|a| a.user.users_name}
     names.join(", ")
   end
 
@@ -19,16 +20,13 @@ class Answer < ApplicationRecord
   end
 
   def viewable?(user)
-    self.contract.reviewable || user_answer?(user) || self.contract_owner?(user)
+    self.contract.reviewable || user_answer?(user) || self.contract.owner?(user)
   end
 
 
   def user_answer?(user)
-    self.name == user[:name]
+    self.user == user
   end
 
-  def contract_owner?(user)
-    self.contract.owner?(user[:id])
-  end
 
 end

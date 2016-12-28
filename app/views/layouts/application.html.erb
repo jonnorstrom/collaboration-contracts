@@ -24,10 +24,21 @@
           <ul class="nav navbar-nav">
             <li><%= link_to "Home", root_path %></li>
             <li><%= link_to "New Contract", contracts_new_path %></li>
+            <% if current_user %>
+            <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+            <li><%= link_to "#{current_user.users_name}" %></li>
+            <% else %>
+            <li><%= link_to "Sign In", new_user_session_path %></li>
+            <li><%= link_to "Sign up", new_user_registration_path %></li>
+            <% end %>
           </ul>
         </div>
       </div>
     </nav>
-      <%= yield %>
+    <!-- flash messages -->
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <%= yield %>
   </body>
 </html>

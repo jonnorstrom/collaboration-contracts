@@ -6,8 +6,8 @@ class Decision < ApplicationRecord
   belongs_to :contract
 
   # this is used to pre-check radio_button on answer modal
-  def user_answer_type?(type, user_name)
-      self.answers.exists?(answer: type, name: user_name)
+  def user_answer_type?(type, user)
+      self.answers.exists?(answer: type, user: user)
   end
 
 end
