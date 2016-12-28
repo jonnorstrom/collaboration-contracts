@@ -23,7 +23,8 @@ RSpec.describe AnswersController, type: :controller do
     context "answer create" do
       before do
         @decision = create(:decision)
-        process :create, method: :post, params: { answer: {name: "User name", decision_id: @decision.id, answer: "explain"} }
+        @user = create(:user)
+        process :create, method: :post, :params => {answer: {answer: "Explain", user_id: @user.id, decision_id: @decision.id}}
       end
       it "should assign answer to new answer" do
         expect(assigns(:answer)).to eq(Answer.last)
@@ -32,12 +33,13 @@ RSpec.describe AnswersController, type: :controller do
         assert_response :redirect
       end
     end
-    
+
     context "answer update" do
       before do
         @answer = create(:answer)
         @decision = @answer.decision
-        process :create, method: :post, params: { answer: {name: @answer.name, decision_id: @decision.id, answer: "consult"} }
+        @user = create(:user)
+        process :create, method: :post, params: { answer: {user_id: @user.id, decision_id: @decision.id, answer: "consult"} }
       end
       it "should update answer type" do
         expect(assigns(:answer).answer).to eq("consult")

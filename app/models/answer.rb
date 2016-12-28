@@ -20,7 +20,7 @@ class Answer < ApplicationRecord
   end
 
   def viewable?(user)
-    self.contract.reviewable || user_answer?(user) || self.contract_owner?(user)
+    self.contract.reviewable || user_answer?(user) || self.contract.owner?(user)
   end
 
 
@@ -28,8 +28,5 @@ class Answer < ApplicationRecord
     self.user == user
   end
 
-  def contract_owner?(user)
-    self.contract.owner?(user)
-  end
 
 end

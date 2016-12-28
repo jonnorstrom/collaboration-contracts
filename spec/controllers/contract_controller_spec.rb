@@ -26,7 +26,7 @@ RSpec.describe ContractsController, type: :controller do
         expect(assigns(:contract)).to be_a(Contract)
       end
       it "should set contract user when logged in" do
-        expect(assigns(:contract).user).to eq(@user)
+        expect(assigns(:contract).users.last).to eq(@user)
       end
       it "should redirect to contracts page when saved" do
         assert_response :redirect
@@ -108,38 +108,50 @@ RSpec.describe ContractsController, type: :controller do
   end
 
   describe "GET Show" do
-    before do
-      @contract = create(:contract)
-      process :show, method: :get, params: {id: @contract.id, link: @contract.owner_link}
-    end
-    it "should assign contract variable" do
-      expect(assigns(:contract)).to eq(@contract)
-    end
-    it "should assign user variable" do
-      expect(assigns(:user)).to be_truthy
-    end
-    it "should assign owner variable" do
-      expect(assigns(:owner)).to be_in([true, false])
-    end
-    it "should render show page" do
-      expect(response).to render_template("show")
-    end
+    context "with user signed in" do
+      before do
+        sign_in create(:user)
+        @contract = create(:contract)
+        process :show, method: :get, params: {id: @contract.id, link: @contract.owner_link}
+      end
 
-    context "with owner link" do
-      it "should assign owner variable to true" do
-        expect(assigns(:owner)).to be(true)
+      it "should assign contract variable" do
+        expect(assigns(:contract)).to eq(@contract)
+      end
+      it "should assign owner variable" do
+        expect(assigns(:owner)).to be_in([true, false])
+      end
+      it "should render show page" do
+        expect(response).to render_template("show")
+      end
+
+      context "with owner link" do
+        it "should assign owner variable to true" do
+          expect(assigns(:owner)).to be(true)
+        end
+      end
+
+      context "with regular link" do
+        before do
+          @contract = create(:contract)
+          process :show, method: :get, params: {id: @contract.id, link: @contract.link}
+        end
+        it "should assign owner variable to false" do
+          expect(assigns(:owner)).to be(false)
+        end
       end
     end
 
-    context "with regular link" do
+    context "with out user signed in" do
       before do
         @contract = create(:contract)
-        process :show, method: :get, params: {id: @contract.id, link: @contract.link}
+        process :show, method: :get, params: {id: @contract.id, link: @contract.owner_link}
       end
-      it "should assign owner variable to false" do
-        expect(assigns(:owner)).to be(false)
+      it "should render new user registrations page" do
+        expect(response).to render_template("users/registrations/new")
       end
     end
+    
   end
 
 

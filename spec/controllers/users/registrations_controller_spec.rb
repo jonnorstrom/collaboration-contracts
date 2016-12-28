@@ -42,9 +42,6 @@ RSpec.describe Users::RegistrationsController, type: :controller do
       it "should render new user template" do
         expect(response).to render_template("new")
       end
-      xit "should flash errors" do
-        expect(flash[:alert]).to eq(["",""])
-      end
     end
   end
 

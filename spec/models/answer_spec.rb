@@ -91,19 +91,4 @@ RSpec.describe Answer, type: :model do
       end
   end
 
-  xdescribe "contract_owner?(user)" do
-      before do
-        @answer = create(:answer)
-        @user = @answer.user
-        @bad_user = create(:user)
-      end
-      it "should return true if user is contract owner" do
-        UserContract.where(user_id: @user.id, contract_id: @answer.contract.id).first.update(owner: true)
-        expect(@answer.contract_owner?(@user)).to be true
-      end
-      it "should return false if user != contract owner" do
-        expect(@answer.contract_owner?(@bad_user)).to be false
-      end
-  end
-
 end
