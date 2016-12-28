@@ -12,7 +12,7 @@ RSpec.describe User, type: :model do
 
   describe "users_name" do
     before do
-      @user = build(:user)
+      @user = create(:user)
     end
     it "should return a string" do
       expect(@user.users_name.class).to be(String)
