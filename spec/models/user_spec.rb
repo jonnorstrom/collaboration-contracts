@@ -7,7 +7,9 @@ RSpec.describe User, type: :model do
       @user = build(:user)
     end
 
-    it{should have_many(:contracts)}
+    it{ should have_many(:user_contracts) }
+    it{ should have_many(:contracts).through(:user_contracts) }
+
   end
 
   describe "users_name" do

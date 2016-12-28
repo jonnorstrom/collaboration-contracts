@@ -1,0 +1,6 @@
+class AddUserIdColumToAnswers < ActiveRecord::Migration[5.0]
+  def change
+    add_column :answers, :user_id, :integer
+    remove_column :answers, :name
+  end
+end

@@ -9,13 +9,14 @@ RSpec.describe Answer, type: :model do
     end
 
     it {should belong_to(:decision)}
+    it {should belong_to(:user)}
 
     it "is valid with valid attributes" do
       expect(@answer).to be_valid
     end
 
-    it "is not valid without name" do
-      @answer.name = nil
+    it "is not valid without user_id" do
+      @answer.user_id = nil
       expect(@answer).to_not be_valid
     end
     it "is not valid without answer" do
@@ -33,10 +34,10 @@ RSpec.describe Answer, type: :model do
     before do
       @answer = create(:answer)
       @type = @answer.answer
-      @user = {name: "Joe Shmo", id: @answer.contract.user_id}
+      @user = @answer.user
     end
       it "should return an array" do
-        expect(Answer.find_all_names(@type, Answer.all, @user)).to eq(@user[:name])
+        expect(Answer.find_all_names(@type, Answer.all, @user)).to eq(@user.users_name)
       end
   end
 
@@ -58,19 +59,17 @@ RSpec.describe Answer, type: :model do
   describe ".viewable?(user)" do
     before do
       @answer = create(:answer)
-      @bad_user = {name: "Bad", id: 999}
-      @user = {name: "Joe Shmo", id: @answer.contract.user_id}
+      @bad_user = create(:user)
+      @user = @answer.user
     end
     it "should return true if contract reviewable" do
       @answer.contract.update(reviewable: true)
       expect(@answer.viewable?(@bad_user)).to be_truthy
     end
     it "should return true if it is user's answer" do
-      @user[:id] = 0
       expect(@answer.viewable?(@user)).to be_truthy
     end
     it "should return true if user is contract owner" do
-      @user[:name] = "whoever"
       expect(@answer.viewable?(@user)).to be_truthy
     end
     it "should return false if user is not contract owner, answer owner & contract is not reviewable" do
@@ -81,28 +80,29 @@ RSpec.describe Answer, type: :model do
   describe "user_answer?(user)" do
       before do
         @answer = create(:answer)
-        @user = {name: "Joe Shmo", id: @answer.contract.user_id}
+        @user = @answer.user
+        @bad_user = create(:user)
       end
-      it "should return true if answer.name == username" do
+      it "should return true if answer is current users" do
         expect(@answer.user_answer?(@user)).to be true
       end
-      it "should return false if answer.name != username" do
-        @user[:name] = "whoever"
-        expect(@answer.user_answer?(@user)).to be false
+      it "should return false if answer is not current users" do
+        expect(@answer.user_answer?(@bad_user)).to be false
       end
   end
 
-  describe "contract_owner?(user)" do
+  xdescribe "contract_owner?(user)" do
       before do
         @answer = create(:answer)
-        @user = {name: "Joe Shmo", id: @answer.contract.user_id}
+        @user = @answer.user
+        @bad_user = create(:user)
       end
-      it "should return true if user.id == contract.user_id" do
+      it "should return true if user is contract owner" do
+        UserContract.where(user_id: @user.id, contract_id: @answer.contract.id).first.update(owner: true)
         expect(@answer.contract_owner?(@user)).to be true
       end
-      it "should return false if user.id != contract.user_id" do
-        @user[:id] = 0
-        expect(@answer.contract_owner?(@user)).to be false
+      it "should return false if user != contract owner" do
+        expect(@answer.contract_owner?(@bad_user)).to be false
       end
   end
 

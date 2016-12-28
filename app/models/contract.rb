@@ -2,24 +2,23 @@ class Contract < ApplicationRecord
   validates :title, presence: true
   validates :link, presence: true
   validates :owner_link, presence: true
-  validates :user_id, presence: true
+  # validates :user_id, presence: true
 
   has_many :decisions
-  belongs_to :user
+  has_many :user_contracts
+  has_many :users, through: :user_contracts
 
-  def owner?(user_id)
-    self.user_id == user_id
+  def owner?(user)
+    self.user_contracts.where(owner: true).include? UserContract.where(user_id: user.id, contract_id: self.id).first
   end
 
   def self.find_which_by(params)
     Contract.find_by_link(params) || Contract.find_by_owner_link(params)
   end
 
-  def find_or_set_owner(hash_link, user_id)
+  def set_user_contract(hash_link, user)
     if hash_link == self.owner_link
-      return true
-    else
-      return self.owner?(user_id)
+      self.set_owner(user)
     end
   end
 
@@ -31,4 +30,11 @@ class Contract < ApplicationRecord
     Contract.find_by(id: params[:id], owner_link: params[:link])
   end
 
+  def set_owner(user)
+    if @user_contract = UserContract.where(user_id: user.id, contract_id: self.id).first
+      @user_contract.update(owner: true)
+    else
+      UserContract.create_owner_join(user, self)
+    end
+  end
 end

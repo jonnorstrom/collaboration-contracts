@@ -5,7 +5,7 @@ class AnswersController < ApplicationController
   end
 
   def create
-    @answer = Answer.where(name: answer_params[:name], decision_id: answer_params[:decision_id]).first rescue nil
+    @answer = Answer.where(user_id: answer_params[:user_id], decision_id: answer_params[:decision_id]).first rescue nil
     if @answer.blank?
       @answer = Answer.new(answer_params)
     else
@@ -13,7 +13,6 @@ class AnswersController < ApplicationController
     end
 
     if @answer.save
-      session[:name] = @answer.name
       @contract_id = @answer.decision.contract_id
       redirect_to "/contracts/#{@contract_id}/#{@answer.contract.link}"
     end
@@ -22,6 +21,6 @@ class AnswersController < ApplicationController
 
   private
   def answer_params
-    params.require(:answer).permit(:name, :answer, :decision_id)
+    params.require(:answer).permit(:user_id, :answer, :decision_id)
   end
 end
