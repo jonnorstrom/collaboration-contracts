@@ -5,4 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :contracts
+
+  def users_name
+    "#{self.first_name} #{self.last_name[0].capitalize}."
+  end
+
 end

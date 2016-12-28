@@ -9,19 +9,16 @@ class ContractsController < ApplicationController
     @contract = Contract.new(contract_params)
     @contract = make_links(@contract)
 
-    if session[:user_id]
-      @contract.user_id = session[:user_id]
+    if user_signed_in?
+      @contract.user = current_user
+      if @contract.save
+        redirect_to "/contracts/#{@contract.id}/#{@contract.link}"
+      else
+        @error_messages = @contract.errors.full_messages
+        render "home/index"
+      end
     else
-      @user = User.create
-      @contract.user_id = @user.id
-      session[:user_id] = @user.id
-    end
-
-    if @contract.save
-      redirect_to "/contracts/#{@contract.id}/#{@contract.link}"
-    else
-      @error_messages = @contract.errors.full_messages
-      render "home/index"
+      render "users/sessions/new"
     end
   end
 
