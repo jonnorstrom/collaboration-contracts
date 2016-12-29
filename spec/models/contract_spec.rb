@@ -38,10 +38,10 @@ RSpec.describe Contract, type: :model do
       @user = @user_contract.user
     end
 
-    it "returns false if user is not an owner" do
+    it "should return false if user is not an owner" do
       expect(@contract.owner?(create(:user))).to eq(false)
     end
-    it "returns true if user is an owner" do
+    it "should return true if user is an owner" do
       expect(@contract.owner?(@user)).to eq(true)
     end
   end
@@ -52,19 +52,19 @@ RSpec.describe Contract, type: :model do
       @contract_id = @contract.id
     end
 
-    it "returns nothing without correct link or id" do
+    it "should return nothing without correct link or id" do
       expect(Contract.find_which_by({id: 3, link: "0"})).to eq(nil)
     end
-    it "returns nothing without correct link" do
+    it "should return nothing without correct link" do
       expect(Contract.find_which_by({id: @contract_id, link: "0"})).to eq(nil)
     end
-    it "returns nothing without correct id" do
+    it "should return nothing without correct id" do
       expect(Contract.find_which_by({id: @contract_id+1, link: @contract.link})).to eq(nil)
     end
-    it "returns contract matching id and owner_link" do
+    it "should return contract matching id and owner_link" do
       expect(Contract.find_which_by({id: @contract_id, link: @contract.owner_link})).to eq(@contract)
     end
-    it "returns contract matching id and link" do
+    it "should return contract matching id and link" do
       expect(Contract.find_which_by({id: @contract_id, link: @contract.link})).to eq(@contract)
     end
   end
@@ -76,7 +76,7 @@ RSpec.describe Contract, type: :model do
       @user = create(:user)
     end
 
-    it "sets user to owner if link is owner_link" do
+    it "should set user to owner if link is owner_link" do
       @contract.set_user_contract(@contract.owner_link, @user)
       expect(@contract.owner?(@user)).to eq(true)
     end

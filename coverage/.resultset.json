@@ -862,6 +862,8 @@
         1,
         7,
         6,
+        1,
+        1,
         null,
         null,
         null,
@@ -961,6 +963,14 @@
         1,
         12,
         null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        null,
         null
       ],
       "/Users/SeanNorton/collaboration-contracts/spec/models/user_spec.rb": [
@@ -993,6 +1003,6 @@
         null
       ]
     },
-    "timestamp": 1482966153
+    "timestamp": 1483040491
   }
 }

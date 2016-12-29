@@ -19,6 +19,8 @@ class Contract < ApplicationRecord
   def set_user_contract(hash_link, user)
     if hash_link == self.owner_link
       self.set_owner(user)
+    elsif hash_link == self.link
+      UserContract.find_or_create_by(user_id: user.id, contract_id: self.id)
     end
   end
 
