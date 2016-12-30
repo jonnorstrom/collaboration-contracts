@@ -25,12 +25,13 @@ class ContractsController < ApplicationController
   def update
     @contract = Contract.find_by(id: params[:id], owner_link: params[:link])
     if params[:task] == "review"
-      @contract.toggle(:reviewable)
+      @contract.toggle_review
     elsif params[:task] == "complete"
-      @contract.toggle(:complete)
+      @contract.toggle_complete
     end
     @contract.save
-    redirect_to "/contracts/#{@contract.id}/#{@contract.link}"
+    # redirect_to "/contracts/#{@contract.id}/#{@contract.link}"
+    redirect_to :back
   end
 
   def show

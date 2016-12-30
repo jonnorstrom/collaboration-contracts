@@ -1,18 +1,19 @@
-<div class="container row">
-  <div class="col-sm-6">
-    <h1>Owner</h1>
-    <%@owner_contracts.each do |contract|%>
-      <div class="contract_links">
-        <%=link_to "#{contract.title}", "/contracts/#{contract.id}/#{contract.link}"%>
-      </div>
-    <%end%>
+<div class="container dashboard">
+
+  <%=render 'contracts/lg_new_button'%>
+
+  <div class="owner_contracts col-xs-12">
+    <h1 class="text-center">Owner</h1>
+      <%@owner_contracts.each do |contract|%>
+        <%= render 'contracts/owner_dashboard_show', :@contract => contract %>
+      <%end%>
+    </div>
+
+  <div class="collab_contract col-xs-12">
+    <h1 class="text-center">Collaborator</h1>
+      <%@contracts.each do |contract|%>
+        <%= render 'contracts/collab_dashboard_show', :@contract => contract %>
+      <%end%>
   </div>
-  <div class="col-sm-6">
-    <h1>Collaborator</h1>
-    <%@contracts.each do |contract|%>
-      <div class="contract_links">
-        <%=link_to "#{contract.title}", "/contracts/#{contract.id}/#{contract.link}"%>
-      </div>
-    <%end%>
-  </div>
+
 </div>

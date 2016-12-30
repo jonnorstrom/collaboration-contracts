@@ -1,0 +1,46 @@
+<div class="contract_link_box col-lg-3 col-md-4 col-sm-6 col-xs-12">
+  <div class="contract_card">
+
+    <div class="contract_card_header">
+      <p class="title_text">
+        <a href="<%= "/contracts/#{@contract.id}/#{@contract.link}" %>">
+          <%= @contract.title %>
+        </a>
+      </p>
+      <p class="theme_text"><%= @contract.theme %></p>
+      <hr>
+    </div>
+
+    <div class="contract_card_body">
+      <p class="collaborators_text">On this contract:</p>
+      <span class="user_list">
+        <% @contract.users.each do |user| %>
+          <% if user.users_name == current_user.users_name %>
+            You,
+          <% else %>
+            <%= user.users_name.chomp(".") %>,
+          <% end %>
+        <% end %>
+      </span>
+    </div>
+
+    <hr>
+
+    <div class="contract_card_footer">
+      <div class="row">
+        <% if @contract.complete %>
+          Contract is closed
+        <% else %>
+          Contract is open
+        <% end %>
+
+        <% if @contract.reviewable %>
+          and reviewable
+        <% else %>
+          and non-reviewable
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+</div>

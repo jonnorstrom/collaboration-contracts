@@ -24,6 +24,14 @@ class Contract < ApplicationRecord
     end
   end
 
+  def toggle_complete
+    self.toggle(:complete)
+  end
+  
+  def toggle_review
+    self.toggle(:reviewable)
+  end
+
   def self.find_by_link(params)
     Contract.find_by(id: params[:id], link: params[:link])
   end
