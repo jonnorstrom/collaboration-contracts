@@ -1,0 +1,18 @@
+<div class="container row">
+  <div class="col-sm-6">
+    <h1>Owner</h1>
+    <%@owner_contracts.each do |contract|%>
+      <div class="contract_links">
+        <%=link_to "#{contract.title}", "/contracts/#{contract.id}/#{contract.link}"%>
+      </div>
+    <%end%>
+  </div>
+  <div class="col-sm-6">
+    <h1>Collaborator</h1>
+    <%@contracts.each do |contract|%>
+      <div class="contract_links">
+        <%=link_to "#{contract.title}", "/contracts/#{contract.id}/#{contract.link}"%>
+      </div>
+    <%end%>
+  </div>
+</div>

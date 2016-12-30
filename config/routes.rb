@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
 
   get 'home/index'
   root 'home#index'
+
+  devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
+  get 'users/dashboard', to: "users#dashboard", as: 'user_dashboard'
 
   get 'contracts/new'
   get 'contracts/index'
