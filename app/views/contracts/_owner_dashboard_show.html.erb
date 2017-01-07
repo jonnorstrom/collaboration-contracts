@@ -1,4 +1,4 @@
-<div class="contract_link_box col-lg-3 col-md-4 col-sm-6 col-xs-12">
+<div class="contract_link_box grid-item">
   <div class="contract_card">
 
     <div class="contract_card_header">
@@ -14,35 +14,30 @@
     <div class="contract_card_body">
       <p class="collaborators_text">On this contract:</p>
       <span class="user_list">
-        <% @contract.users.each do |user| %>
-          <% if user.users_name == current_user.users_name %>
-            You,
-          <% else %>
-            <%= user.users_name.chomp(".") %>,
-          <% end %>
-        <% end %>
+        <%= @contract.user_list(current_user) %>
       </span>
     </div>
 
     <hr>
 
     <div class="contract_card_footer">
-      <div class="row">
-        <% if @contract.complete %>
-          <div class="button_container col-sm-6">
-            <%= link_to "Open This Contract", contracts_update_path(:id=>@contract.id, :link=>@contract.owner_link, :task=>"complete"), :method=>:post, :class=>"col-xs-12 btn btn-primary btn-xs" %>
-          </div>
-        <% else %>
-          <div class="button_container col-sm-6">
-            <%= link_to "Close This Contract", contracts_update_path(:id=>@contract.id, :link=>@contract.owner_link, :task=>"complete"), :method=>:post, :class=>"col-xs-12 btn btn-primary btn-xs" %>
-          </div>
-        <% end %>
+      <div class="button_container">
+          <% if @contract.complete %>
+              <%= link_to "<i class='fa fa-lock' aria-hidden='true'></i>".html_safe, contracts_update_path(:id=>@contract.id, :link=>@contract.owner_link, :task=>"complete"), :method=>:post, :class=>"btn btn-primary" %>
+          <% else %>
+            <%= link_to "<i class='fa fa-unlock-alt' aria-hidden='true'></i>".html_safe, contracts_update_path(:id=>@contract.id, :link=>@contract.owner_link, :task=>"complete"), :method=>:post, :class=>"btn btn-primary" %>
+          <% end %>
 
-        <% if @contract.reviewable %>
-          <div class="button_container col-sm-6"><button class="col-xs-12 btn btn-primary btn-xs">Turn Review Off</button></div>
-        <% else %>
-        <div class="button_container col-sm-6"><button class="col-xs-12 btn btn-primary btn-xs">Turn Review On</button></div>
-        <% end %>
+          <% if @contract.reviewable %>
+            <%= link_to "<i class='fa fa-users' aria-hidden='true'></i>".html_safe, contracts_update_path(:id=>@contract.id, :link=>@contract.owner_link, :task=>"review"), :method=>:post, :class=>"btn btn-primary" %>
+          <% else %>
+            <%= link_to "<i class='fa fa-user' aria-hidden='true'></i>".html_safe, contracts_update_path(:id=>@contract.id, :link=>@contract.owner_link, :task=>"review"), :method=>:post, :class=>"btn btn-primary" %>
+          <% end %>
+
+          <%= link_to "<i class='fa fa-trash-o' aria-label='Delete'></i>".html_safe, contracts_delete_path(:contract_id=>@contract.id ), :method => :delete, :class => "btn btn-danger", :data => {:confirm => 'Are you sure?'} %>
+          <!-- <a class="btn btn-danger" href="path/to/settings" aria-label="Delete">
+            <i class="fa fa-trash-o" aria-hidden="true"></i>
+          </a> -->
       </div>
     </div>
 

@@ -30,8 +30,7 @@ class ContractsController < ApplicationController
       @contract.toggle_complete
     end
     @contract.save
-    # redirect_to "/contracts/#{@contract.id}/#{@contract.link}"
-    redirect_to :back
+    redirect_to "/contracts/#{@contract.id}/#{@contract.link}"
   end
 
   def show
@@ -42,6 +41,11 @@ class ContractsController < ApplicationController
       @contract.set_user_contract(params[:link], current_user)
       @owner = @contract.owner?(current_user)
     end
+  end
+
+  def destroy
+    Contract.find(params[:contract_id]).destroy
+    redirect root_path
   end
 
   private

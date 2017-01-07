@@ -1,7 +1,20 @@
-<div class="contract_link_box col-lg-3 col-md-4 col-sm-6 col-xs-12">
+<div class="contract_link_box grid-item">
   <div class="contract_card">
 
     <div class="contract_card_header">
+      <div class="collab_icons">
+        <% if @contract.complete %>
+          <i class='fa fa-lg fa-lock' aria-hidden='true'></i>
+        <% else %>
+          <i class='fa fa-lg fa-unlock-alt' aria-hidden='true'></i>
+        <% end %>
+
+        <% if @contract.reviewable %>
+           <i class='fa fa-lg fa-users' aria-hidden='true'></i>
+        <% else %>
+          <i class='fa fa-lg fa-user' aria-hidden='true'></i>
+        <% end %>
+      </div>
       <p class="title_text">
         <a href="<%= "/contracts/#{@contract.id}/#{@contract.link}" %>">
           <%= @contract.title %>
@@ -14,33 +27,13 @@
     <div class="contract_card_body">
       <p class="collaborators_text">On this contract:</p>
       <span class="user_list">
-        <% @contract.users.each do |user| %>
-          <% if user.users_name == current_user.users_name %>
-            You,
-          <% else %>
-            <%= user.users_name.chomp(".") %>,
-          <% end %>
-        <% end %>
+        <%= @contract.user_list(current_user) %>
       </span>
     </div>
 
-    <hr>
-
+    <!-- <hr>
     <div class="contract_card_footer">
-      <div class="row">
-        <% if @contract.complete %>
-          Contract is closed
-        <% else %>
-          Contract is open
-        <% end %>
-
-        <% if @contract.reviewable %>
-          and reviewable
-        <% else %>
-          and non-reviewable
-        <% end %>
-      </div>
-    </div>
+    </div> -->
 
   </div>
 </div>
