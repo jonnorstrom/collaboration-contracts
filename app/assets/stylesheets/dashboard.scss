@@ -1,0 +1,99 @@
+.dashboard {
+  margin-bottom: 10%;
+  margin-top: 0;
+  .btn-lg {
+    margin-top: 0;
+  }
+  .owner_contracts {
+    margin-top: 70px;
+  }
+  .grid {
+  margin: 0 auto;
+  margin-top: 40px;
+  }
+  .grid-item {
+    width: 350px;
+    margin-bottom: 1px;
+  }
+  .contract_link_box {
+    padding: 8px !important;
+    margin-top: 8px;
+
+    .contract_card {
+      background-color: #fff;
+      color: black;
+      padding: 5px;
+      border-radius: 8px;
+      -webkit-box-shadow: 4px 4px 11px -1px rgba(0,0,0,0.23);
+      -moz-box-shadow: 4px 4px 11px -1px rgba(0,0,0,0.23);
+      box-shadow: 4px 4px 11px -1px rgba(0,0,0,0.23);
+      hr {
+        margin-top: 10px;
+        margin-bottom: 3px;
+      }//hr
+
+      .contract_card_header {
+        .title_text {
+          text-align: center;
+          font-size: 1.3em;
+          font-weight: 400;
+          margin-bottom: 0;
+          a {
+            text-decoration: none;
+          }
+        }//end title
+        .theme_text {
+          text-align: center;
+          font-size: .9em;
+          font-weight: 200;
+        }
+      }//end header
+
+      .contract_card_body {
+        padding-right: 10px;
+        padding-left: 10px;
+
+        .collaborators_text {
+          font-weight: 200;
+          font-size: .8em;
+          margin-bottom: 0px;
+          margin-left: -5px;
+        }
+        .user_list {
+          font-size: .9em;
+          font-weight: 400;
+        }
+      }//end body
+      .contract_card_footer {
+        padding-right: 10px;
+        padding-left: 10px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        .button_container {
+          width: 125px;
+          margin: auto;
+          .btn {
+            padding-top:5px;
+            padding-bottom:5px;
+            margin-top: 0px;
+          }
+        }
+      }//end footer
+
+    }//end contract_card
+  }//end contract_link_box
+  .collab_contract {
+
+    .collab_icons {
+      color: grey;
+      float: right;
+      i {
+        padding-left: 3px;
+      }
+    }
+    .contract_card_footer {
+      font-size: .8em;
+      text-align: center;
+    }
+  }
+}//end dashboard

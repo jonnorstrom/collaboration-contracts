@@ -6,6 +6,7 @@ gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 gem 'pg', '~> 0.18'
 # Use bootstrap-sass for styles
 gem 'bootstrap-sass', '~> 3.2.0'
+gem 'font-awesome-rails', '~> 4.5'
 gem 'autoprefixer-rails'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'

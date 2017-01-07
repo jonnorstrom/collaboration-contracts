@@ -1,18 +1,25 @@
-<div class="container row">
-  <div class="col-sm-6">
-    <h1>Owner</h1>
-    <%@owner_contracts.each do |contract|%>
-      <div class="contract_links">
-        <%=link_to "#{contract.title}", "/contracts/#{contract.id}/#{contract.link}"%>
-      </div>
-    <%end%>
+<div class="container dashboard">
+
+  <%=render 'contracts/lg_new_button'%>
+
+  <div class="owner_contracts">
+    <h1 class="text-center">Owner</h1>
+    <div class="grid">
+      <%@owner_contracts.each do |contract|%>
+        <%= render 'contracts/owner_dashboard_show', :@contract => contract %>
+      <%end%>
+    </div>
   </div>
-  <div class="col-sm-6">
-    <h1>Collaborator</h1>
-    <%@contracts.each do |contract|%>
-      <div class="contract_links">
-        <%=link_to "#{contract.title}", "/contracts/#{contract.id}/#{contract.link}"%>
-      </div>
-    <%end%>
+
+  <div class="collab_contract col-xs-12">
+    <h1 class="text-center">Collaborator</h1>
+    <div class="grid">
+      <%@contracts.each do |contract|%>
+        <%= render 'contracts/collab_dashboard_show', :@contract => contract %>
+      <%end%>
+    </div>
   </div>
+
 </div>
+
+<script src="https://unpkg.com/masonry-layout@4.1/dist/masonry.pkgd.min.js"></script>

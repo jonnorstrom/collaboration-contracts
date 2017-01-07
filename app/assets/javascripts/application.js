@@ -19,7 +19,15 @@
 //= require_tree .
 //= require clipboard
 
-$(document).ready(function(){
+$(document).on('turbolinks:load',function(){
   var clip = new Clipboard('.clip');
+
+  $('.grid').masonry({
+    itemSelector: '.grid-item',
+    fitWidth: true,
+    transitionDuration: '0.5s',
+    columnWidth: 350,
+    gutter: 0
+  });
 
 });

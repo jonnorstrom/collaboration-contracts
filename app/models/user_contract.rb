@@ -8,10 +8,10 @@ class UserContract < ApplicationRecord
   end
 
   def self.owner_contracts(current_user)
-    current_user.contracts.select {|contract| contract.owner?(current_user)}
+    current_user.contracts.select {|contract| contract.owner?(current_user)}.sort! { |a,b| a.id <=> b.id }
   end
 
   def self.users_contracts(current_user)
-    current_user.contracts.select {|contract| !contract.owner?(current_user)}
+    current_user.contracts.select {|contract| !contract.owner?(current_user)}.sort! { |a,b| a.id <=> b.id }
   end
 end
