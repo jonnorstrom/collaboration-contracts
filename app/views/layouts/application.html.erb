@@ -19,19 +19,23 @@
             <span class="icon-bar"></span>
           </button>
           <!-- brand -->
-          <%= link_to "Collaboration Contracts", root_path, class: "navbar-brand" %>
+          <span class="navbar-brand"> Collaboration Contracts </span>
         </div>
         <!-- nav options -->
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
             <li><%= link_to "Home", root_path %></li>
-            <li><%= link_to "New Contract", contracts_new_path %></li>
             <% if current_user %>
-            <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-            <li><%= link_to "#{current_user.users_name}", user_dashboard_path %></li>
+              <li><%= link_to "New Contract", contracts_new_path %></li>
+            <% end %>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <% if current_user %>
+              <li><%= link_to "#{current_user.users_name}", user_dashboard_path %></li>
+              <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
             <% else %>
-            <li><%= link_to "Sign In", new_user_session_path %></li>
-            <li><%= link_to "Sign up", new_user_registration_path %></li>
+              <li><%= link_to "Log In", new_user_session_path %></li>
+              <li><%= link_to "Sign up", new_user_registration_path %></li>
             <% end %>
           </ul>
         </div>

@@ -26,7 +26,7 @@ $(document).on('turbolinks:load',function(){
     itemSelector: '.grid-item',
     fitWidth: true,
     transitionDuration: '0.5s',
-    columnWidth: 350,
+    columnWidth: 320,
     gutter: 0
   });
 
