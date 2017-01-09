@@ -30,7 +30,11 @@ class ContractsController < ApplicationController
       @contract.toggle_complete
     end
     @contract.save
-    redirect_to "/contracts/#{@contract.id}/#{@contract.link}"
+    if params[:refresh] == "false"
+      redirect_to root_path
+    else
+      redirect_to "/contracts/#{@contract.id}/#{@contract.link}"
+    end
   end
 
   def show
