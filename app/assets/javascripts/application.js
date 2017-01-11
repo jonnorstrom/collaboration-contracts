@@ -31,3 +31,13 @@ $(document).on('turbolinks:load',function(){
   });
 
 });
+
+$( document ).ready(function() {
+  $('.grid').masonry({
+    itemSelector: '.grid-item',
+    fitWidth: true,
+    transitionDuration: '0.5s',
+    columnWidth: 320,
+    gutter: 0
+  });
+});
