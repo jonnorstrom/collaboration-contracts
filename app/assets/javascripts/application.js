@@ -14,30 +14,12 @@
 
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+
 //= require bootstrap.min
 //= require_tree .
 //= require clipboard
 
-$(document).on('turbolinks:load',function(){
+
+$(document).ready(function() {
   var clip = new Clipboard('.clip');
-
-  $('.grid').masonry({
-    itemSelector: '.grid-item',
-    fitWidth: true,
-    transitionDuration: '0.5s',
-    columnWidth: 320,
-    gutter: 0
-  });
-
-});
-
-$( document ).ready(function() {
-  $('.grid').masonry({
-    itemSelector: '.grid-item',
-    fitWidth: true,
-    transitionDuration: '0.5s',
-    columnWidth: 320,
-    gutter: 0
-  });
 });

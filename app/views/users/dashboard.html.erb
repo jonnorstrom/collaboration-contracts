@@ -1,10 +1,10 @@
-<div class="container dashboard">
+<div class="container dashboard" id="userDashboardContainer">
 
   <%=render 'contracts/lg_new_button'%>
 
   <div class="owner_contracts">
     <h1 class="text-center">Owner</h1>
-    <div class="grid">
+    <div class="dashboard-grid">
       <%@owner_contracts.each do |contract|%>
         <%= render 'contracts/owner_dashboard_show', :@contract => contract %>
       <%end%>
@@ -13,7 +13,7 @@
 
   <div class="collab_contract">
     <h1 class="text-center">Collaborator</h1>
-    <div class="grid">
+    <div class="dashboard-grid">
       <%@contracts.each do |contract|%>
         <%= render 'contracts/collab_dashboard_show', :@contract => contract %>
       <%end%>

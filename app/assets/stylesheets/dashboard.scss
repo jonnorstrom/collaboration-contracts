@@ -7,14 +7,15 @@
   .owner_contracts {
     margin-top: 70px;
   }
-  .grid {
+  .dashboard-grid {
   margin: 0 auto;
   margin-top: 40px;
+    .grid-item {
+      // width: 320px;
+      margin-bottom: 1px;
+    }
   }
-  .grid-item {
-    width: 320px;
-    margin-bottom: 1px;
-  }
+
   .contract_link_box {
     padding: 8px !important;
     margin-top: 8px;

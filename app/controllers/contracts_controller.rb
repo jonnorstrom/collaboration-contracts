@@ -49,7 +49,7 @@ class ContractsController < ApplicationController
 
   def destroy
     Contract.find(params[:contract_id]).destroy
-    redirect root_path
+    redirect_to root_path
   end
 
   private
