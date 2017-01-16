@@ -151,8 +151,17 @@ RSpec.describe ContractsController, type: :controller do
         expect(response).to render_template("users/registrations/new")
       end
     end
-    
+
   end
 
+  describe "destroy" do
+    before do
+      @contract = create(:contract)
+      process :destroy, method: :delete, params: {contract_id: @contract.id}
+    end
+    it "should redirect_to root_path" do
+      assert_response :redirect
+    end
+  end
 
 end
