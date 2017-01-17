@@ -8,7 +8,6 @@ class ContractsController < ApplicationController
   def create
     @contract = Contract.new(contract_params)
     @contract = make_links(@contract)
-
     if user_signed_in?
       if @contract.save
         UserContract.create_owner_join(current_user, @contract)

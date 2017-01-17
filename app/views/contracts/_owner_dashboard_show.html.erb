@@ -23,7 +23,7 @@
     <div class="contract_card_footer">
       <div class="button_container">
           <% if @contract.complete %>
-              <%= link_to "<i class='fa fa-lock' aria-hidden='true'></i>".html_safe, contracts_update_path(:id=>@contract.id, :link=>@contract.owner_link, :task=>"complete", :refresh => "false"), :method=>:post, :class=>"btn btn-primary" %>
+              <%= link_to "<i class='fa fa-lock' aria-hidden='true'></i>".html_safe, contracts_update_path(:id=>@contract.id, :link=>@contract.owner_link, :task=>"complete", :refresh => "false"), :method=>:post, :class=>"btn btn-primary unlock" %>
           <% else %>
             <%= link_to "<i class='fa fa-unlock-alt' aria-hidden='true'></i>".html_safe, contracts_update_path(:id=>@contract.id, :link=>@contract.owner_link, :task=>"complete", :refresh => "false"), :method=>:post, :class=>"btn btn-primary" %>
           <% end %>
