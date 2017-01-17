@@ -14,7 +14,7 @@
     <!-- modal body -->
     <div class="modal-body">
       <div class="form">
-        <%= form_for :contract, url: contracts_path do |f| %>
+        <%= form_for :contract, id: "contract_form", url: contracts_path do |f| %>
           <div class="form-group">
             <%= f.label :title %><br>
             <%= f.text_field :title, placeholder: "Contract Title", class: "form-control", required: true %>

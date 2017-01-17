@@ -18,9 +18,4 @@ $(document).ready(function() {
       columnWidth: width
     });
   };
-
-  $('.btn').click(function(event){
-    event.preventDefault();
-  });
-
 });
