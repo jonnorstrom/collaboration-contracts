@@ -35,9 +35,6 @@
           <% end %>
 
           <%= link_to "<i class='fa fa-trash-o' aria-label='Delete'></i>".html_safe, contracts_delete_path(:contract_id=>@contract.id ), :method => :delete, :class => "btn btn-danger", :data => {:confirm => 'Are you sure?'} %>
-          <!-- <a class="btn btn-danger" href="path/to/settings" aria-label="Delete">
-            <i class="fa fa-trash-o" aria-hidden="true"></i>
-          </a> -->
       </div>
     </div>
 
