@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   protect_from_forgery with: :exception
-  after_filter :store_action
+  after_action :store_action
 
     def store_action #saves path before redirect to sign_in or log_in
       return unless request.get?
