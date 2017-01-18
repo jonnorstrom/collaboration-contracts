@@ -1,26 +1,24 @@
 <div class="container">
+
   <div class="row contract-header">
     <div class="row">
       <!-- contract links  -->
-      <div class="text-center col-xs-4">
+      <div class="text-center col-sm-4">
         <%= render 'contracts/link' %>
         <% if @owner %> <%= render 'contracts/owner_link' %> <% end %>
       </div>
-      <!-- contract title  -->
-      <h2 class="col-xs-4 text-center"><%= @contract.title %></h2>
+      <!-- contract title & theme -->
+      <div class="col-sm-4 text-center"><h2><%= @contract.title %></h2><hr style="height:0pt; margin:0pt; visibility:hidden;" /><%= @contract.theme %></div>
       <!-- owner options (review & complete) -->
       <% if @owner %>
         <% @contract.reviewable ? @status = "ON" : @status = "OFF" %>
         <% @contract.complete ? @complete = "Open" : @complete = "Close" %>
-        <h5 class="col-xs-4 text-center">Team Review is <%= link_to @status, contracts_update_path(:id=>@contract.id, :link=>@contract.owner_link, :task=>"review"), :method=>:post %></h5>
-        <h5 class="col-xs-4 text-center"><%= link_to "#{@complete} Contract", contracts_update_path(:id=>@contract.id, :link=>@contract.owner_link, :task=>"complete"), :method=>:post %></h5>
+        <h5 class="col-sm-4 text-center">Team Review is <%= link_to @status, contracts_update_path(:id=>@contract.id, :link=>@contract.owner_link, :task=>"review"), :method=>:post %></h5>
+        <h5 class="col-sm-4 text-center"><%= link_to "#{@complete} Contract", contracts_update_path(:id=>@contract.id, :link=>@contract.owner_link, :task=>"complete"), :method=>:post %></h5>
       <% end %>
     </div>
-    <!-- contract theme -->
-    <div class="row">
-      <p class="text-center"><%= @contract.theme %></p>
-    </div>
   </div>
+
   <!-- render decisions -->
   <% if @contract.decisions %>
       <%= render 'decisions/show', :@decisions => @contract.decisions.order('id'), :@user => current_user, :@owner => @owner %>

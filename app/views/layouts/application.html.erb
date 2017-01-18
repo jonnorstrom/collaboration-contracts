@@ -7,11 +7,13 @@
     <script src="https://use.fontawesome.com/a0f97c16fd.js"></script>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <script src="https://unpkg.com/masonry-layout@4.1/dist/masonry.pkgd.min.js"></script>
   </head>
   <body style="">
     <nav class="navbar navbar-inverse navbar-static-top">
       <div class="container-fluid">
         <div class="navbar-header">
+
           <!-- hamburger button -->
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="icon-bar"></span>
@@ -19,19 +21,19 @@
             <span class="icon-bar"></span>
           </button>
           <!-- brand -->
-          <span class="navbar-brand"> Collaboration Contracts </span>
+          <%= link_to "Collaboration Contracts", root_path, class:"navbar-brand" %>
         </div>
         <!-- nav options -->
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
-            <li><%= link_to "Home", root_path %></li>
+            <!-- <li><%= link_to "Home", root_path %></li> -->
             <% if current_user %>
               <li><%= link_to "New Contract", contracts_new_path %></li>
             <% end %>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <% if current_user %>
-              <li><%= link_to "#{current_user.users_name}", user_dashboard_path %></li>
+              <li><%= link_to "<i class='fa fa-dashboard' aria-hidden='true'></i> #{current_user.users_name}".html_safe, root_path %></li>
               <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
             <% else %>
               <li><%= link_to "Log In", new_user_session_path %></li>

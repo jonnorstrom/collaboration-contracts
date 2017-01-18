@@ -38,7 +38,7 @@ class ContractsController < ApplicationController
 
   def show
     if !current_user
-      render "users/registrations/new"
+      render "users/sessions/new"
     else
       @contract = Contract.find_which_by(params)
       @contract.set_user_contract(params[:link], current_user)
