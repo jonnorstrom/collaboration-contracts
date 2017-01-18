@@ -1,4 +1,15 @@
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
+  var sPath = window.location.pathname;
+  var sPage = sPath.substring(sPath.lastIndexOf('/') + 1);
+
+  if(sPage == "dashboard") {
+    setUpMasonryGrid()
+  };
+
+});
+
+
+function setUpMasonryGrid(){
   window.addEventListener("resize", columnWidthFinder);
 
   columnWidthFinder();
@@ -18,4 +29,4 @@ $(document).ready(function() {
       columnWidth: width
     });
   };
-});
+}

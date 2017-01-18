@@ -14,12 +14,12 @@
 
 //= require jquery
 //= require jquery_ujs
-
+//= require turbolinks
 //= require bootstrap.min
 //= require_tree .
 //= require clipboard
 
 
-$(document).ready(function() {
+$( document ).on('turbolinks:load', function(){
   var clip = new Clipboard('.clip');
 });

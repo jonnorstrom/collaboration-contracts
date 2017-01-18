@@ -148,7 +148,7 @@ RSpec.describe ContractsController, type: :controller do
         process :show, method: :get, params: {id: @contract.id, link: @contract.owner_link}
       end
       it "should render new user registrations page" do
-        expect(response).to render_template("users/registrations/new")
+        expect(response).to render_template("users/sessions/new")
       end
     end
 
