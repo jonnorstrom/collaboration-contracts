@@ -11,10 +11,12 @@
       <div class="col-sm-4 text-center"><h2><%= @contract.title %></h2><hr style="height:0pt; margin:0pt; visibility:hidden;" /><%= @contract.theme %></div>
       <!-- owner options (review & complete) -->
       <% if @owner %>
-        <% @contract.reviewable ? @status = "ON" : @status = "OFF" %>
-        <% @contract.complete ? @complete = "Open" : @complete = "Close" %>
-        <h5 class="col-sm-4 text-center">Team Review is <%= link_to @status, contracts_update_path(:id=>@contract.id, :link=>@contract.owner_link, :task=>"review"), :method=>:post %></h5>
-        <h5 class="col-sm-4 text-center"><%= link_to "#{@complete} Contract", contracts_update_path(:id=>@contract.id, :link=>@contract.owner_link, :task=>"complete"), :method=>:post %></h5>
+        <div class="button_container col-sm-4">
+          <% @contract.reviewable ? @user_icon = "fa-users" : @user_icon = "fa-user" %>
+          <% @contract.complete ? @lock_icon = "fa-lock" : @lock_icon = "fa-unlock-alt" %>
+          <%= link_to "<i class='fa fa-2x btn btn-primary #{@user_icon}' aria-hidden='true', style='min-width: 56px;'></i>".html_safe, contracts_update_path(:id=>@contract.id, :link=>@contract.owner_link, :task=>"review"), :method=>:post  %>
+          <%= link_to "<i class='fa fa-2x btn btn-primary #{@lock_icon}' aria-hidden='true', style='min-width: 56px;'></i>".html_safe, contracts_update_path(:id=>@contract.id, :link=>@contract.owner_link, :task=>"complete"), :method=>:post  %>
+        </div>
       <% end %>
     </div>
   </div>
