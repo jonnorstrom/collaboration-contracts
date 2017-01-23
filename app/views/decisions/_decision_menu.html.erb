@@ -5,7 +5,11 @@
   </div>
   <!-- dropdown menu  -->
   <ul class="dropdown-menu" id="desc_dropdown">
+    <% if Answer.find_by(decision: decision.id, user: current_user) %>
+    <li data-toggle="modal" data-target="#newAnswerModal<%=decision.id%>"><a>Change Answer</a></li>
+    <% else %>
     <li data-toggle="modal" data-target="#newAnswerModal<%=decision.id%>"><a>Answer</a></li>
+    <% end %>
     <%if @owner%>
       <li> <div class="text-left menu_break">Owner</div></li>
       <li data-toggle="modal" data-target="#editDecisionModal<%=decision.id%>"><a>Edit</a></li>
