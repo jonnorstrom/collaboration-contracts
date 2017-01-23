@@ -26,6 +26,15 @@
             <%= link_to "<i class='fa  fa-2x fa-trash-o btn btn-danger'  aria-label='Delete'></i>".html_safe, contracts_delete_path(:contract_id=>@contract.id ), :method => :delete, :data => {:confirm => 'Are you sure?'} %>
           </div>
         </div>
+        <% else %>
+          <div class="button_container col-sm-12">
+            <div class="status_icons">
+              <% @contract.reviewable ? @user_icon = "fa-users" : @user_icon = "fa-user" %>
+              <% @contract.complete ? @lock_icon = "fa-lock" : @lock_icon = "fa-unlock-alt" %>
+              <i class='fa fa-2x <%=@user_icon%>' aria-hidden='true'></i>
+              <i class='fa fa-2x <%=@lock_icon%>' aria-hidden='true'></i>
+            </div>
+          </div>
       <% end %>
     </div>
   </div>
