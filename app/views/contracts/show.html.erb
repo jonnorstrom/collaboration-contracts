@@ -2,19 +2,39 @@
 
   <div class="row contract-header">
     <div class="row">
-      <!-- contract links  -->
-      <div class="text-center col-sm-4">
-        <%= render 'contracts/link' %>
-        <% if @owner %> <%= render 'contracts/owner_link' %> <% end %>
-      </div>
       <!-- contract title & theme -->
-      <div class="col-sm-4 text-center"><h2><%= @contract.title %></h2><hr style="height:0pt; margin:0pt; visibility:hidden;" /><%= @contract.theme %></div>
+      <div class="col-sm-12 text-center">
+        <h2><%= @contract.title %></h2>
+        <%= @contract.theme %>
+      </div>
       <!-- owner options (review & complete) -->
       <% if @owner %>
-        <% @contract.reviewable ? @status = "ON" : @status = "OFF" %>
-        <% @contract.complete ? @complete = "Open" : @complete = "Close" %>
-        <h5 class="col-sm-4 text-center">Team Review is <%= link_to @status, contracts_update_path(:id=>@contract.id, :link=>@contract.owner_link, :task=>"review"), :method=>:post %></h5>
-        <h5 class="col-sm-4 text-center"><%= link_to "#{@complete} Contract", contracts_update_path(:id=>@contract.id, :link=>@contract.owner_link, :task=>"complete"), :method=>:post %></h5>
+        <div class="button_container col-sm-12">
+          <div class="buttons">
+            <div class="dropdown">
+              <i class="fa fa-user-plus fa-2x btn btn-primary" id="new_user_dropdown" data-toggle="dropdown"></i>
+              <div class="dropdown-menu" id="new_user_dropdown">
+                <%= render 'contracts/link' %>
+                <br>
+                <%= render 'contracts/owner_link' %>
+              </div>
+            </div>
+            <% @contract.reviewable ? @user_icon = "fa-users" : @user_icon = "fa-user" %>
+            <% @contract.complete ? @lock_icon = "fa-lock" : @lock_icon = "fa-unlock-alt" %>
+            <%= link_to "<i class='fa fa-2x btn btn-primary #{@user_icon}' aria-hidden='true'></i>".html_safe, contracts_update_path(:id=>@contract.id, :link=>@contract.owner_link, :task=>"review"), :method=>:post  %>
+            <%= link_to "<i class='fa fa-2x btn btn-primary #{@lock_icon}' aria-hidden='true'></i>".html_safe, contracts_update_path(:id=>@contract.id, :link=>@contract.owner_link, :task=>"complete"), :method=>:post  %>
+            <%= link_to "<i class='fa  fa-2x fa-trash-o btn btn-danger'  aria-label='Delete'></i>".html_safe, contracts_delete_path(:contract_id=>@contract.id ), :method => :delete, :data => {:confirm => 'Are you sure?'} %>
+          </div>
+        </div>
+        <% else %>
+          <div class="button_container col-sm-12">
+            <div class="status_icons">
+              <% @contract.reviewable ? @user_icon = "fa-users" : @user_icon = "fa-user" %>
+              <% @contract.complete ? @lock_icon = "fa-lock" : @lock_icon = "fa-unlock-alt" %>
+              <i class='fa fa-2x <%=@user_icon%>' aria-hidden='true'></i>
+              <i class='fa fa-2x <%=@lock_icon%>' aria-hidden='true'></i>
+            </div>
+          </div>
       <% end %>
     </div>
   </div>

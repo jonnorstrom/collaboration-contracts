@@ -26,3 +26,21 @@ body {
 .main_thing {
   background-color: lightgrey;
 }
+
+#text_copy_alert {
+  position: fixed;
+  width: 250px;
+  height: 100px;
+  text-align: center;
+  background-color: white;
+  z-index: 9999;
+  top: 40px;
+  left: 30px;
+  display: none;
+}
+
+#text_copy_alert h5 {
+  color: grey;
+  line-height: 80px;
+  vertical-align: middle;
+}

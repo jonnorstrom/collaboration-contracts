@@ -19,3 +19,21 @@
     margin-bottom: 2px;
   }
 }
+
+.button_container {
+  .buttons{
+    margin:auto;
+    width: 220px;
+  }
+  .status_icons {
+    margin: auto;
+    width: 88px;
+    margin-top: 20px;
+    i {
+      padding: 10px;
+    }
+  }
+  .dropdown {
+  display: inline-block;
+  }
+}
