@@ -2,6 +2,7 @@ class Contract < ApplicationRecord
   validates :title, presence: true
   validates :link, presence: true
   validates :owner_link, presence: true
+  validates :viewer_link, presence: true
   # validates :user_id, presence: true
 
   has_many :decisions, :dependent => :delete_all
@@ -12,8 +13,16 @@ class Contract < ApplicationRecord
     self.user_contracts.where(owner: true).include? UserContract.where(user_id: user.id, contract_id: self.id).first
   end
 
+  def collaborator?(user)
+    self.user_contracts.where(owner:false, viewer: false).include? UserContract.where(user_id: user.id, contract_id: self.id).first
+  end
+  
+  def viewer?(user)
+    self.user_contracts.where(viewer: true).include? UserContract.where(user_id: user.id, contract_id: self.id).first
+  end
+
   def self.find_which_by(params)
-    Contract.find_by_link(params) || Contract.find_by_owner_link(params)
+    Contract.find_by_link(params) || Contract.find_by_owner_link(params) || Contract.find_by_viewer_link(params)
   end
 
   def set_user_contract(hash_link, user)
@@ -21,6 +30,8 @@ class Contract < ApplicationRecord
       self.set_owner(user)
     elsif hash_link == self.link
       UserContract.find_or_create_by(user_id: user.id, contract_id: self.id)
+    elsif hash_link == self.viewer_link
+      UserContract.find_or_create_viewer(user, self)
     end
   end
 
@@ -40,6 +51,10 @@ class Contract < ApplicationRecord
     Contract.find_by(id: params[:id], owner_link: params[:link])
   end
 
+  def self.find_by_viewer_link(params)
+    Contract.find_by(id: params[:id], viewer_link: params[:link])
+  end
+
   def user_list(current_user)
     user_list = []
     self.users.each do |user|
@@ -49,7 +64,7 @@ class Contract < ApplicationRecord
   end
 
   def team_url
-    
+
   end
 
   def set_owner(user)

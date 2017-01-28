@@ -43,6 +43,7 @@ class ContractsController < ApplicationController
       @contract = Contract.find_which_by(params)
       @contract.set_user_contract(params[:link], current_user)
       @owner = @contract.owner?(current_user)
+      @viewer = @contract.viewer?(current_user)
     end
   end
 

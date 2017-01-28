@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     else
       @owner_contracts = UserContract.owner_contracts(current_user)
       @contracts = UserContract.users_contracts(current_user)
+      @viewer_contracts = UserContract.viewer_contracts(current_user)
     end
   end
 
