@@ -5,7 +5,7 @@
     <% @decisions.each do |decision| %>
       <div class="row" id="decision_data">
         <!-- decision description and/or dropdown  -->
-        <% if !decision.contract.complete %>
+        <% if !decision.contract.complete && @viewer == false %>
           <%= render 'decisions/decision_menu', :decision => decision, :@owner => @owner %>
         <% else %>
           <div class="col-xs-2" style="padding:0;">

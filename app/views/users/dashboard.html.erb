@@ -20,4 +20,13 @@
     </div>
   </div>
 
+  <div class="collab_contract">
+    <h1 class="text-center">Viewer</h1>
+    <div class="dashboard-grid">
+      <%@viewer_contracts.each do |contract|%>
+        <%= render 'contracts/collab_dashboard_show', :@contract => contract %>
+      <%end%>
+    </div>
+  </div>
+
 </div>

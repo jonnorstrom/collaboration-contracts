@@ -11,6 +11,7 @@ FactoryGirl.define do
     title "Contract Title"
     link "12345"
     owner_link "abcde"
+    viewer_link "viewer"
     theme "Theme"
 
     factory :contract_with_decisions do

@@ -26,6 +26,10 @@ RSpec.describe Contract, type: :model do
       @contract.link = nil
       expect(@contract).to_not be_valid
     end
+    it "is not valid without viewer_link" do
+      @contract.viewer_link = nil
+      expect(@contract).to_not be_valid
+    end
     it "should have user" do
       expect(@contract.users).to be_truthy
     end
