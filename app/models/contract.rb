@@ -10,13 +10,13 @@ class Contract < ApplicationRecord
   has_many :users, through: :user_contracts
 
   def owner?(user)
-    self.user_contracts.where(owner: true).include? UserContract.where(user_id: user.id, contract_id: self.id).first
+    self.user_contracts.exists?(owner: true, user_id: user.id, contract_id: self.id)
   end
 
   def collaborator?(user)
-    self.user_contracts.where(owner:false, viewer: false).include? UserContract.where(user_id: user.id, contract_id: self.id).first
+    self.user_contracts.exists?(owner:false, viewer: false, user_id: user.id, contract_id: self.id)
   end
-  
+
   def viewer?(user)
     self.user_contracts.where(viewer: true).include? UserContract.where(user_id: user.id, contract_id: self.id).first
   end

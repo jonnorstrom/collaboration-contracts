@@ -58,6 +58,13 @@ FactoryGirl.define do
     user
     contract
     owner true
+    
+    factory :user_contract_for_collaborator do
+      user
+      contract
+      owner false
+    end
   end
+
 
 end

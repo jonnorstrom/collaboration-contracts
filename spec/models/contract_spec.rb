@@ -50,6 +50,21 @@ RSpec.describe Contract, type: :model do
     end
   end
 
+  describe ".collaborator?" do
+    before do
+      @user_contract = create(:user_contract_for_collaborator)
+      @contract = @user_contract.contract
+      @user = @user_contract.user
+    end
+
+    it "should return false if user is not an collaborator" do
+      expect(@contract.collaborator?(create(:user))).to eq(false)
+    end
+    it "should return true if user is an owner" do
+      expect(@contract.collaborator?(@user)).to eq(true)
+    end
+  end
+
   describe ".find_which_by" do
     before do
       @contract = create(:contract)
