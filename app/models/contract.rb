@@ -18,7 +18,7 @@ class Contract < ApplicationRecord
   end
 
   def viewer?(user)
-    self.user_contracts.where(viewer: true).include? UserContract.where(user_id: user.id, contract_id: self.id).first
+    self.user_contracts.exists?(viewer: true, user_id: user.id, contract_id: self.id)
   end
 
   def self.find_which_by(params)

@@ -57,11 +57,26 @@ RSpec.describe Contract, type: :model do
       @user = @user_contract.user
     end
 
-    it "should return false if user is not an collaborator" do
+    it "should return false if user is not a collaborator" do
       expect(@contract.collaborator?(create(:user))).to eq(false)
     end
-    it "should return true if user is an owner" do
+    it "should return true if user is a collaborator" do
       expect(@contract.collaborator?(@user)).to eq(true)
+    end
+  end
+
+  describe ".viewer?" do
+    before do
+      @user_contract = create(:user_contract_for_viewer)
+      @contract = @user_contract.contract
+      @user = @user_contract.user
+    end
+
+    it "should return false if user is not a viewer" do
+      expect(@contract.viewer?(create(:user))).to eq(false)
+    end
+    it "should return true if user is a viewer" do
+      expect(@contract.viewer?(@user)).to eq(true)
     end
   end
 
