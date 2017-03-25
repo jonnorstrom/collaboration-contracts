@@ -70,13 +70,19 @@
         padding-left: 10px;
         margin-top: 5px;
         margin-bottom: 5px;
+
         .button_container {
-          width: 125px;
+          display: block;
+          max-width: 165px;
           margin: auto;
           .btn {
-            padding-top:5px;
-            padding-bottom:5px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            height: 30px;
             margin-top: 0px;
+          }
+          .fa-plus {
+            padding-top: 8px;
           }
         }
       }//end footer
