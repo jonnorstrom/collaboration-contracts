@@ -12,7 +12,12 @@
         <div class="button_container col-sm-12">
           <div class="buttons">
             <div class="dropdown">
-              <i class="fa fa-user-plus fa-2x btn btn-primary" id="new_user_dropdown" data-toggle="dropdown"></i>
+              <i class="fa fa-user-plus fa-2x btn btn-primary" id="new_user_modal" data-toggle="modal" data-target="#add_users_modal<%=@contract.id%>"></i>
+
+              <div id="add_users_modal<%=@contract.id%>" class="modal fade add_user_modal" role="dialog">
+                <%= render 'contracts/add_users_modal', :@contract => @contract %>
+              </div>
+
               <div class="dropdown-menu" id="new_user_dropdown">
                 <%= render 'contracts/link' %>
                 <br>

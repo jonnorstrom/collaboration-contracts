@@ -18,6 +18,7 @@
 //= require bootstrap.min
 //= require_tree .
 //= require clipboard
+//= require add_users_modal
 
 
 $( document ).on('turbolinks:load', function(){
