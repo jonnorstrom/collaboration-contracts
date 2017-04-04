@@ -9,12 +9,7 @@ $('#jsAddUser').unbind().on('click', function() {
 function addAnotherUser() {
   if (validateEmail($('#' + num + '-email').val())) {
       num++
-      var userInput = `<input class='form-control form-email' id='` + num + `-email'type='email' name='email_` + num + `' autofocus placeholder='Email' autocomplete="off">
-                          <div class='radio-buttons'>
-                            <input type='radio' id='` + num + `-collab' name='position_` + num + `' value='collab' checked> Collaborator
-                            <input type='radio' id='` + num + `-owner' name='position_` + num + `' value='owner'> Owner
-                            <input type='radio' id='` + num + `-viewer' name='position_` + num + `' value='viewer'> Viewer
-                          </div>`;
+      var userInput = "<input class='form-control form-email' id='" + num + "-email'type='email' name='email_" + num + "' autofocus placeholder='Email' autocomplete='off'> <div class='radio-buttons'> <input type='radio' id='" + num + "-collab' name='position_" + num + "' value='collab' checked> Collaborator <input type='radio' id='" + num + "-owner' name='position_" + num + "' value='owner'> Owner <input type='radio' id='" + num + "-viewer' name='position_" + num + "' value='viewer'> Viewer </div>";
 
       $('#jsAddUser').before(userInput);
       $('#'+ num +'-email').focus()
