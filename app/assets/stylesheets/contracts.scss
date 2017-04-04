@@ -37,3 +37,36 @@
   display: inline-block;
   }
 }
+
+.add_user_modal {
+  min-width: 300px !important;
+  .modal-content {
+    position: relative;
+    min-width: 300px;
+  }
+  .modal-body {
+    position: relative;
+    display: block;
+    width: 310px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .form-email {
+    width: 300px;
+  }
+  .radio-buttons {
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: solid 1px grey;
+    width: 300px;
+    .input {
+
+    }
+  }
+  .fa-plus {
+    margin: 0;
+    margin-top: 20px;
+    width: 300px;
+  }
+}

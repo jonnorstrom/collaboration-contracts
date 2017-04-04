@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
   get 'users/dashboard', to: 'users#dashboard', as: 'user_dashboard'
+  post 'users/add_users' => 'users#add_users'
 
   get 'contracts/new'
   get 'contracts/index'
@@ -24,5 +25,6 @@ Rails.application.routes.draw do
   post 'decisions/update' => 'decisions#update'
   post 'decisions' => 'decisions#create'
   delete 'decision/delete' => 'decisions#destroy'
+
 
 end

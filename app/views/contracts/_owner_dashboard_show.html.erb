@@ -1,5 +1,5 @@
 <div class="contract_link_box grid-item">
-  <div class="contract_card">
+  <div class="contract_card" id="<%= @contract.id %>">
 
     <div class="contract_card_header">
       <p class="title_text">
@@ -33,10 +33,7 @@
             <%= link_to "<i class='fa fa-unlock-alt' aria-hidden='true'></i>".html_safe, contracts_update_path(:id=>@contract.id, :link=>@contract.owner_link, :task=>"complete", :refresh => "false"), :method=>:post, :class=>"btn btn-primary" %>
           <% end %>
           <%= link_to "<i class='fa fa-trash-o' aria-label='Delete'></i>".html_safe, contracts_delete_path(:contract_id=>@contract.id ), :method => :delete, :class => "btn btn-danger", :data => {:confirm => 'Are you sure?'} %>
-          <%= link_to "<i class='fa fa-plus btn btn-primary' aria-hidden='true'></i>".html_safe %>
-
       </div>
     </div>
-
   </div>
 </div>
