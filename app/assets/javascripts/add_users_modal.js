@@ -1,6 +1,6 @@
 var num = 0
 // var contract_id = $('#contract_id').val();
-// console.log(contract_id);
+// console.log(contract_id); 
 
 $('#jsAddUser').unbind().on('click', function() {
   addAnotherUser();
