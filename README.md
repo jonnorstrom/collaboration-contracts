@@ -3,4 +3,4 @@
 
 # README
 
-Live Site: www.collaborationcontracts.com
+Live Site: collaborationcontracts.com
