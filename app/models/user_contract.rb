@@ -1,3 +1,4 @@
+# Join table for users and contracts
 class UserContract < ApplicationRecord
 
   belongs_to :user

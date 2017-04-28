@@ -67,6 +67,10 @@ class Contract < ApplicationRecord
 
   end
 
+  def path
+    return "/contracts/#{self.id}/#{self.link}"
+  end
+
   def set_owner(user)
     if @user_contract = UserContract.where(user_id: user.id, contract_id: self.id).first
       @user_contract.update(owner: true)

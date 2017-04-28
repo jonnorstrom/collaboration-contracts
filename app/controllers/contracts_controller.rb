@@ -6,12 +6,12 @@ class ContractsController < ApplicationController
   end
 
   def create
-    @contract = Contract.new(contract_params)
-    @contract = make_links(@contract)
-    if user_signed_in?
+    if current_user
+      @contract = Contract.new(contract_params)
+      @contract = add_links(@contract)
       if @contract.save
         UserContract.create_owner_join(current_user, @contract)
-        redirect_to "/contracts/#{@contract.id}/#{@contract.link}"
+        redirect_to @contract.path
       else
         @error_messages = @contract.errors.full_messages
         render "home/index"
@@ -32,7 +32,7 @@ class ContractsController < ApplicationController
     if params[:refresh] == "false"
       redirect_to root_path
     else
-      redirect_to "/contracts/#{@contract.id}/#{@contract.link}"
+      redirect_to @contract.path
     end
   end
 
