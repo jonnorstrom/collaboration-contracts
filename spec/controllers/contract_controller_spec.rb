@@ -3,6 +3,9 @@ require 'rails_helper'
 RSpec.describe ContractsController, type: :controller do
   # ++++++++++ Contract New ++++++++++++
   describe "GET new" do
+    before do
+      sign_in create(:user)
+    end
     it "assigns @contract" do
       get :new
       expect(assigns(:contract)).to be_a_new(Contract)
@@ -53,7 +56,7 @@ RSpec.describe ContractsController, type: :controller do
         process :create, method: :post, params: {contract: {title: "Contract Title", theme: "Contract Theme"} }
       end
       it "should redirect to signin page" do
-        expect(response).to render_template("users/sessions/new")
+        expect(response).to redirect_to("/users/sign_in")
       end
     end
 
@@ -69,6 +72,7 @@ RSpec.describe ContractsController, type: :controller do
   describe "Update" do
     before do
       @contract = create(:contract)
+      sign_in create(:user)
     end
 
     it "assigns contract" do
@@ -148,7 +152,7 @@ RSpec.describe ContractsController, type: :controller do
         process :show, method: :get, params: {id: @contract.id, link: @contract.owner_link}
       end
       it "should render new user registrations page" do
-        expect(response).to render_template("users/sessions/new")
+        expect(response).to redirect_to("/users/sign_in")
       end
     end
 

@@ -26,6 +26,5 @@ class UserContract < ApplicationRecord
 
   def self.viewer_contracts(current_user)
     current_user.contracts.select {|contract| contract.viewer?(current_user)}.sort! { |a,b| a.id <=> b.id }
-
   end
 end

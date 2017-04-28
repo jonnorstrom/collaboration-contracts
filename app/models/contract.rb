@@ -35,6 +35,14 @@ class Contract < ApplicationRecord
     end
   end
 
+  def toggle_task(task)
+    if task == "review"
+      self.toggle_review
+    elsif task == "complete"
+      self.toggle_complete
+    end
+  end
+
   def toggle_complete
     self.toggle(:complete)
   end
@@ -61,10 +69,6 @@ class Contract < ApplicationRecord
       user == current_user ? user_list.push("You") : user_list.push(user.users_name.chomp("."))
     end
     return user_list.join(", ")
-  end
-
-  def team_url
-
   end
 
   def path

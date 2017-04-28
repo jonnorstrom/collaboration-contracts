@@ -1,33 +1,26 @@
 class ContractsController < ApplicationController
   include ContractsHelper
+  before_action :is_signed_in?
 
   def new
     @contract = Contract.new
   end
 
   def create
-    if current_user
-      @contract = Contract.new(contract_params)
-      @contract = add_links(@contract)
-      if @contract.save
-        UserContract.create_owner_join(current_user, @contract)
-        redirect_to @contract.path
-      else
-        @error_messages = @contract.errors.full_messages
-        render "home/index"
-      end
+    @contract = Contract.new(contract_params)
+    @contract = add_links(@contract)
+    if @contract.save
+      UserContract.create_owner_join(current_user, @contract)
+      redirect_to @contract.path
     else
-      render "users/sessions/new"
+      @error_messages = @contract.errors.full_messages
+      render "home/index"
     end
   end
 
   def update
     @contract = Contract.find_by(id: params[:id], owner_link: params[:link])
-    if params[:task] == "review"
-      @contract.toggle_review
-    elsif params[:task] == "complete"
-      @contract.toggle_complete
-    end
+    @contract.toggle_task(params[:task])
     @contract.save
     if params[:refresh] == "false"
       redirect_to root_path
@@ -37,14 +30,10 @@ class ContractsController < ApplicationController
   end
 
   def show
-    if !current_user
-      render "users/sessions/new"
-    else
-      @contract = Contract.find_which_by(params)
-      @contract.set_user_contract(params[:link], current_user)
-      @owner = @contract.owner?(current_user)
-      @viewer = @contract.viewer?(current_user)
-    end
+    @contract = Contract.find_which_by(params)
+    @contract.set_user_contract(params[:link], current_user)
+    @owner = @contract.owner?(current_user)
+    @viewer = @contract.viewer?(current_user)
   end
 
   def destroy
@@ -53,6 +42,10 @@ class ContractsController < ApplicationController
   end
 
   private
+  def is_signed_in?
+    redirect_to new_user_session_path if !current_user
+  end
+
   def contract_params
     params.require(:contract).permit(:title, :theme)
   end
