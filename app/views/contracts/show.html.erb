@@ -2,67 +2,34 @@
 
   <div class="row contract-header">
     <div class="row">
-      <!-- contract title & theme -->
       <div class="col-sm-12 text-center">
         <h2><%= @contract.title %></h2>
-        <%= @contract.theme %>
+        <p><%= @contract.theme %></p>
       </div>
-      <!-- owner options (review & complete) -->
       <% if @owner %>
-        <div class="button_container col-sm-12">
-          <div class="buttons">
-            <div class="dropdown">
-              <i class="fa fa-user-plus fa-2x btn btn-primary" id="new_user_modal" data-toggle="modal" data-target="#add_users_modal<%=@contract.id%>"></i>
-
-              <div id="add_users_modal<%=@contract.id%>" class="modal fade add_user_modal" role="dialog">
-                <%= render 'contracts/add_users_modal', :@contract => @contract %>
-              </div>
-
-              <div class="dropdown-menu" id="new_user_dropdown">
-                <%= render 'contracts/link' %>
-                <br>
-                <% if @contract.viewer_link %>
-                <%= render 'contracts/viewer_link' %>
-                <% end %>
-                <br>
-                <%= render 'contracts/owner_link' %>
-              </div>
-            </div>
-            <% @contract.reviewable ? @user_icon = "fa-users" : @user_icon = "fa-user" %>
-            <% @contract.complete ? @lock_icon = "fa-lock" : @lock_icon = "fa-unlock-alt" %>
-            <%= link_to "<i class='fa fa-2x btn btn-primary #{@user_icon}' aria-hidden='true'></i>".html_safe, contracts_update_path(:id=>@contract.id, :link=>@contract.owner_link, :task=>"review"), :method=>:post  %>
-            <%= link_to "<i class='fa fa-2x btn btn-primary #{@lock_icon}' aria-hidden='true'></i>".html_safe, contracts_update_path(:id=>@contract.id, :link=>@contract.owner_link, :task=>"complete"), :method=>:post  %>
-            <%= link_to "<i class='fa  fa-2x fa-trash-o btn btn-danger'  aria-label='Delete'></i>".html_safe, contracts_delete_path(:contract_id=>@contract.id ), :method => :delete, :data => {:confirm => 'Are you sure?'} %>
-          </div>
-        </div>
-        <% else %>
-          <div class="button_container col-sm-12">
-            <div class="status_icons">
-              <% @contract.reviewable ? @user_icon = "fa-users" : @user_icon = "fa-user" %>
-              <% @contract.complete ? @lock_icon = "fa-lock" : @lock_icon = "fa-unlock-alt" %>
-              <i class='fa fa-2x <%=@user_icon%>' aria-hidden='true'></i>
-              <i class='fa fa-2x <%=@lock_icon%>' aria-hidden='true'></i>
-            </div>
-          </div>
+        <%= render 'contracts/owner_buttons', :@contract => @contract %>
+      <% else %>
+        <%= render 'contracts/viewer_buttons', :@contract => @contract %>
       <% end %>
     </div>
   </div>
 
-  <!-- render decisions -->
   <% if @contract.decisions %>
       <%= render 'decisions/show', :@decisions => @contract.decisions.order('id'), :@user => current_user, :@owner => @owner, :@viewer => @viewer %>
   <% end %>
-  <!-- add decision button -->
+
+
   <% if @viewer %>
-   <h2 class="text-center" style="margin-top: 100px">Viewing Permissions Only.</h2>
+    <h2 class="text-center" style="margin-top: 100px">Viewing Permissions Only.</h2>
   <% else %>
-  <button type="button" class="btn btn-primary btn-lg col-xs-4 col-xs-offset-4" data-toggle="modal" data-target="#newDecisionModal">Add Decision</button>
-  <!-- modal for new decision  -->
-  <div id="newDecisionModal" class="modal fade" role="dialog">
-    <%= render 'decisions/new_modal', :@contract_id => @contract.id, :@decision => nil %>
-  </div>
+    <button type="button" class="btn btn-primary btn-lg col-xs-4 col-xs-offset-4" data-toggle="modal" data-target="#newDecisionModal">Add Decision</button>
+
+    <div id="newDecisionModal" class="modal fade" role="dialog">
+      <%= render 'decisions/new_modal', :@contract_id => @contract.id, :@decision => nil %>
+    </div>
   <% end %>
-</div>
+
+</div> <!-- container end  -->
 
 <% if @decision_error_messages %>
   <script>

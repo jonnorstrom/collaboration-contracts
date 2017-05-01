@@ -1,0 +1,8 @@
+<div class="button_container col-sm-12">
+  <div class="status_icons">
+    <% @contract.reviewable ? @user_icon = "fa-users" : @user_icon = "fa-user" %>
+    <% @contract.complete ? @lock_icon = "fa-lock" : @lock_icon = "fa-unlock-alt" %>
+    <i class='fa fa-2x <%=@user_icon%>' aria-hidden='true'></i>
+    <i class='fa fa-2x <%=@lock_icon%>' aria-hidden='true'></i>
+  </div>
+</div>

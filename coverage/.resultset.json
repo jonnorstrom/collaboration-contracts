@@ -58,7 +58,7 @@
         null,
         null,
         1,
-        26,
+        27,
         null,
         null,
         null
@@ -446,10 +446,9 @@
       "/Users/SeanNorton/collaboration-contracts/app/controllers/home_controller.rb": [
         1,
         1,
-        1,
-        1,
         null,
-        0,
+        1,
+        1,
         null,
         null,
         null
@@ -1135,6 +1134,6 @@
         null
       ]
     },
-    "timestamp": 1493665229
+    "timestamp": 1493668629
   }
 }
