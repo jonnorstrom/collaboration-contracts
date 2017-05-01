@@ -7,9 +7,9 @@ class DecisionsController < ApplicationController
 
   def create
     @decision = Decision.new(decision_params)
-    @contract = Contract.find(@decision.contract_id)
+    @contract = @decision.contract
     if @decision.save
-      redirect_to "/contracts/#{@contract.id}/#{@contract.link}"
+      redirect_to @contract.path
     else
       @decision_error_messages = @decision.errors.full_messages
       render "contracts/show"
@@ -18,9 +18,9 @@ class DecisionsController < ApplicationController
 
   def update
     @decision = Decision.find(decision_params[:id])
-    @contract = Contract.find(@decision.contract_id)
+    @contract = @decision.contract
     if @decision.update(:description => decision_params[:description])
-      redirect_to "/contracts/#{@contract.id}/#{@contract.link}"
+      redirect_to @contract.path
     end
   end
 
@@ -28,7 +28,7 @@ class DecisionsController < ApplicationController
     @decision = Decision.find(params[:decision_id])
     @contract = @decision.contract
     @decision.destroy
-    redirect_to "/contracts/#{@contract.id}/#{@contract.link}"
+    redirect_to @contract.path
   end
 
 

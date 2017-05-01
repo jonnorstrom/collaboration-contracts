@@ -1,6 +1,6 @@
 class ContractsController < ApplicationController
   include ContractsHelper
-  before_action :is_signed_in?
+  before_action :require_login
 
   def new
     @contract = Contract.new
@@ -42,10 +42,6 @@ class ContractsController < ApplicationController
   end
 
   private
-  def is_signed_in?
-    redirect_to new_user_session_path if !current_user
-  end
-
   def contract_params
     params.require(:contract).permit(:title, :theme)
   end

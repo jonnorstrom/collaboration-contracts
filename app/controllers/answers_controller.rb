@@ -13,8 +13,7 @@ class AnswersController < ApplicationController
     end
 
     if @answer.save
-      @contract_id = @answer.decision.contract_id
-      redirect_to "/contracts/#{@contract_id}/#{@answer.contract.link}"
+      redirect_to @answer.contract.path
     end
   end
 

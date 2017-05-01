@@ -1,14 +1,11 @@
 class UsersController < ApplicationController
   skip_before_action  :verify_authenticity_token
+  before_action :require_login
 
   def dashboard
-    if !current_user
-      render "users/sessions/new"
-    else
-      @owner_contracts = UserContract.owner_contracts(current_user)
-      @contracts = UserContract.users_contracts(current_user)
-      @viewer_contracts = UserContract.viewer_contracts(current_user)
-    end
+    @owner_contracts = UserContract.owner_contracts(current_user)
+    @contracts = UserContract.users_contracts(current_user)
+    @viewer_contracts = UserContract.viewer_contracts(current_user)
   end
 
   def add_users
@@ -25,8 +22,8 @@ class UsersController < ApplicationController
          :template_model=>
           {"invite_sender_name"=>current_user.users_name,
            "contract_title"=>contract.title,
-           "user_position"=>readable_position(user[1]).capitalize,
-           "action_url"=>"#{request.protocol}#{request.host_with_port}/contracts/#{contract.id}/#{get_user_link(user, contract)}"}}
+           "user_position"=>readable_position(user[1]),
+           "action_url"=> get_url(user,contract) }}
         )
        flash[:notice] = "Message successfully sent"
      else
@@ -34,43 +31,38 @@ class UsersController < ApplicationController
      end
    end
    redirect_to "/"
-   #  return status
   end
 
   private
-
-  def delete_obsolete(params)
-    params.delete(:contract_id)
-    params.delete(:submit)
-    params.delete(:action)
-    params.delete(:controller)
-    return params
+  def get_url(user, contract)
+    return "#{request.protocol}#{request.host_with_port}/contracts/#{contract.id}/#{get_user_link(user[1], contract)}"
   end
-
-  def get_user_link(user_array, contract)
-    position = user_array[1]
-    if position == "collab"
+  
+  def get_user_link(position, contract)
+    case position
+    when 'collab'
       return contract.link
-    elsif position == "owner"
+    when 'owner'
       return contract.owner_link
-    elsif position == "viewer"
+    when 'viewer'
       return contract.viewer_link
     else
-      return "this didn't work out"
+      return 'Something went wrong with your link.'
     end
   end
 
   def readable_position(position)
-    if position == "collab"
-      return "collaborator"
-    else
-      return position
-    end
+    position == 'collab' ? "Collaborator" : position.capitalize
   end
 
   def seperate_users(params)
      new_params = delete_obsolete(params)
      return new_params.values.each_slice(2).to_a
+  end
+
+  def delete_obsolete(params)
+    [:contract_id, :submit, :action, :controller].each { |key| params.delete(key) }
+    return params
   end
 
 end
