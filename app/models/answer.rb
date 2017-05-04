@@ -16,7 +16,7 @@ class Answer < ApplicationRecord
   end
 
   def contract
-    Contract.find(self.decision.contract_id)
+    self.decision.contract
   end
 
   def viewable?(user)

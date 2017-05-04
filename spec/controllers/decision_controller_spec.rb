@@ -10,9 +10,6 @@ RSpec.describe DecisionsController, type: :controller do
     it "should assign decision variable" do
       expect(assigns(:decision)).to be_a_new(Decision)
     end
-    it "should assign contract_id variable" do
-      expect(assigns(:contract_id)).to eq("#{@contract.id}")
-    end
     it "should render new template" do
       expect(response).to render_template("new")
     end
@@ -39,10 +36,10 @@ RSpec.describe DecisionsController, type: :controller do
         process :create, method: :post, params: { decision: {description: "", contract_id: @contract.id} }
       end
       it "should assign decision_error_messages variable" do
-        expect(assigns(:decision_error_messages)).to eq(["Description can't be blank"])
+        expect(assigns(:decision).errors.full_messages).to eq(["Description can't be blank"])
       end
-      it "should render contracts/show page" do
-        expect(response).to render_template("contracts/show")
+      it "should render decisions/new page" do
+        expect(response).to render_template("decisions/new")
       end
     end
 

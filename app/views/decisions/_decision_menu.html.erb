@@ -1,22 +1,21 @@
 <div class="dropdown">
   <!-- dropdown btn  -->
   <div class="col-xs-2" id="desc_dropdown_btn" data-toggle="dropdown" >
-    <a type="link" class="btn-primary btn-sm text-center"><nobr><%=decision.description%></nobr></a>
+    <a type="link" class="btn-primary btn-sm text-center"><nobr><%= decision.description %></nobr></a>
   </div>
   <!-- dropdown menu  -->
   <ul class="dropdown-menu" id="desc_dropdown">
     <% if Answer.find_by(decision: decision.id, user: current_user) %>
-    <li data-toggle="modal" data-target="#newAnswerModal<%=decision.id%>"><a>Change Answer</a></li>
+    <li data-toggle="modal" data-target="#newAnswerModal<%= decision.id %>"><a>Change Answer</a></li>
     <% else %>
-    <li data-toggle="modal" data-target="#newAnswerModal<%=decision.id%>"><a>Answer</a></li>
+    <li data-toggle="modal" data-target="#newAnswerModal<%= decision.id %>"><a>Answer</a></li>
     <% end %>
-    <%if @owner%>
+    <% if @owner %>
       <li> <div class="text-left menu_break">Owner</div></li>
-      <li data-toggle="modal" data-target="#editDecisionModal<%=decision.id%>"><a>Edit</a></li>
-      <li><%=link_to 'Delete', decision_delete_path(:decision_id=> decision.id), method: 'delete'%></li>
-    <%end%>
+      <li><%= link_to "Edit", decisions_edit_path(:decision_id => decision) %></li>
+      <li><%= link_to 'Delete', decision_delete_path(:decision_id=> decision.id), method: 'delete' %></li>
+    <% end %>
   </ul>
 </div>
 
 <div id="newAnswerModal<%=decision.id%>" class="modal fade" role="dialog"><%= render 'answers/new_modal', :@decision => decision%></div>
-<div id="editDecisionModal<%=decision.id%>" class="modal fade" role="dialog"><%= render 'decisions/new_modal', :@contract_id => decision.contract.id, :@decision => decision %></div>

@@ -21,10 +21,10 @@ Rails.application.routes.draw do
 
   get 'decisions/new'
   get 'decisions/index'
+  get 'decisions/edit' => 'decisions#edit'
   get 'decisions/show' => 'decisions#show'
-  post 'decisions/update' => 'decisions#update'
-  post 'decisions' => 'decisions#create'
+  post 'decisions/edit' => 'decisions#update'
+  post 'decisions/new' => 'decisions#create'
   delete 'decision/delete' => 'decisions#destroy'
-
 
 end

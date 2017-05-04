@@ -1,0 +1,15 @@
+<div class="button_container col-sm-12">
+  <div class="buttons">
+    <i class="fa fa-user-plus fa-2x btn btn-primary" id="new_user_modal" data-toggle="modal" data-target="#add_users_modal<%=@contract.id%>"></i>
+
+    <div id="add_users_modal<%=@contract.id%>" class="modal fade add_user_modal" role="dialog">
+      <%= render 'contracts/add_users_modal', :@contract => @contract %>
+    </div>
+
+    <% @contract.reviewable ? @user_icon = "fa-users" : @user_icon = "fa-user" %>
+    <% @contract.complete ? @lock_icon = "fa-lock" : @lock_icon = "fa-unlock-alt" %>
+    <%= link_to "<i class='fa fa-2x btn btn-primary #{@user_icon}' aria-hidden='true'></i>".html_safe, contracts_update_path(:id=>@contract.id, :link=>@contract.owner_link, :task=>"review"), :method=>:post  %>
+    <%= link_to "<i class='fa fa-2x btn btn-primary #{@lock_icon}' aria-hidden='true'></i>".html_safe, contracts_update_path(:id=>@contract.id, :link=>@contract.owner_link, :task=>"complete"), :method=>:post  %>
+    <%= link_to "<i class='fa  fa-2x fa-trash-o btn btn-danger'  aria-label='Delete'></i>".html_safe, contracts_delete_path(:contract_id=>@contract.id ), :method => :delete, :data => {:confirm => 'Are you sure?'} %>
+  </div>
+</div>

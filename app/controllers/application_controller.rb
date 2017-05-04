@@ -21,4 +21,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
   end
 
+  def require_login
+    redirect_to new_user_session_path if !current_user
+  end
+
 end

@@ -1,9 +1,8 @@
 class HomeController < ApplicationController
+  before_action :require_login
+
   def index
-    if current_user
       redirect_to user_dashboard_path
-    else
-      redirect_to new_user_session_path
-    end
   end
+
 end

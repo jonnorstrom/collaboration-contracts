@@ -35,6 +35,14 @@ class Contract < ApplicationRecord
     end
   end
 
+  def toggle_task(task)
+    if task == "review"
+      self.toggle_review
+    elsif task == "complete"
+      self.toggle_complete
+    end
+  end
+
   def toggle_complete
     self.toggle(:complete)
   end
@@ -63,8 +71,8 @@ class Contract < ApplicationRecord
     return user_list.join(", ")
   end
 
-  def team_url
-
+  def path
+    return "/contracts/#{self.id}/#{self.link}"
   end
 
   def set_owner(user)
