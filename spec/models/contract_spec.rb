@@ -100,6 +100,42 @@ RSpec.describe Contract, type: :model do
       contract.set_user_contract(contract.owner_link, user)
       expect(contract.owner?(user)).to eq(true)
     end
+    it "should return UserContract if link is viewer_link" do
+      contract.set_user_contract(contract.viewer_link, user)
+      expect(UserContract.find_or_create_viewer(user, contract)).to eq(true)
+    end
+  end
+
+  describe  ".user_list" do
+    let(:user_contract) {create(:user_contract)}
+    let(:contract) {user_contract.contract}
+    let(:user) {user_contract.user}
+
+    context "with single user on contract" do
+      it "should return 'You' " do
+        expect(contract.user_list(user)).to eq("You")
+      end
+    end
+    context "with multiple users on contract" do
+      before do
+        contract.set_user_contract(contract.owner_link, create(:user))
+      end
+      it "should return multiple usernames in string" do
+        expect(contract.user_list(user)).to eq("You, Joe S")
+      end
+    end
+  end
+
+  describe ".set_owner" do
+    let(:user_contract) {create(:user_contract)}
+    let(:contract) {user_contract.contract}
+    let(:user) {create(:user)}
+
+    it "should update user to owner" do
+      expect(contract.owner?(user)).to eq(false)
+      contract.set_owner(user)
+      expect(contract.owner?(user)).to eq(true)
+    end
   end
 
 end
