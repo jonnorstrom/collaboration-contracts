@@ -5,11 +5,8 @@
   </div>
   <!-- dropdown menu  -->
   <ul class="dropdown-menu" id="desc_dropdown">
-    <% if Answer.find_by(decision: decision.id, user: current_user) %>
-    <li data-toggle="modal" data-target="#newAnswerModal<%= decision.id %>"><a>Change Answer</a></li>
-    <% else %>
-    <li data-toggle="modal" data-target="#newAnswerModal<%= decision.id %>"><a>Answer</a></li>
-    <% end %>
+    <% wording = Answer.find_by(decision: decision.id, user: current_user) ? "Change Answer" : "Answer" %>
+    <li><%= link_to "#{wording}", new_answers_path(:decision_id => decision) %></li>
     <% if @owner %>
       <li> <div class="text-left menu_break">Owner</div></li>
       <li><%= link_to "Edit", decisions_edit_path(:decision_id => decision) %></li>
@@ -17,5 +14,3 @@
     <% end %>
   </ul>
 </div>
-
-<div id="newAnswerModal<%=decision.id%>" class="modal fade" role="dialog"><%= render 'answers/new_modal', :@decision => decision%></div>

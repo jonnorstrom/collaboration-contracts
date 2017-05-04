@@ -14,6 +14,9 @@ class AnswersController < ApplicationController
 
     if @answer.save
       redirect_to @answer.contract.path
+    else
+      @decision = @answer.decision
+      render new_answers_path(@answer)
     end
   end
 
