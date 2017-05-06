@@ -1,14 +1,16 @@
 <div class="container">
-  <%if @decisions %>
-    <div class="row"><%= render partial: 'decisions/table_header' %></div>
-    <% @decisions.each do |decision| %>
-      <div class="row" id="decision_data">
-        <%= render 'decisions/decision_menu_or_text',:decision => decision, :@viewer => @viewer %>
-        <% if decision.answers %>
-          <div class="col-xs-2"></div>
-          <% Answer.types.each do |type| %><div class="col-xs-2"><%= Answer.find_all_names(type, decision.answers, @user) %></div><% end %>
-        <% end %>
-      </div>
-    <% end %>
-  <% end %>
+  <div id="decisions-show"></div>
 </div>
+
+
+<script>
+$( document ).on('turbolinks:load', mobileOrDesktop)
+$( document ).on('turbolinks:load', window.addEventListener("resize", mobileOrDesktop) )
+function mobileOrDesktop() {
+  if ($(window).width() < 768) {
+    $('#decisions-show').html('<%=j render "decisions/mobile_show" %>');
+  } else {
+    $('#decisions-show').html('<%=j render "decisions/desktop_show" %>');
+  }
+};
+</script>
