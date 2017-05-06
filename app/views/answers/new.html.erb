@@ -1,28 +1,27 @@
-<!-- header -->
-<h1 class="text-center">Answer Decision</h1>
-<!-- form start -->
-<%= form_for :answer, url: answers_path do |f| %>
-  <!-- get username -->
-  <div class="row">
-    <div class="col-sm-4 col-sm-offset-4">
-      <% if !session[:name] %>
-        <%= f.label :name %>
-        <%= f.text_field :name, class: "form-control"%>
-      <% else %>
-        <%= f.hidden_field :name, :value => session[:name] %>
-      <% end %>
-    </div>
+<div class="new_answer">
+
+  <h1 class="text-center"><%= @decision.description %></h1>
+
+  <div class="container">
+    <%= render 'shared/form_errors', object: @answer %>
+
+    <%= form_for :answer, url: answers_path do |f| %>
+      <%= f.hidden_field :user_id, :value => current_user.id, required: true %>
+      <%= f.hidden_field :decision_id, :value => @decision.id %>
+      <div class="row max-width-800 margin-auto margin-top-10">
+        <div class="col-xs-1"></div>
+        <% Answer.types.each do |type| %>
+          <div class="col-xs-2 text-center">
+            <%= f.label type %><br>
+            <%= f.radio_button :answer,type, :checked => @decision.user_answer_type?(type, current_user), :required => "true"%>
+          </div>
+        <% end %>
+      </div>
+      <div class="submit-button max-width-600 margin-auto">
+        <%= f.submit class: "btn btn-primary pull-right" %>
+
+      </div>
+    <% end %>
   </div>
-  <!-- table header -->
-  <%= render partial: 'decisions/table_header' %>
-  <!-- desc answers table -->
-  <div class="row col-xs-10 col-xs-offset-1 col-xs-offset-right-1">
-    <div class="col-xs-2"><%= @decision.description %></div>
-    <% Answer.types.each do |type| %>
-      <div class="col-xs-2"><%= f.radio_button :answer,type %></div>
-    <%end%>
-    <%= f.hidden_field :decision_id, :value => @decision.id %>
-    <!-- submit -->
-    <%= f.submit class: "btn btn-primary" %>
-  </div>
-<% end %>
+
+</div>

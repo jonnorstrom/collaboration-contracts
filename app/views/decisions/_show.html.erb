@@ -1,19 +1,11 @@
 <div class="container">
   <%if @decisions %>
-    <!-- decision table header  -->
     <div class="row"><%= render partial: 'decisions/table_header' %></div>
     <% @decisions.each do |decision| %>
       <div class="row" id="decision_data">
-        <!-- decision description and/or dropdown  -->
-        <% if !decision.contract.complete && @viewer == false %>
-          <%= render 'decisions/decision_menu', :decision => decision, :@owner => @owner %>
-        <% else %>
-          <div class="col-xs-2" style="padding:0;">
-            <nobr><%= decision.description %></nobr>
-          </div>
-        <% end %>
-        <!-- decision answers -->
+        <%= render 'decisions/decision_menu_or_text',:decision => decision, :@viewer => @viewer %>
         <% if decision.answers %>
+          <div class="col-xs-2"></div>
           <% Answer.types.each do |type| %><div class="col-xs-2"><%= Answer.find_all_names(type, decision.answers, @user) %></div><% end %>
         <% end %>
       </div>
