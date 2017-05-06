@@ -11,7 +11,7 @@ gem 'pg', '~> 0.18'
 gem 'dotenv-rails'
 
 # Use bootstrap-sass for styles
-gem 'bootstrap-sass', '~> 3.2.0'
+gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'font-awesome-rails', '~> 4.5'
 gem 'autoprefixer-rails'
 
