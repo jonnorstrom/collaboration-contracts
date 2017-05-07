@@ -51,22 +51,25 @@
     margin-left: auto;
     margin-right: auto;
   }
-  .form-email {
-    width: 300px;
+
+}
+
+.invite_users {
+  max-width: 500px;
+  #add_user_form {
+    max-width: 500px;
+    margin: auto;
+    text-align: center;
   }
   .radio-buttons {
     text-align: center;
     padding-top: 10px;
     padding-bottom: 10px;
     border-bottom: solid 1px grey;
-    width: 300px;
-    .input {
-
-    }
   }
-  .fa-plus {
+  .add-user-btn {
     margin: 0;
-    margin-top: 20px;
     width: 300px;
+    margin-top: 20px;
   }
 }

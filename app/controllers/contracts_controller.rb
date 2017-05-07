@@ -41,6 +41,11 @@ class ContractsController < ApplicationController
     redirect_to root_path
   end
 
+  def invite_users
+    @contract = Contract.find(params[:id])
+    render 'contracts/invite_users'
+  end
+
   private
   def contract_params
     params.require(:contract).permit(:title, :theme)
