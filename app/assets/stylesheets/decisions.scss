@@ -10,6 +10,7 @@
 
 #desc_dropdown_btn {
   padding: 0;
+  color: white;
 }
 
 #desc_dropdown {
@@ -23,4 +24,36 @@
   margin-right: 4%;
   color: lightgrey;
   text-indent: 2%;
+}
+
+.decisions-mobile-show {
+  .decision-card {
+    max-width: 350px;
+    margin: auto;
+    margin-bottom: 8px;
+    border-radius: 3px;
+    background-color: white;
+    padding: 10px 10px 5px 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    .description {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin: 0 0 10px 0;
+      padding-bottom: 5px;
+      border-bottom: 1px solid lightgrey;
+    }
+    .answer-row {
+      padding-bottom: 1px;
+      border-bottom: 1px solid lightgrey;
+    }
+    .type {
+      font-weight: 500;
+    }
+    .btn {
+      margin-top: 0px;
+    }
+    .decision-options {
+      margin-top: 10px;
+    }
+  }
 }

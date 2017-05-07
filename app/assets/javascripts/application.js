@@ -22,11 +22,5 @@
 
 
 $( document ).on('turbolinks:load', function(){
-  var clip = new Clipboard('.clip');
-  $('.clip').on('click',function(){
-    $('#text_copy_alert').fadeIn()
-    setTimeout(function(){
-      $('#text_copy_alert').fadeOut()
-    }, 2000);
-  })
+  
 });

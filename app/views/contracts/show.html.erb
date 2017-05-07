@@ -1,7 +1,6 @@
 <% session[:contract_id] = @contract.id %>
 <div class="container">
   <div class="row contract-header">
-    <div class="row">
       <div class="col-sm-12 text-center">
         <h2><%= @contract.title %></h2>
         <p><%= @contract.theme %></p>
@@ -11,7 +10,6 @@
       <% else %>
         <%= render 'contracts/viewer_buttons', :@contract => @contract %>
       <% end %>
-    </div>
   </div>
 
   <% if @contract.decisions %>
@@ -21,7 +19,9 @@
   <% if @viewer %>
     <h2 class="text-center" style="margin-top: 100px">Viewing Permissions Only.</h2>
   <% else %>
-    <%= link_to "Add Decision", decisions_new_path(), :class => "btn btn-primary btn-lg col-xs-4 col-xs-offset-4" %>
+  <div class="text-center">
+    <%= link_to "Add Decision", decisions_new_path(), :class => "btn btn-primary btn-lg"%>
+  </div>
   <% end %>
 
 </div>

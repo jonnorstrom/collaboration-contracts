@@ -1,5 +1,5 @@
 <% if !decision.contract.complete && @viewer == false %>
   <%= render 'decisions/decision_menu', :decision => decision, :@owner => @owner %>
 <% else %>
-  <div class="col-xs-2" style="padding:0;"><nobr><%= decision.description %></nobr></div>
+  <%= decision.description %>
 <% end %>

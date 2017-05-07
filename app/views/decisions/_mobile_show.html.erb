@@ -1,0 +1,24 @@
+<div class="decisions-mobile-show">
+  <% @decisions.each do |decision| %>
+    <div class="row decision-card">
+      <div class="col-xs-12 text-center description"><%= decision.description %></div>
+
+      <% Answer.types.each do |type| %>
+        <div class="answer-row col-xs-12">
+          <div class=" col-xs-4 type text-left"><%= type %></div>
+          <div class=" col-xs-8 text-right"><%= Answer.find_all_names(type, decision.answers, @user) %></div>
+        </div>
+      <% end %>
+
+      <div class="decision-options mx-auto">
+        <% wording = Answer.find_by(decision: decision.id, user: current_user) ? "Change Answer" : "Answer" %>
+        <%= link_to "#{wording}", new_answers_path(:decision_id => decision), class: "btn btn-sm btn-primary" %>
+        <% if @owner %>
+          <%= link_to "Edit", decisions_edit_path(:decision_id => decision), class: "btn btn-sm btn-primary" %>
+          <%= link_to 'Delete', decision_delete_path(:decision_id=> decision), method: 'delete', class: "btn btn-sm btn-danger", data: {:confirm => 'Are you sure?'} %>
+        <% end %>
+      </div>
+
+    </div>
+  <% end %>
+</div>

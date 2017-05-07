@@ -10,8 +10,6 @@ gem 'pg', '~> 0.18'
 # Allow for storage of api keys in .env file in root folder
 gem 'dotenv-rails'
 
-# Use bootstrap-sass for styles
-gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'font-awesome-rails', '~> 4.5'
 gem 'autoprefixer-rails'
 
