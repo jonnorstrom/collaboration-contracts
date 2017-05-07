@@ -15,7 +15,7 @@
         <%= link_to "#{wording}", new_answers_path(:decision_id => decision), class: "btn btn-sm btn-primary" %>
         <% if @owner %>
           <%= link_to "Edit", decisions_edit_path(:decision_id => decision), class: "btn btn-sm btn-primary" %>
-          <%= link_to 'Delete', decision_delete_path(:decision_id=> decision), method: 'delete', class: "btn btn-sm btn-danger" %>
+          <%= link_to 'Delete', decision_delete_path(:decision_id=> decision), method: 'delete', class: "btn btn-sm btn-danger", data: {:confirm => 'Are you sure?'} %>
         <% end %>
       </div>
 

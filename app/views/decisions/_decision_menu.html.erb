@@ -10,7 +10,7 @@
     <% if @owner %>
       <li> <div class="text-left menu_break">Owner</div></li>
       <li><%= link_to "Edit", decisions_edit_path(:decision_id => decision) %></li>
-      <li><%= link_to 'Delete', decision_delete_path(:decision_id=> decision.id), method: 'delete' %></li>
+      <li><%= link_to 'Delete', decision_delete_path(:decision_id=> decision.id), method: 'delete', data: {:confirm => 'Are you sure?'} %></li>
     <% end %>
   </ul>
 </div>
