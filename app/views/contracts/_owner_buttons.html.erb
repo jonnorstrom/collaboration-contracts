@@ -1,10 +1,7 @@
 <div class="button_container col-sm-12">
   <div class="buttons">
-    <i class="fa fa-user-plus fa-2x btn btn-primary" id="new_user_modal" data-toggle="modal" data-target="#add_users_modal<%=@contract.id%>"></i>
 
-    <div id="add_users_modal<%=@contract.id%>" class="modal fade add_user_modal" role="dialog">
-      <%= render 'contracts/add_users_modal', :@contract => @contract %>
-    </div>
+    <%= link_to "<i class='fa fa-user-plus fa-2x btn btn-primary'></i>".html_safe, contracts_invite_path(:id=>@contract)  %>
 
     <% @contract.reviewable ? @user_icon = "fa-users" : @user_icon = "fa-user" %>
     <% @contract.complete ? @lock_icon = "fa-lock" : @lock_icon = "fa-unlock-alt" %>

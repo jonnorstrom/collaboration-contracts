@@ -1,0 +1,22 @@
+<div class="container invite_users">
+  <h4 class="text-center"><%= @contract.title %></h4>
+
+  <form action="/users/add_users" id="add_user_form" method="post">
+      <input type="text" id="contract_id" name="contract_id" hidden="true" value="<%= @contract.id %>"  >
+      <input class="form-control form-email" autofocus id="0-email" type="email" name="email_0" placeholder="Email" required autocomplete="off">
+      <div class="radio-buttons">
+        <input type="radio" id="0-collab" name="position_0" value="collab" checked> Collaborator
+        <input type="radio" id="0-owner" name="position_0" value="owner"> Owner
+        <input type="radio" id="0-viewer" name="position_0" value="viewer"> Viewer
+      </div>
+      <div class="btn btn-primary add-user-btn" id="jsAddUser" >Add Another User</div>
+      <div>
+        <input class="btn btn-primary" type="submit" name="submit">
+        <%= link_to "Cancel", @contract.path, :class => "btn btn-danger"%>
+      </div>
+  </form>
+</div>
+
+
+
+<%=javascript_include_tag('add_users_modal.js')%>

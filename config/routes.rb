@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   post 'contracts' => 'contracts#create'
   post 'contracts/update' => 'contracts#update'
   delete 'contracts/delete', to: 'contracts#destroy', as: 'contracts_delete'
+  get 'contracts/invite_users' => 'contracts#invite_users', as: 'contracts_invite'
 
   post 'answers/edit/all' => 'answers#edit_all', as: :answers_edit_all
   get 'answers/new', to: 'answers#new', as: 'new_answers'

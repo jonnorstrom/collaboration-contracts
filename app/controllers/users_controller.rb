@@ -30,14 +30,14 @@ class UsersController < ApplicationController
        flash[:notice] = "Message did not send"
      end
    end
-   redirect_to "/"
+   redirect_to contract.path
   end
 
   private
   def get_url(user, contract)
     return "#{request.protocol}#{request.host_with_port}/contracts/#{contract.id}/#{get_user_link(user[1], contract)}"
   end
-  
+
   def get_user_link(position, contract)
     case position
     when 'collab'
