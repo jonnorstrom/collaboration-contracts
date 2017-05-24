@@ -9,27 +9,22 @@ class UsersController < ApplicationController
   end
 
   def add_users
-    # still need to add postmark to site.
     contract = Contract.find(params[:contract_id])
-    new_users_array = seperate_users(params)
+    new_users_array = remove_blanks(seperate_users(params))
     new_users_array.each do |user|
-      if user[0] != ""
-       emailer = Postmark::ApiClient.new(ENV["POSTMARK"])
-       emailer.deliver_with_template(
-        {:from=>"contact@plasticity-dev.com",
-         :to=>user[0],
-         :template_id=>1472662,
-         :template_model=>
-          {"invite_sender_name"=>current_user.users_name,
-           "contract_title"=>contract.title,
-           "user_position"=>readable_position(user[1]),
-           "action_url"=> get_url(user,contract) }}
-        )
-       flash[:notice] = "Message successfully sent"
-     else
-       flash[:notice] = "Message did not send"
-     end
-   end
+     emailer = Postmark::ApiClient.new(ENV["POSTMARK"])
+     emailer.deliver_with_template(
+      {:from=>"contact@plasticity-dev.com",
+       :to=>user[0],
+       :template_id=>1472662,
+       :template_model=>
+        {"invite_sender_name"=>current_user.users_name,
+         "contract_title"=>contract.title,
+         "user_position"=>readable_position(user[1]),
+         "action_url"=> get_url(user,contract) }}
+      )
+     flash[:notice] = "Invite(s) successfully sent"
+    end
    redirect_to contract.path
   end
 
@@ -53,6 +48,16 @@ class UsersController < ApplicationController
 
   def readable_position(position)
     position == 'collab' ? "Collaborator" : position.capitalize
+  end
+
+  def remove_blanks(users)
+    real_users = []
+    users.each do |user|
+      if user[0] != ""
+        real_users.push(user)
+      end
+    end
+    return real_users
   end
 
   def seperate_users(params)
