@@ -48,6 +48,17 @@ RSpec.describe AnswersController, type: :controller do
         assert_response :redirect
       end
     end
+    context "where answer doesn't save" do
+      before do
+        @answer = create(:answer)
+        @decision = @answer.decision
+        @user = create(:user)
+        process :create, method: :post, params: { answer: {user_id: @user.id} }
+      end
+      it "should render new answers template" do
+        expect(response).to render_template("answers/new")
+      end
+    end
   end
 
 end

@@ -95,6 +95,15 @@ RSpec.describe ContractsController, type: :controller do
       end
     end
 
+    context "refresh is false" do
+      before do
+        process :update, method: :post, params: {task:"complete", refresh: "false", id: @contract.id, link: @contract.owner_link}
+      end
+      it "should redirect to root_path" do
+        expect(response).to redirect_to(root_path)
+      end
+    end
+
     context "complete status" do
       before do
           process :update, method: :post, params: {task:"complete", id: @contract.id, link: @contract.owner_link}
@@ -160,11 +169,16 @@ RSpec.describe ContractsController, type: :controller do
 
   describe "destroy" do
     before do
+      sign_in create(:user)
       @contract = create(:contract)
-      process :destroy, method: :delete, params: {contract_id: @contract.id}
     end
+    it "should delete the contract" do
+      expect{process :destroy, method: :delete, params: {contract_id: @contract.id}}.to change(Contract, :count).by(-1)
+    end
+
     it "should redirect_to root_path" do
-      assert_response :redirect
+      process :destroy, method: :delete, params: {contract_id: @contract.id}
+      expect(response).to redirect_to(root_path)
     end
   end
 
