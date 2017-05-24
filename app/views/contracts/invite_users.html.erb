@@ -7,7 +7,9 @@
       <div class="radio-buttons">
         <input type="radio" id="0-collab" name="position_0" value="collab" checked> Collaborator
         <input type="radio" id="0-owner" name="position_0" value="owner"> Owner
-        <input type="radio" id="0-viewer" name="position_0" value="viewer"> Viewer
+        <% if @contract.viewer_link %>
+          <input type="radio" id="0-viewer" name="position_0" value="viewer"> Viewer
+        <% end %>
       </div>
       <div class="btn btn-primary add-user-btn" id="jsAddUser" >Add Another User</div>
       <div>
