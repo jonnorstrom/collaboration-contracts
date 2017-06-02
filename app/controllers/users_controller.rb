@@ -12,19 +12,23 @@ class UsersController < ApplicationController
     contract = Contract.find(params[:contract_id])
     new_users_array = remove_blanks(seperate_users(params))
     new_users_array.each do |user|
-     emailer = Postmark::ApiClient.new(ENV["POSTMARK"])
-     emailer.deliver_with_template(
-      {:from=>"contact@plasticity-dev.com",
-       :to=>user[0],
-       :template_id=>1472662,
-       :template_model=>
-        {"invite_sender_name"=>current_user.users_name,
-         "contract_title"=>contract.title,
-         "user_position"=>readable_position(user[1]),
-         "action_url"=> get_url(user,contract) }}
-      )
-     flash[:notice] = "Invite(s) successfully sent"
+      if User.find_by(email: user)
+        UserContract.create_or_update(User.find_by(email: user), contract, readable_position(user[1]))
+      else
+        emailer = Postmark::ApiClient.new(ENV["POSTMARK"])
+        emailer.deliver_with_template(
+         {:from=>"contact@plasticity-dev.com",
+          :to=>user[0],
+          :template_id=>1472662,
+          :template_model=>
+           {"invite_sender_name"=>current_user.users_name,
+            "contract_title"=>contract.title,
+            "user_position"=>readable_position(user[1]),
+            "action_url"=> get_url(user,contract) }}
+         )
+      end
     end
+    flash[:notice] = "Invite(s) successfully sent"
    redirect_to contract.path
   end
 
