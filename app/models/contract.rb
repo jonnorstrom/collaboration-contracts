@@ -8,6 +8,7 @@ class Contract < ApplicationRecord
   has_many :decisions, :dependent => :delete_all
   has_many :user_contracts, :dependent => :delete_all
   has_many :users, through: :user_contracts
+  belongs_to :creator, :class_name => 'User'
 
   def owner?(user)
     self.user_contracts.exists?(owner: true, user_id: user.id, contract_id: self.id)

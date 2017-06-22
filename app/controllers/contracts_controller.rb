@@ -48,7 +48,7 @@ class ContractsController < ApplicationController
 
   private
   def contract_params
-    params.require(:contract).permit(:title, :theme)
+    params.require(:contract).permit(:title, :theme, :creator_id)
   end
 
 end

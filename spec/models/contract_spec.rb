@@ -7,6 +7,7 @@ RSpec.describe Contract, type: :model do
 
     it{should have_many(:user_contracts)}
     it{should have_many(:users).through(:user_contracts)}
+    it{should belong_to(:creator)}
 
     it "is valid with valid attributes" do
       expect(contract).to be_valid
@@ -29,6 +30,9 @@ RSpec.describe Contract, type: :model do
     end
     it "should have user" do
       expect(contract.users).to be_truthy
+    end
+    it "it should have a creator" do
+      expect(contract.creator).to be_truthy
     end
   end
 

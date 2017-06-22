@@ -23,7 +23,7 @@ RSpec.describe ContractsController, type: :controller do
       before do
         @user = create(:user)
         sign_in @user
-        process :create, method: :post, params: {contract: {title: "Contract Title", theme: "Contract Theme"} }
+        process :create, method: :post, params: {contract: {title: "Contract Title", theme: "Contract Theme", creator_id: @user.id} }
       end
       it "should assign contract variable" do
         expect(assigns(:contract)).to be_a(Contract)
@@ -39,8 +39,9 @@ RSpec.describe ContractsController, type: :controller do
       end
       context "and missing params" do
         before do
-          sign_in create(:user)
-          process :create, method: :post, params: {contract: {title: "", theme: ""} }
+          @user = create(:user)
+          sign_in @user
+          process :create, method: :post, params: {contract: {title: "", theme: "", creator_id: @user.id} }
         end
         it "should assign error_messages" do
           expect(assigns(:error_messages)).to eq(["Title can't be blank"])

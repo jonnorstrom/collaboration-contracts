@@ -13,6 +13,7 @@ FactoryGirl.define do
     owner_link "abcde"
     viewer_link "viewer"
     theme "Theme"
+    association :creator, factory: :user
 
     factory :contract_with_decisions do
       transient do
