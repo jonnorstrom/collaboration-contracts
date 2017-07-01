@@ -9,12 +9,13 @@ class ContractsController < ApplicationController
   def create
     @contract = Contract.new(contract_params)
     @contract = add_links(@contract)
+    @contract.creator = current_user
     if @contract.save
       UserContract.create_owner_join(current_user, @contract)
       redirect_to @contract.path
     else
       @error_messages = @contract.errors.full_messages
-      render "home/index"
+      render 'contracts/new'
     end
   end
 
