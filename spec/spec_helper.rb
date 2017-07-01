@@ -22,6 +22,13 @@ SimpleCov.formatter = SimpleCov::Formatter::Codecov
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
+  # Use color in STDOUT
+  config.color = true
+  # Use color not only in STDOUT but also in pagers and files
+  config.tty = false
+  # Use the specified formatter
+  config.formatter = :documentation # :progress, :html, :textmate
+
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
@@ -32,6 +39,7 @@ RSpec.configure do |config|
       example.run
     end
   end
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.

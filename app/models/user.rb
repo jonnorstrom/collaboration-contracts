@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :user_contracts
   has_many :contracts, through: :user_contracts
   has_many :answers
-  has_many :contracts, :foreign_key => :creator_id
+  has_many :created_contracts, class_name: 'Contract', foreign_key: 'creator_id'
 
   def users_name
     "#{self.first_name} #{self.last_name[0].capitalize}."
